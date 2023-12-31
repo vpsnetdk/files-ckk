@@ -1,0 +1,24 @@
+﻿\033[1;38m################################################################\033[1;37m
+
+             \033[1;42m Ultimos Cambios Version ADM V5.7U \033[0m
+ 
+ \033[1;35m●\033[1;37m ------- ------- ------- ------- ------- ------- ------- 
+ 
+ \033[1;35m●\033[1;31m FIX PARA UPDATE EN MENU ADM-LITE ( V6 )
+ 
+ \033[1;35m●\033[1;31m FIXEADO NOMBRE DE USUARIO EN NUMEROS DE RENOVACIONES
+ 
+ \033[1;35m●\033[1;31m RENOVADO TOKEN DE SUBDOMINIOS TIPO ( A & NS )
+ 
+ \033[1;35m●\033[1;31m AÑADIDO SLOWDNS + ( PROTOCOLOS NUEVOS ) 
+ 
+ \033[1;35m●\033[1;31m FIXEADO OPTIMIZADOR VIA RSYSLOG
+ 
+ \033[1;35m●\033[1;31m BLOQUEO DE USUARIOS CADUCADOS EN DROPBEAR
+ 
+ \033[1;35m●\033[1;31m REPARADO AUTOCONFIG DE SSL + (PAYLOAD / DIRECTO)
+  
+  \033[1;38m################################################################\033[1;37m
+            \033[1;42m Revisa el Historial de cambios  \033[0m
+ \033[1;42m En : https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/cabecalho/changelogs.fix \033[0m
+ \033[1;38m################################################################\033[1;37m

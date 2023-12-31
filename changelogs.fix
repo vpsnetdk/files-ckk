@@ -1,0 +1,274 @@
+################################################################
+
+			Ultimos Cambios Version ADM V5.6a 
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● ESTABILIZANDO FOR DESCONTINUAR ADM-LITE ( V5 )
+ 
+ ● Añadido autoreboot de protocolos
+ 
+ ● reconstruido reiniciador de protocolos python,badvpn,slowdns
+ 
+ ● fixeado socks python en el reactivador
+ 
+ ● fixeado v2ray y xray en v5
+ 
+ ● añadido token nuevo de subdominios en certificado
+
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+			Ultimos Cambios Version ADM V5.5 
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● ESTABILIZANDO FOR DESCONTINUAR ADM-LITE ( V-final )
+ 
+ ● FIXEADO PythonSocks Oficial
+ 
+ ● RECONSTRUIDO LOG DE PUERTOS
+ 
+ ● FIXEADO MENUS DE V2RAY
+ 
+ ● CORREJIDO PROBLEMA DE KILLMULTILOGIN
+ 
+ ● RESPUESTA DEL LIMITADOR AUMENTADA A 30 SEGUNDOS
+
+			ULTIMOS CAMBIOS ChumoGH - ADM V5.4bt
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● ESTABILIZANDO FOR DESCONTINUAR ADM-LITE ( V-final )
+ 
+ ● AÑADIDO FUNCION DE Socks Python ( BETA )
+ 
+ ● AÑADIDO STUNNEL4 Y STUNNEL5
+
+ ● RECONSTRUIDO Contador de Usuarios en cabecera
+ 
+ ● COREJIDO ERROR V2RAY
+ 
+ ● AÑADIDA FUNCION DE ENCENDIDO DE CONTROL DE CONSUMO Y TIEMPO
+  
+################################################################
+
+			ULTIMOS CAMBIOS ChumoGH - ADM V5.3
+################################################################
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●  RECONSTRUIDO MENU
+ 
+ ●  REESTRUCTURADO AUTOPTIMIZADOR
+ 
+ ●  REESTRUCTURADO BadVPN (arm/arm64) - SYSTEM
+ 
+ ●  RECONSTRUIDO LIMITADOR SSH/DROPBEAR (KillSSH)
+ 
+ ●  VERIIFICADOR DE KEYS OFICIALES EN VERSION EXISTENTE
+  
+
+################################################################
+             Ultimos Cambios Version ADM V4.5
+ 
+ ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●  RECONSTRUIDO MENU  
+ 
+ ●  REESTRUCTURADO INTERVALOS DE PUERTOS ACTIVOS
+ 
+ ●  CORRECCION DE MENU TROJAN ( ALTERNO SNI )
+ 
+ ●  CONTROL DE DIAS DE USUARIOS ( AÑADIR / QUITAR )
+ 
+ ●  MOTOR V2RAY CON CONTADOR DE USUARIOS EXISTENTES
+ 
+ ●  REFORMA DE INSTALADOR
+ 
+ ●  UPDATE REFORMADO ( SOLO CON KEY )
+ 
+ 
+
+################################################################
+             Ultimos Cambios Version ADM V4.8 
+ 
+ ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●  RECONSTRUIDO MENU DE PROTOCOLOS 
+ 
+ ●  REESTRUCTURADO INTERVALOS DE PUERTOS ACTIVOS
+ 
+ ●  CORRECCION DE MENU TROJAN ( ALTERNO SNI )
+ 
+ ●  CONTROL DE DIAS DE USUARIOS ( AÑADIR / QUITAR )
+ 
+ ●  AÑADIDO CREADOR DE CUENTA VMESS CON USUARIO SSH
+ 
+ ●  REFORMA DE INSTALADOR
+ 
+ ●  UPDATE REFORMADO ( SOLO CON KEY )
+ 
+ 
+ ################################################################
+
+		   Ultimos Cambios Version ADM V4.7d
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+  ● Añadido Certificado con Dominio ( SSL - TROJAN - V2-UI )
+ 
+  ● REESTRUCTURADO DROPBEAR
+ 
+  ● AÑADIDO MENU SSL BY @KILLSHITO
+ 
+  ● REDUCIDO TIEMPO DE ESPERA DE INICIO
+ 
+  ● SCRIPT OPTIMIZADO AL ESPAÑOL ( 86 % )
+ 
+  ● REFORMA DE INSTALADOR
+ 
+ ################################################################
+
+           Ultimos Cambios Version ADM V4.7 
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● MENU PRINCIPAL REFORMADO ( OPTIMIZADO )
+ 
+ ● REESTRUCTURADO INSTALADOR
+ 
+ ● REFORMADO BANNER DE SOPORTE DROPBEAR
+ 
+ ● MENU V2RAY INICIAL REDUCIDO
+ 
+ ● ELIMINADO EN 80% INTERFAZ DEL DINO
+ 
+
+################################################################
+
+			Ultimos Cambios Version ADM V4.6C 
+ 
+ ●   ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●   MENU REFORMADO ( OPTIMIZADO )
+ 
+ ●   ELIMINADO LAG DE LOGIN
+ 
+ ●   REFORMA DE INSTALACION DE PROTOCOLOS
+ 
+ ●   FIX Version 
+ 
+
+################################################################
+
+			Ultimos Cambios Version ADM V4.6b 
+ 
+ ●   ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●   V2-UI Reestructurado
+ 
+ ●   Solucion Espacio en VPS ( Optimizar VPS )
+ 
+ ●   Mejoramiento de Trojan-GO
+ 
+ ●   FIX Key LIMPIA
+ 
+################################################################
+
+             Ultimos Cambios Version ADM V4.6a 
+ 
+ ●   ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●   Añadido Certificado WEB ( Trojan )
+ 
+ ●   Añadido Certificado SSL Normal ( WEB )
+ 
+ ●   REMOVIDO AutOptimizador de Python SSL
+ 
+ ●   RESTRUCTURACIÓN DE INSTALADOR PRIMARIO
+ 
+ ●   Añadido Carga SSL en WebSocket CDN
+
+################################################################
+
+              Ultimos Cambios Version ADM V4.6a 
+ 
+ ●  ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●  Reestructurado Menú Block Torrent ( Menú 2, Opción 1)
+ 
+ ●  Reestructurado Pay + SSL AutoConfig
+ 
+ ● Agregado AutoOptimizador de Python SSL
+ 
+ ● RESTRUCTURACIÓN DE PYTHON SSL
+ 
+ ● Reestructurado Certificado SSL Normal
+
+ ● Reestructurado WebSocket SSL (HTTPS)
+ 
+################################################################
+
+            Ultimos Cambios Version ADM V4.6
+ 
+   ------- ------- ------- ------- ------- ------- ------- 
+ 
+  Añadido Menú Block Torrent ( Menú 7, Opción 16)
+ 
+  Reestructurado Pay + SSL Autogonnfig
+ 
+  RESTRUCTURACIÓN DE PYTHON SSL
+ 
+  Ofuscado SHC
+
+  Añadido WebSocket SSL (HTTPS)
+ 
+
+################################################################
+
+            Ultimos Cambios Version ADM V4.5.1b 
+ 
+ ●  ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ●  Añadido Menú Block Torrent ( Menú 7, Opción 16)
+ 
+ ●  Reestructurado Pay + SSL Autogonnfig
+ 
+ ●  RESTRUCTURACIÓN DE PYTHON SSL
+ 
+ ●  Ofuscado SHC
+ 
+################################################################
+
+          Ultimos Cambios Version ADM V4.5.1a  26-07-2021
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● Añadido Menú Block Torrent ( Menú 7, Opción 16)
+ 
+ ● Reestructurado PaySSL Autogonnfig
+ 
+ ● RESTRUCTURACIÓN DE PYTHON SSL
+ 
+###############################################################
+
+               Ultimos Cambios Version ADM V4.5.1a 
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ ● Añadido Menú Trojan (Experimental, Menú 7, Opción 20)
+ 
+ ● RESTRUCTURADO CERTIFICADO SSL TROJAN
+ 
+ ● RESTRUCTURACIÓN DE PYTHON SSL
+ 
+ ● (AHORA PODRAS CAMBIAR EL RESPONSE STATUS DE CONEXION PYTHON)
+ 
+ ● Añadido Submenú Clash. (Podrás escojer el Usuario V2RAY Y TROJAN CREADO)!
+ 
+ ● Source Update Reestructurado!
+  
+ ● Nuevo Protocolo Experimental (SSH OVER WEBSOCKET) Menu 9, Opcion 18 !
+ 
+ ● ------- ------- ------- ------- ------- ------- ------- 
+ 
+ 
+ ################################################################

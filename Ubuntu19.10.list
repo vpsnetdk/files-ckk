@@ -1,0 +1,14 @@
+deb http://ur.archive.ubuntu.com/ubuntu eoan main restricted universe multiverse
+#deb-src http://us.archive.ubuntu.com/ubuntu eoan main restricted universe multiverse
+
+deb http://us.archive.ubuntu.com/ubuntu eoan-updates main restricted universe multiverse
+#deb-src http://us.archive.ubuntu.com/ubuntu eoan-updates main restricted universe multiverse
+
+deb http://us.archive.ubuntu.com/ubuntu eoan-security main restricted universe multiverse
+#deb-src http://us.archive.ubuntu.com/ubuntu eoan-security main restricted universe multiverse
+
+deb http://us.archive.ubuntu.com/ubuntu eoan-backports main restricted universe multiverse
+#deb-src http://us.archive.ubuntu.com/ubuntu eoan-backports main restricted universe multiverse
+
+# deb http://archive.canonical.com/ubuntu eoan partner
+# deb-src http://archive.canonical.com/ubuntu eoan partner
