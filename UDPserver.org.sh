@@ -1,18 +1,6 @@
 #!/bin/bash  
 clear  
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg) > /dev/null
 
-selection_fun () {
-local selection="null"
-local range
-for((i=0; i<=$1; i++)); do range[$i]="$i "; done
-while [[ ! $(echo ${range[*]}|grep -w "$selection") ]]; do
-echo -ne "\033[1;37m ► Opcion: " >&2
-read selection
-tput cuu1 >&2 && tput dl1 >&2
-done
-echo $selection
-}
 
 os_system(){ 
  system=$(cat -n /etc/issue |grep 1 |cut -d ' ' -f6,7,8 |sed 's/1//' |sed 's/      //') 
@@ -34,6 +22,7 @@ download_udpServer(){
 	fi
 make_service
 }
+
 
 make_service(){
 	ip_nat=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | sed -n 1p)
@@ -91,7 +80,7 @@ make_service(){
   info() {
   msg -bar
   echo
-  msg -ama "         INSTALADOR UDPserver | @drowkid01"
+  msg -ama "         INSTALADOR UDPserver | ChuKK-Script"
   echo 
   msg -bar
   msg -ama "         SOURCE OFICIAL DE NewToolWorks"
@@ -130,7 +119,7 @@ read -p " PRESIONA ENTER PARA CONTINUAR"
 return
 }
   msg -bar
-  msg -ama "         INSTALADOR UDPserver | @drowkid01•Plus"
+  msg -ama "         INSTALADOR UDPserver | ChuKK-Script"
   msg -bar
 [[ $(uname -m 2> /dev/null) != x86_64 ]] && {
 

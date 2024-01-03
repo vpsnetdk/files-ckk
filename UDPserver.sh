@@ -1,7 +1,6 @@
 #By @drowkid01|Plus
 clear&&clear
-
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg) > /dev/null
+source main.sh
 
 
 RED="\033[31m"
@@ -52,7 +51,7 @@ showConf(){
 
 inst_port(){
     iptables -t nat -F PREROUTING &>/dev/null 2>&1
-	msg -bar3
+	msg -bar
 	echo -e "Configure el puerto Hysteria2 entre [1-65535] "
     read -p " (Enter para puerto aleatorio) : " port
     [[ -z $port ]] && port=$(shuf -i 2000-65535 -n 1)
@@ -97,7 +96,7 @@ inst_jump(){
 
 install_bin(){
 clear&&clear
-msg -bar3
+msg -bar
 NAME=hysteria
 VERSION=$(curl -fsSL https://api.github.com/repos/apernet/hysteria/releases/latest | grep -w tag_name |sed -e 's/[^v.0-9 -]//ig'| tr -d '[:space:]')
 [[ $(uname -m 2> /dev/null) != x86_64 ]] && TARBALL="$NAME-linux-arm64" || TARBALL="$NAME-linux-amd64"
@@ -142,16 +141,16 @@ inst_pwd(){
 }
 
 inst_site(){
-msg -bar3
+msg -bar
 echo -e "INGRESA SU SNI ( HOST FAKE ) "
-msg -bar3
+msg -bar
     echo -e "Ingrese su Sitio WEB Falso A Hysteria 2 (elimine https://) "
 	read -rp  " [Default : plus.admcgh.online]: " proxysite
     [[ -z $proxysite ]] && proxysite='plus.admcgh.online'
 }
 
 inst_cert(){
-msg -bar3
+msg -bar
 echo -ne " Ingresa Tu Dominio Enlazado a este IP ( Omite con Enter ) :"
 read -p " " domainH2
 [[ -z ${domainH2} ]] && domainH2='Hysteria2'
@@ -300,9 +299,9 @@ echo -e " \n 	Power By @drowkid01" >> /etc/adm-lite/HYSTERIA/data.yaml
     #red "$(cat /root/hy/hy-client.yaml)"
     #yellow "Hysteria 2 client JSON configuration file hy-client.json is as follows and saved to /root/hy/hy-client.json"
     #red "$(cat /root/hy/hy-client.json)"
-msg -bar3
+msg -bar
 cat /etc/adm-lite/HYSTERIA/data.yaml
-msg -bar3
+msg -bar
     green "$APP_IMPORT_GUIDE"
     yellow "El URI de configuraci�n de Hysteria 2 (con salto de puerto) "
     red "$(cat /root/hy/url.txt)"
@@ -413,14 +412,14 @@ echo " PUERTO : 36712" >> /etc/adm-lite/HYSTERIA/data
 echo " ALPN : h3" >> /etc/adm-lite/HYSTERIA/data
 echo " RANGO DE PUERTOS : 10000:65000" >> /etc/adm-lite/HYSTERIA/data
 echo -e " \n 	Power By @drowkid01" >> /etc/adm-lite/HYSTERIA/data
-msg -bar3
+msg -bar
 echo ""
 echo " --- TUS DATOS DE SERVICIO SON ---"
-msg -bar3
+msg -bar
 figlet -p -f smslant Hysteria | lolcat
-msg -bar3
+msg -bar
 cat /etc/adm-lite/HYSTERIA/data
-msg -bar3
+msg -bar
 enter
 [[ $(ps x | grep hysteria| grep -v grep) ]] && echo -e "$(msg -verd 'SERVICIO HYSTERIA INICIADO EXITOSAMENTE')" || echo -e "$(msg -verm2 'SERVICIO HYSTERIA NO INICIADO')"
 _menuH
@@ -428,19 +427,19 @@ _menuH
 
 _menuH(){
 clear&&clear
-msg -bar3
+msg -bar
 cat /etc/adm-lite/HYSTERIA/data
-msg -bar3
+msg -bar
 unset op
 [[ $(cat /etc/adm-lite/HYSTERIA/config.json | grep -w '//"alpn"') ]] && _ap='\033[0;31mOFF' || _ap='\033[0;32mON'
 menu_func "CAMBIAR PUERTO" "CAMBIAR OBFS" "ALPN (http injector)  \033[0;32m[ ${_ap}\033[0;32m ]" "REINICIAR SERVICIO" "\033[0;31mREMOVER SERVICIO"
-msg -bar3
+msg -bar
   selecy=$(selection_fun 5)  
 case $selecy in
 1)
 clear&&clear
 unset _col
-msg -bar3
+msg -bar
 echo  -e "INGRESE EL NUEVO PUERTO DE SERVICIO "
 read -p " PUERTO : " _col
 #_PA=$(cat /etc/adm-lite/HYSTERIA/config.json | grep -i listen |cut -d '"' -f4 |sed -e 's/[^0-9]//ig')
@@ -455,7 +454,7 @@ systemctl restart hysteria &>/dev/null
   2)
 clear&&clear
 unset _col
-msg -bar3
+msg -bar
 echo  -e "INGRESE SU NUEVO OBFS "
 read -p " OBFS : " _col
 _obfs=$(cat /etc/adm-lite/HYSTERIA/config.json |jq -r .obfs)
@@ -480,7 +479,7 @@ systemctl restart hysteria &>/dev/null
 4)
 clear&&clear
 unset _col
-msg -bar3
+msg -bar
 systemctl restart hysteria &>/dev/null
 ;;
 5)
@@ -497,25 +496,25 @@ exit
 
 _menuH2(){
 clear&&clear
-msg -bar3
+msg -bar
 cat /etc/adm-lite/HYSTERIA/data.yaml
-msg -bar3
+msg -bar
 green "$APP_IMPORT_GUIDE"
 yellow "El URI de configuraci�n de Hysteria 2 (con salto de puerto) "
 red "$(cat /root/hy/url.txt)"
 yellow "El URI de configuraci�n de Hysteria 2 (sin salto de puerto) "
 red "$(cat /root/hy/url-nohop.txt)"
-msg -bar3
+msg -bar
 unset op
 [[ $(cat /etc/adm-lite/HYSTERIA/config.yaml | grep -w '//"alpn"') ]] && _ap='\033[0;31mOFF' || _ap='\033[0;32mON'
 menu_func "CAMBIAR PUERTO" "CAMBIAR CONTRASE�A" "REINICIAR SERVICIO" "\033[0;31mREMOVER SERVICIO"
-msg -bar3
+msg -bar
   selecy=$(selection_fun 5)  
 case $selecy in
 1)
 clear&&clear
 unset _col
-msg -bar3
+msg -bar
     oldport=$(cat /etc/adm-lite/HYSTERIA/config.yaml 2>/dev/null | sed -n 1p | awk '{print $2}' | awk -F ":" '{print $2}')    
 	echo  -e "INGRESE EL NUEVO PUERTO DE SERVICIO "
 	read -p "Puerto [1-65535] (Puerto Ramdom Enter): " port
@@ -538,7 +537,7 @@ msg -bar3
   2)
 clear&&clear
 unset _col
-msg -bar3
+msg -bar
     oldpasswd=$(cat /etc/adm-lite/HYSTERIA/config.yaml 2>/dev/null | sed -n 20p | awk '{print $2}')
     oldobfs=$(cat /etc/adm-lite/HYSTERIA/config.yaml 2>/dev/null | sed -n 10p | awk '{print $2}')
 	echo  -e "INGRESE SU NUEVA CLAVE/CONTRASE�A "
@@ -592,13 +591,13 @@ unset port
   echo -e "\033[0;35m [${cor[2]}02\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-CUSTOM HTTPCustom        \033[0;31m[${_Cu}\033[0;31m] ${_MSYS}" 
   echo -e "\033[0;35m [${cor[2]}03\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-Hysteria APPMod's        \033[0;31m[${_HIS}\033[0;31m] ${_MSYS}"
   echo -e "\033[0;35m [${cor[2]}04\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-Hysteria2 HTTP-Injector  \033[0;31m[${_HIS2}\033[0;31m] ${_MSYS2}"
-  msg -bar3
+  msg -bar
   echo -ne "$(msg -verd "  [0]") $(msg -verm2 "=>>") " && msg -bra "\033[1;41m Volver "
-  msg -bar3
+  msg -bar
   opcion=$(selection_fun 4)
   case $opcion in
-  1) source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/UDPserver.org.sh) && exit;;
-  2) source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/udp-custom.sh) && exit;;
+  1) source <(curl -sSL ${url[utx]}/UDPserver.org.sh) && exit;;
+  2) source <(curl -sSL ${url[utx]}/udp-custom.sh) && exit;;
   3) [[ $(ps x | grep -w "/bin/hysteria"| grep -v grep) ]] && _menuH || _hysteria ;;
   4) [[ $(ps x | grep -w "/bin/Hysteria2"| grep -v grep) ]] && _menuH2 || _hysteria2 ;;
   0) exit;;
