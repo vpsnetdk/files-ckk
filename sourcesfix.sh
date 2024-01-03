@@ -1,3 +1,4 @@
+#!/bin/bash
 function fixsources19(){
 echo -e "Reinstalando fuentes (sources)"
 curl -o /etc/apt/sources.list https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu/Ubuntu19.10.list && apt-get update && apt-get upgrade -y
