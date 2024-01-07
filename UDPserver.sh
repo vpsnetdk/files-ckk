@@ -583,17 +583,17 @@ _MSYS2="\n$(print_center "\033[0;35mNO SOPORTA USERS DE SISTEMA")"
 
 do
 unset port
-msg -bar33
+msg -bar3
 echo -e "\e[48;5;110m\e[38;5;0m	🦖📍 ChuKK-SCRIPT | @drowkid01 📍🦖"
-msg -bar33
+msg -bar3
   #menu_func " UDP-REQUEST  SocksIP    \033[0;31m[${_So}\033[0;31m]${_MSYS}" "UDP-CUSTOM HTTPCustom \033[0;31m[${_Cu}\033[0;31m]${_MSYS}" "UDP-Hysteria APPMod's \033[0;31m[${_HIS}\033[0;31m] ${_MSYS}"
   echo -e "\033[0;35m [${cor[2]}01\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-REQUEST  SocksIP         \033[0;31m[${_So}\033[0;31m] ${_MSYS}" 
   echo -e "\033[0;35m [${cor[2]}02\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-CUSTOM HTTPCustom        \033[0;31m[${_Cu}\033[0;31m] ${_MSYS}" 
   echo -e "\033[0;35m [${cor[2]}03\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-Hysteria APPMod's        \033[0;31m[${_HIS}\033[0;31m] ${_MSYS}"
   echo -e "\033[0;35m [${cor[2]}04\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-Hysteria2 HTTP-Injector  \033[0;31m[${_HIS2}\033[0;31m] ${_MSYS2}"
-  msg -bar33
+  msg -bar3
   echo -ne "$(msg -verd "  [0]") $(msg -verm2 "=>>") " && msg -bra "\033[1;41m Volver "
-  msg -bar33
+  msg -bar3
   opcion=$(selection_fun 4)
   case $opcion in
   1) source <(curl -sSL https://raw.githubusercontent.com/vpsnetdk/files-ckk/main/UDPserver.org.sh) && exit;;

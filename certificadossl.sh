@@ -36,7 +36,7 @@ echo "" > /etc/fixcssl
 cert_install(){
     #apt install socat netcat -y
     if [[ ! -e $HOME/.acme.sh/acme.sh ]];then
-    	msg -bar33
+    	msg -bar3
     	msg -ama " Instalando script acme.sh"
     	curl -s "https://get.acme.sh" | sh &>/dev/null
     fi
@@ -149,20 +149,20 @@ ext_cert(){
 }
 
 stop_port(){
-	msg -bar33
+	msg -bar3
 	msg -ama " Comprovando puertos..."
 	ports=('80' '443')
 
 	for i in ${ports[@]}; do
 		if [[ 0 -ne $(lsof -i:$i | grep -i -c "listen") ]]; then
-			msg -bar33
+			msg -bar3
 			echo -ne "$(msg -ama " Liberando puerto: $i")"
 			lsof -i:$i | awk '{print $2}' | grep -v "PID" | xargs kill -9
 			sleep 2s
 			if [[ 0 -ne $(lsof -i:$i | grep -i -c "listen") ]];then
 				tput cuu1 && tput dl1
 				print_center -verm2 "ERROR AL LIBERAR PURTO $i"
-				msg -bar33
+				msg -bar3
 				msg -ama " Puerto $i en uso."
 				msg -ama " auto-liberacion fallida"
 				msg -ama " detenga el puerto $i manualmente"
@@ -183,11 +183,11 @@ ger_cert(){
 	print_center -ama "Requiere ingresar un dominio."
 	print_center -ama "el mismo solo deve resolver DNS, y apuntar"
 	print_center -ama "a la direccion ip de este servidor."
-	msg -bar33
+	msg -bar3
 	print_center -ama "Temporalmente requiere tener"
 	print_center -ama "los puertos 80 y 443 libres."
 	if [[ $1 = 2 ]]; then
-		msg -bar33
+		msg -bar3
 		print_center -ama "Requiere tener una cuenta Zerossl."
 	fi
 	msg -bar3
@@ -200,7 +200,7 @@ ger_cert(){
      	clear
 		msg -bar3
 		print_center -ama "ingresa tu correo usado en zerossl"
-		msg -bar33
+		msg -bar3
 		msg -ne " >>> "
 		read mail
 	 done
@@ -213,7 +213,7 @@ ger_cert(){
 			clear
 			msg -bar3
 			print_center -azu "Dominio asociado a esta ip"
-			msg -bar33
+			msg -bar3
 			echo -e "$(msg -verm2 " >>> ") $(msg -ama "$domain")"
 			msg -ne "Continuar, usando este dominio? [S/N]: "
 			read opcion
@@ -226,11 +226,11 @@ ger_cert(){
 		clear
 		msg -bar3
 		print_center -ama "ingresa tu dominio"
-		msg -bar33
+		msg -bar3
 		msg -ne " >>> "
 		read domain
 	done
-	msg -bar33
+	msg -bar3
 	msg -ama " Comprovando direccion IP ..."
 	local_ip=$(wget -qO- ipv4.icanhazip.com)
     domain_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
@@ -242,10 +242,10 @@ ger_cert(){
     	print_center -verm2 "ERROR DE DIRECCION IP"
     	msg -bar3
     	msg -ama " La direccion ip de su dominio\n no coincide con la de su servidor."
-    	msg -bar33
+    	msg -bar3
     	echo -e " $(msg -azu "IP dominio:  ")$(msg -verm2 "${domain_ip}")"
     	echo -e " $(msg -azu "IP servidor: ")$(msg -verm2 "${local_ip}")"
-    	msg -bar33
+    	msg -bar3
     	msg -ama " Verifique su dominio, e intente de nuevo."
     	msg -bar3
     	read foo

@@ -41,9 +41,9 @@ menuDNS(){
 	resolv=$(cat /etc/resolvconf/resolv.conf.d/head|grep -v '#'|grep nameserver|cut -d ' ' -f2)
 	title 'CONFIGURACION DE IP DNS'
 	print_center -verm2 'funcion beta, por fallos reportar a @Rufu99'
-	msg -bar33
+	msg -bar3
 	print_center -ama '	lista de ip dns activas'
-	msg -bar33
+	msg -bar3
 	i=1
 	while read line; do
 		#echo " $(msg -verd "[$i]") $(msg -verm2 ">") $(msg -azu "$line")"
@@ -51,10 +51,10 @@ menuDNS(){
 		dns[$i]="$line"
 		let i++
 	done <<< $(echo "$resolv")
-	msg -bar33
+	msg -bar3
 	echo -ne " $(msg -verd "[0]") $(msg -verm2 ">")"
 	echo " $(msg -bra "\033[1;41mVOLVER")   $(msg -verd "[1]") $(msg -verm2 ">") $(msg -verd "AGREGAR DNS")   $(msg -verd "[2]") $(msg -verm2 ">") $(msg -verm2 "QUITAR DNS")"
-	msg -bar33
+	msg -bar3
 	opcion=$(selection_fun 2)
 	case $opcion in
 		1)newDNS;;
@@ -67,7 +67,7 @@ install_resolv(){
 	if [[ $(which resolvconf) = "" ]]; then
 		title -ama 'AVISO!!!!'
 		print_center -ama 'Esta funcion requiere del paquete resolvconf'
-		msg -bar33
+		msg -bar3
 		in_opcion 'Quieres instalar resolvconf [s/n]'
 		case $opcion in
 			s|S)apt install resolvconf -y;;

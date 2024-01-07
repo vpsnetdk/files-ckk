@@ -36,9 +36,9 @@ install_ini () {
 add-apt-repository universe
 apt update -y; apt upgrade -y
 clear
-msg -bar33
+msg -bar3
 echo -e "\033[92m        -- INSTALANDO PAQUETES NECESARIOS -- "
-msg -bar33
+msg -bar3
 #bc
 [[ $(dpkg --get-selections|grep -w "golang-go"|head -1) ]] || apt-get install golang-go -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "golang-go"|head -1) ]] || ESTATUS=`echo -e "\033[91mFALLO DE INSTALACION"` &>/dev/null
@@ -84,9 +84,9 @@ echo -e "\033[97m  # apt-get install net-tools............ $ESTATUS "
 [[ $(dpkg --get-selections|grep -w "figlet"|head -1) ]] || ESTATUS=`echo -e "\033[91mFALLO DE INSTALACION"` &>/dev/null
 [[ $(dpkg --get-selections|grep -w "figlet"|head -1) ]] && ESTATUS=`echo -e "\033[92mINSTALADO"` &>/dev/null
 echo -e "\033[97m  # apt-get install figlet............... $ESTATUS "
-msg -bar33
+msg -bar3
 echo -e "\033[92m La instalacion de paquetes necesarios a finalizado"
-msg -bar33
+msg -bar3
 echo -e "\033[97m Si la instalacion de paquetes tiene fallas"
 echo -ne "\033[97m Puede intentar de nuevo [s/n]: "
 read inst
@@ -100,10 +100,10 @@ read insta
 fun_insta(){
 fun_ip
 install_ini
-msg -bar33
+msg -bar3
 killall clash 1> /dev/null 2> /dev/null
 echo -e " ➣ Creando Directorios y Archivos"
-msg -bar33 
+msg -bar3 
 [[ -d /root/.config ]] && rm -rf /root/.config/* || mkdir /root/.config 
 mkdir /root/.config/clash 1> /dev/null 2> /dev/null
 last_version=$(curl -Ls "https://api.github.com/repos/emirjorge/clash-core/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
@@ -372,14 +372,14 @@ unset yesno
 foc=$(($foc + 1))
 echo -ne "\033[1;33m ➣ PERFIL TROJAN CLASH "
 read -p ": " nameperfil
-msg -bar33
+msg -bar3
 [[ -z ${UUID} ]] && view_usert || { 
 echo -e " USER ${Usr} : ${UUID}"
-msg -bar33
+msg -bar3
 }
 echo -ne "\033[1;33m ➣ SNI o HOST "
 read -p ": " trosni
-msg -bar33
+msg -bar3
 proxyTRO ${nameperfil} ${UUID} ${trosni}
 ConfTrojINI
 								}
@@ -429,14 +429,14 @@ unset yesno
 foc=$(($foc + 1))
 echo -ne "\033[1;33m ➣ PERFIL V2RAY CLASH "
 read -p ": " nameperfil
-msg -bar33
+msg -bar3
 [[ -z ${uid} ]] && view_user || { 
 echo -e " USER ${ps}"
-msg -bar33
+msg -bar3
 }
 echo -ne "\033[1;33m ➣ SNI o HOST "
 read -p ": " trosni
-msg -bar33
+msg -bar3
 
 		ps=$(jq .inbounds[].settings.clients[$opcion].email $config) && [[ $ps = null ]] && ps="default"
 		uid=$(jq .inbounds[].settings.clients[$opcion].id $config)
@@ -471,14 +471,14 @@ unset yesno
 foc=$(($foc + 1))
 echo -ne "\033[1;33m ➣ PERFIL XRAY CLASH "
 read -p ": " nameperfilX
-msg -bar33
+msg -bar3
 [[ -z ${uidX} ]] && _view_userXR || { 
 echo -e " USER ${ps} XRAY"
-msg -bar33
+msg -bar3
 }
 echo -ne "\033[1;33m ➣ SNI o HOST "
 read -p ": " trosniX
-msg -bar33
+msg -bar3
 		psX=$(jq .inbounds[].settings.clients[$opcion].email $config) && [[ $ps = null ]] && ps="default"
 		uidX=$(jq .inbounds[].settings.clients[$opcion].id $config)
 		aluuiidX=$(jq .inbounds[].settings.clients[$opcion].alterId $config)
@@ -1974,29 +1974,29 @@ echo "#POWER BY @drowkid01" >> /root/.config/clash/config.yaml
 
 enon(){
 		clear
-		msg -bar33
+		msg -bar3
 		blanco " Se ha agregado un autoejecutor en el Sector de Inicios Rapidos"
-		msg -bar33
+		msg -bar3
 		blanco "	  Para Acceder al menu Rapido \n	     Utilize * clash.sh * !!!"
-		msg -bar33
+		msg -bar3
 		echo -e "		\033[4;31mNOTA importante\033[0m"
 		echo -e " \033[0;31mSi deseas desabilitar esta opcion, apagala"
 		echo -e " Y te recomiendo, no alterar nada en este menu, para"
 		echo -e "             Evitar Errores Futuros"
 		echo -e " y causar problemas en futuras instalaciones.\033[0m"
-		msg -bar33
+		msg -bar3
 		continuar
 		read foo
 }
 enoff(){
 rm -f /bin/clash.sh
-		msg -bar33
+		msg -bar3
 		echo -e "		\033[4;31mNOTA importante\033[0m"
 		echo -e " \033[0;31mSe ha Desabilitado el menu Rapido de clash.sh"
 		echo -e " Y te recomiendo, no alterar nada en este menu, para"
 		echo -e "             Evitar Errores Futuros"
 		echo -e " y causar problemas en futuras instalaciones.\033[0m"
-		msg -bar33
+		msg -bar3
 		continuar
 		read foo
 }
@@ -2013,9 +2013,9 @@ blanco(){
 	}
 }
 title(){
-	msg -bar33
+	msg -bar3
 	blanco "$1"
-	msg -bar33
+	msg -bar3
 }
 col(){
 	nom=$(printf '%-55s' "\033[0;92m${1} \033[0;31m>> \033[1;37m${2}")
@@ -2035,7 +2035,7 @@ echo -e " \033[3;49;32mEnter para continuar...\033[0m"
 }
 userDat(){
 	blanco "	NÂ°    Usuarios 		  fech exp   dias"
-	msg -bar33
+	msg -bar3
 }
 view_usert(){
 configt="/usr/local/etc/trojan/config.json"
@@ -2072,9 +2072,9 @@ tmpdirt="$backdir/tmp"
 			col "$n)" "${Usr}" "$DateExp" "$exp"
 			let n++
 		done
-		msg -bar33
+		msg -bar3
 		col "0)" "VOLVER"
-		msg -bar33
+		msg -bar3
 		blanco "SELECCIONA USUARIO" 0
 		read opcion
 		[[ -z $opcion ]] && vacio && sleep 0.3s && continue
@@ -2133,9 +2133,9 @@ tmpdir="$backdir/tmp"
 			let n++
 		done
 
-		msg -bar33
+		msg -bar3
 		col "0)" "VOLVER"
-		msg -bar33
+		msg -bar3
 		blanco "Escoje Tu Usuario : " 0
 		read opcion
 		[[ -z $opcion ]] && vacio && sleep 0.3s && continue
@@ -2193,9 +2193,9 @@ tmpdir="$backdir/tmp"
 			let n++
 		done
 
-		msg -bar33
+		msg -bar3
 		col "0)" "VOLVER"
-		msg -bar33
+		msg -bar3
 		blanco "Escoje Tu Usuario : " 0
 		read opcion
 		[[ -z $opcion ]] && vacio && sleep 0.3s && continue
@@ -2223,13 +2223,13 @@ clear
 fileon=$(ls -la /var/www/html | grep "yaml" | wc -l)
 filelo=$(ls -la /root/.config/clash | grep "yaml" | wc -l)
 cd
-msg -bar33
+msg -bar3
 echo -e "\033[1;37m ✬  Linux Dist: $(less /etc/issue.net)\033[0m"
-msg -bar33
+msg -bar3
 echo -e "\033[1;37m ✬ Ficheros Online:	$fileon  ✬ Ficheros Locales: $filelo\033[0m"
-msg -bar33
+msg -bar3
 echo -e "\033[1;37m - Menu Iterativo Clash for Android - drowkid01 \033[0m"
-msg -bar33
+msg -bar3
 echo -e "\033[1;37mSeleccione :    Para Salir Ctrl + C o 0 Para Regresar\033[1;33m"
 unset yesno
 echo -e " DESEAS CONTINUAR CON LA CARGA DE CONFIG CLASH?"

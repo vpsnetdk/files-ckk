@@ -350,7 +350,7 @@ stunel="\e[31m[ OFF ]"
 fi 
 [[ -e /root/name ]] && figlet -p -f smslant < /root/name | lolcat || echo -e "\033[7;49;35m    =====>>►► 🐲 New drowkid01💥VPS 🐲 ◄◄<<=====      \033[0m"
 msg -bar3 
-msg -bar33 
+msg -bar3 
 msg -tit 
 echo -e "${cor[3]}         INSTALADOR MULTI SSL  By @drowkid01" 
 msg -bar3 

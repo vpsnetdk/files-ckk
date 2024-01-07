@@ -463,18 +463,18 @@ CGHlog='/var/log/v2ray/access.log'
 v2ray restart &> /dev/null
 v2ray clean &> /dev/null && let log0++ && clear 
 }
-msg -bar33
+msg -bar3
 echo -e ""
 echo -e " ESPERANDO A LA VERIFICACION DE IPS Y USUARIOS "
 echo -e "      ESPERE UN MOMENTO PORFAVOR $log0"
 echo -e ""
-msg -bar33
+msg -bar3
 fun_bar
-msg -bar33
+msg -bar3
 sleep 5s
 clear&&clear
 title2
-msg -bar33
+msg -bar3
 users="$(cat $config | jq -r .inbounds[].settings.clients[].email)"
 IP_tconex=$(netstat -nap | grep "$v2rayports"| grep v2ray | grep ESTABLISHED | grep tcp6 | awk {'print $5'}| awk -F ":" '{print $1}' | sort | uniq)
 n=1
@@ -485,7 +485,7 @@ do
 	Users+="$USERauth\n"
 done
 echo -e " N) -|- USER -|- CONEXIONES "|column -t -s '-'
-msg -bar33
+msg -bar3
 for U in $users
 	do
 	CConT=$(echo -e "$Users" | grep $U |wc -l)
@@ -494,7 +494,7 @@ for U in $users
 	let n++
 done
 echo -e "$UConc"|column -t -s '-'
-msg -bar33
+msg -bar3
 continuar
 read foo
 }
@@ -1163,7 +1163,7 @@ v2rayports=`netstat -tunlp | grep v2ray | grep LISTEN | grep -vE '127.0.0.1' | a
 [[ -z $(echo "$v2rayports" | awk {'print $1'}) ]] && _v2rayports="null" || _v2rayports=$(echo "$v2rayports" | awk {'print $1'})
 _tconex=$(netstat -nap | grep "$_v2rayports" | grep v2ray | grep ESTABLISHED |grep tcp6| awk {'print $5'} | awk -F ":" '{print $1}' | sort | uniq | wc -l)
 #SPR & 
-msg -bar33
+msg -bar3
 msg -bar3
 msg -tit
 msg -ama "      PANNEL V2RAY Mod @drowkid01 ${vesaoSCT} "
