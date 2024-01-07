@@ -45,7 +45,6 @@ fi
 back_menu(){
      echo -e "$bar1"
      read -p "$(echo -e "${morado}Enter Para Continuar${cierre}")" enter
-     source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/sslh-back3.sh)
 }
 t_port () {
 t_node=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")

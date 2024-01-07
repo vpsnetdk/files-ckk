@@ -1,6 +1,5 @@
 #By @drowkid01|Plus
 clear&&clear
-source main.sh
 
 
 RED="\033[31m"
@@ -405,7 +404,7 @@ install -Dm644 /etc/adm-lite/HYSTERIA/hysteria.service /etc/systemd/system
 systemctl start hysteria &>/dev/null
 systemctl enable hysteria &>/dev/null
 rm -f /etc/adm-lite/HYSTERIA/hysteria.service /etc/adm-lite/HYSTERIA/udpmod*
-echo " IP : $(cat < /bin/ejecutar/IPcgh)" > /etc/adm-lite/HYSTERIA/data
+echo " IP : $(wget -qO- ipv4.icanhazip.com)" > /etc/adm-lite/HYSTERIA/data
 echo " DOMINIO : ${domain}" >> /etc/adm-lite/HYSTERIA/data
 echo " OBFS : ${OBFS}" >> /etc/adm-lite/HYSTERIA/data
 echo " PUERTO : 36712" >> /etc/adm-lite/HYSTERIA/data
