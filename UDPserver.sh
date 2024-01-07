@@ -584,7 +584,7 @@ _MSYS2="\n$(print_center "\033[0;35mNO SOPORTA USERS DE SISTEMA")"
 
 do
 unset port
-  tittle
+echo -e "\e[48;5;110m\e[38;5;0m	🦖📍 ChuKK-SCRIPT | @drowkid01 📍🦖"
   #menu_func " UDP-REQUEST  SocksIP    \033[0;31m[${_So}\033[0;31m]${_MSYS}" "UDP-CUSTOM HTTPCustom \033[0;31m[${_Cu}\033[0;31m]${_MSYS}" "UDP-Hysteria APPMod's \033[0;31m[${_HIS}\033[0;31m] ${_MSYS}"
   echo -e "\033[0;35m [${cor[2]}01\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-REQUEST  SocksIP         \033[0;31m[${_So}\033[0;31m] ${_MSYS}" 
   echo -e "\033[0;35m [${cor[2]}02\033[0;35m]\033[0;33m ${flech}${cor[3]}UDP-CUSTOM HTTPCustom        \033[0;31m[${_Cu}\033[0;31m] ${_MSYS}" 
@@ -595,8 +595,8 @@ unset port
   msg -bar
   opcion=$(selection_fun 4)
   case $opcion in
-  1) source <(curl -sSL ${url[utx]}/UDPserver.org.sh) && exit;;
-  2) source <(curl -sSL ${url[utx]}/udp-custom.sh) && exit;;
+  1) source <(curl -sSL https://raw.githubusercontent.com/vpsnetdk/files-ckk/main/UDPserver.org.sh) && exit;;
+  2) source <(curl -sSL https://raw.githubusercontent.com/vpsnetdk/files-ckk/main/udp-custom.sh) && exit;;
   3) [[ $(ps x | grep -w "/bin/hysteria"| grep -v grep) ]] && _menuH || _hysteria ;;
   4) [[ $(ps x | grep -w "/bin/Hysteria2"| grep -v grep) ]] && _menuH2 || _hysteria2 ;;
   0) exit;;
