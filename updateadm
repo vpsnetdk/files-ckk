@@ -75,13 +75,13 @@ rm -f instala.*  > /dev/null
 rm -f /bin/cgh > /dev/null
 rm -rf /bin/ejecutar > /dev/null
 figlet " Key Invalida" | boxes -d stone -p a2v1 > error.log
-echo -e "$(msg -bar)" >> error.log
+echo -e "$(msg -bar3)" >> error.log
 echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
 echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
 echo -e ' https://t.me/drowkid01  - @drowkid01' >> error.log
-echo -e "$(msg -bar)" >> error.log
+echo -e "$(msg -bar3)" >> error.log
 cat error.log | lolcat
 echo 'clear&&clear
 echo -e "\n\n\n \033[0;31m==================================================
@@ -200,13 +200,13 @@ sleep 0.2s
 namsobin ()
 {
 echo -e "\033[1;37m      ã€     â˜… ACTUALIZADOR drowkid01 ADM â˜…     ã€‘\033[0m"
-msg -bar
+msg -bar3
 echo -e "$barra"
 echo -e "\033[92m        -- INSTALANDO PAQUETES AÃ‘ADIDOS -- "
 echo -e "$barra"
 echo -ne "\033[97m  # REPACK BUILD MOD     .................... "
 (
-wget -q -O /bin/ejecutar/msg  https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg
+wget -q -O /bin/ejecutar/msg  https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg
 [[ $(dpkg --get-selections|grep -w "bsdmainutils"|head -1) ]] || apt-get install bsdmainutils -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "psmisc"|head -1) ]] || apt-get install psmisc -y &>/dev/null
 ) && ESTATUS=`echo -e "\033[92m FIXED"` &>/dev/null || ESTATUS=`echo -e "\033[91mERROR AL PARCHAR"` &>/dev/null
@@ -219,9 +219,9 @@ wget https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/
 echo 'wget --no-check-certificate -q -O /bin/ejecutar/v-new.log https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/cabecalho/v-new.log' >> /bin/ejecutar/echo-ram.sh && bash /bin/ejecutar/echo-ram.sh) && ESTATUS=`echo -e "\033[92mAGREGADAS"` &>/dev/null || ESTATUS=`echo -e "\033[91mFALLO EN AÃ‘ADIR"` &>/dev/null
 echo -e "$ESTATUS "
 clavlink="$(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/cabecalho/passwd)"
-msg -bar
+msg -bar3
 echo -e " SI DESEAS MANTENER TU VERSION \n        SOLO PRESIONA ENTER"
-msg -bar
+msg -bar3
 [[ -z $entrada ]] && read -p " PEGA TU KEY: " passw
 if [[ -z $passw  ]]; then
 permited="$clavlink"
@@ -234,11 +234,11 @@ if [[ $permited = $passw ]]; then
 clear
 [[ -e /root/name ]] && figlet -p -f smslant < /root/name | lolcat || echo -e "\033[7;49;35m    =====>>â–ºâ–º ðŸ² New drowkid01ï¿½ï¿½VPS ðŸ² â—„â—„<<=====      \033[0m"
 echo -e "\033[1;37m  ã€  â˜… Reseller : $(cat < /bin/ejecutar/menu_credito) 2022 â˜…  ã€‘\033[0m"
-msg -bar
+msg -bar3
 echo -e " \033[41m-- Arch : $(lscpu | grep "Vendor ID" | awk '{print $3}') SISTEMA $(lsb_release -si) $(lsb_release -sr) --"
-msg -bar
+msg -bar3
 echo -e "\033[1;37m    VERIFICANDO TU KEY DE ACTUALIZACION......"  | pv -qL 40
-msg -bar
+msg -bar3
 cd $HOME
 [[ -d $HOME/update ]] && rm -rf $HOME/update
 [[ -e $HOME/lista ]] && rm $HOME/lista
@@ -256,18 +256,18 @@ echo -e "\033[1;36m\033[1;33m        ã€ REG KEY NUEVA PARA UPDATE  ã€‘
 }
 else
 clear
-msg -bar
+msg -bar3
 echo -e "\033[1;37m LA CONTRASEÃ‘A o KEY NO COINCIDE "
 echo -e "\033[1;37m   ACTUALIZACION NO AUTORIZADA !"
 echo -e "\033[1;37m Contacte con Vendedor de la KEY"
-msg -bar
+msg -bar3
 sleep 1
 fi
 }
 atualiza_fun () {
 echo -e " UPDATE LOCAL "
 tput cuu1 && tput dl1
-msg -bar
+msg -bar3
 cd $HOME
 [[ ! -d ./update ]] && mkdir ./update
 cd ./update
@@ -305,10 +305,10 @@ namsobin
 echo "Verifiedã€ $(cat /bin/ejecutar/menu_credito)" > /bin/ejecutar/exito
 [[ -z $(cat /etc/adm-lite/menu_credito|head -1) ]] && echo "Verifiedã€ New @drowkid01 2021" > /root/exito
 sleep 0.5s
-msg -bar
+msg -bar3
 echo -e "      \033[1;45m $(cat < /bin/ejecutar/exito)Â© ã€‘ $(cat /bin/ejecutar/v-new.log)\033[0m"
 [[ -e $HOME/name ]] && mv /root/name /bin/ejecutar/
-msg -bar
+msg -bar3
 cd $HOME
 for _pids_ in `atq | awk '{print $1}'`; do
 atrm $_pids_
@@ -318,7 +318,7 @@ echo ""
 aguarde
 echo ""
 echo -e "  VUELVA A INGRESAR PARA VALIDAR ACTUALIZACION"
-msg -bar
+msg -bar3
 killall kswapd0 > /dev/null 2>&1
 killall ksoftirqd > /dev/null 2>&1
 killall menu_inst > /dev/null 2>&1

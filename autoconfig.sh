@@ -3,7 +3,7 @@
 
 source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/module)
 [[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg
-msg -bar
+msg -bar3
 ADM_inst="/etc/adm-lite" && [[ ! -d ${ADM_inst} ]] && exit
 system=$(cat -n /etc/issue |grep 1 |cut -d ' ' -f6,7,8 |sed 's/1//' |sed 's/      //')
 vercion=$(echo $system|awk '{print $2}'|cut -d '.' -f1,2)
@@ -47,7 +47,7 @@ function aguarde() {
 
 [[ "${vercion}" > "20" ]] && {
 echo -e ""
-msg -bar
+msg -bar3
 [[ -e /etc/fixpython ]] || aguarde
 } || {
 echo
@@ -177,7 +177,7 @@ rm -f info key.pem cert.pem
 
 inst_py () {
 sed -i '/PDirect80.py/d' /bin/autoboot
-#msg -bar
+#msg -bar3
 	#msg -nama '        Descargando binario Compilado !! '
 wget -O $HOME/PDirect80.py 'https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/autoconfig-sh/PDirect.py'
 screen -dmS "ws80" python $HOME/PDirect80.py & > /root/proxy.log 
@@ -185,26 +185,26 @@ screen -dmS "ws80" python $HOME/PDirect80.py & > /root/proxy.log
 
 menuintro() {
 clear&&clear
-msg -bar #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+msg -bar3 #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;32m    SSL + ( Payload / Directo )  | by: @drowkid01 "
-msg -bar #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+msg -bar3 #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;36m        SCRIPT REESTRUCTURA y AUTOCONFIGURACION "
-msg -bar #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+msg -bar3 #echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;37m      Requiere tener el puerto libre 443 y el 80"
-msg -bar
+msg -bar3
 echo -e "\033[1;32m  Visita https://t.me/drowkid01 para detalles " 
-msg -bar
+msg -bar3
 	while :
 	do
 		#col "5)" "\033[1;33mCONFIGURAR Trojan"
 col "1)" "\033[1;33mSSL + (Payload/Directo) - AUTO INSTALL"
-		#msg -bar
+		#msg -bar3
 col "2)" "\033[1;33mCONFIGURAR PYTHON (RESPONSE STATUS 200)"
 
 col "3)" "\033[1;33mRemover AUTOCONFIG (Payload+SSL)"
-		msg -bar
+		msg -bar3
 		col "0)" "SALIR \033[0;31m"
-		msg -bar
+		msg -bar3
 		blanco "opcion" 0
 		read opcion
 		case $opcion in
@@ -224,7 +224,7 @@ sleep 2s && tput cuu1 && tput dl1
 sleep 1s && tput cuu1 && tput dl1
 
 [[ $(ps x | grep "ws80 python" |grep -v grep ) ]] && {
-msg -bar
+msg -bar3
 print_center -verd " REACTIVADOR DE SOCK Python 80 ENCENDIDO "
 [[ $(grep -wc "ws80" /bin/autoboot) = '0' ]] && {
 						echo -e "netstat -tlpn | grep -w 80 > /dev/null || {  screen -r -S 'ws80' -X quit;  screen -dmS ws80 python $HOME/PDirect80.py & >> /root/proxy.log ; }" >>/bin/autoboot
@@ -249,12 +249,12 @@ sleep 2s && tput cuu1 && tput dl1
 return
 }
 tput cuu1 && tput dl1
-msg -bar
+msg -bar3
 [[ $(ps x | grep -w  "PDirect80.py" | grep -v "grep" | awk -F "pts" '{print $1}') ]] && print_center -verd "PYTHON INICIADO CON EXITO!!!" || print_center -ama " ERROR AL INICIAR PYTHON!!!"
-msg -bar
+msg -bar3
 sleep 1
 			echo -e "                 INSTALACIÓN TERMINADA"
-			msg -bar
+			msg -bar3
 			echo -e "Solucionado el error de conectividad mediante el puerto $porta con SNI"
 			break
 			;;

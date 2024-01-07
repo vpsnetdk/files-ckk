@@ -1,6 +1,6 @@
 #!/bin/bash  
 clear  
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg) > /dev/null
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg) > /dev/null
 dir_user="/etc/adm-lite/userDIR"
 pausa(){
 echo -ne "\033[1;37m"
@@ -10,14 +10,14 @@ read -p " Presiona Enter para Continuar "
   info() {
   puerto=$1
   
-  msg -bar
+  msg -bar3
   echo
   msg -ama "         INSTALADOR UDPserver | @drowkid01"
   echo 
-  msg -bar
+  msg -bar3
   msg -ama "         SOURCE OFICIAL DE Epro Dev Team"
   echo -e "             https://t.me/ePro_Dev_Team"
-  msg -bar
+  msg -bar3
   msg -ama "         CODIGO REFACTORIZADO POR @drowkid01"
   [[ -z ${puerto} ]] || add.user ${puerto}
   pausa
@@ -117,7 +117,7 @@ systemctl start udp-custom &>/dev/null
 		msg -verm2 'fail'
 		#_mssBOT " FALLIDO!!"
 	fi
-msg -bar
+msg -bar3
 	while true; do
 	msg -nama '         Digita un Puerto para el Servicio de\n'
 	msg -nama '              Prederteminado ( ENTER )\n'
@@ -127,7 +127,7 @@ msg -bar
 	[[ -n "$checkPORT" ]] || break
     prococup=`netstat -tlpn | awk -F '[: ]+' '$5=="$udpPORT"{print $9}'`
     echo -e "\033[1;33m  EL PUERTO SE ENCUENTRA OCUPADO POR $prococup"
-	msg -bar
+	msg -bar3
 	return
     done
 	tput cuu1 >&2 && tput dl1 >&2
@@ -192,27 +192,27 @@ make_service
 
 
   reset_slow(){
-  msg -bar
+  msg -bar3
   msg -ama "        Reiniciando UDPserver...."
   #screen -ls | grep udp-custom | cut -d. -f1 | awk '{print $1}' | xargs kill
   if systemctl restart udp-custom &>/dev/null ;then
   msg -verd "        Con exito!!!"    
-  msg -bar
+  msg -bar3
   else    
   msg -verm "        Con fallo!!!"    
-  msg -bar
+  msg -bar3
   fi
   pausa
   }  
   
   stop_slow(){
   clear
-  msg -bar
+  msg -bar3
   msg -ama "        Deteniendo UDPserver...."
   if systemctl stop udp-custom ; then
-  msg -verd "         Con exito!!!"   msg -bar
+  msg -verd "         Con exito!!!"   msg -bar3
   else
-  msg -verm "        Con fallo!!!"    msg -bar
+  msg -verm "        Con fallo!!!"    msg -bar3
   fi
   pausa
   }    
@@ -251,28 +251,28 @@ else
 echo -e "${cor[5]} ⚠️ Usuario DEMO ya Existe ⚠️"
 msg -verm " USER : ADMcgh | No Agregado!!!"    
 fi
- msg -bar
+ msg -bar3
  echo
- msg -bar
+ msg -bar3
  echo -e "      ESTO ES UNA GUIA DEL FORMATO DEL USUARIO"
  echo -e "         VE AL MENU DE USUARIOS Y CREA UNO"
- msg -bar
+ msg -bar3
  echo 
  echo -e "【 CONFIG >${cor[4]} $(wget -qO- ifconfig.me)${cor[2]}:${cor[5]}1-65535${cor[2]}@${cor[4]}$user${cor[2]}:${cor[4]}${clave}   】" | pv -qL 80
  echo 
- msg -bar
+ msg -bar3
  msg -ama "        RECUERDA CREAR TUS USUARIOS SSH NORMAL"
- msg -bar
+ msg -bar3
  }
  
  edit_json() {
- msg -bar
+ msg -bar3
  msg -ama "        PARA EDITAR EL USUARIO EDITA"
  msg -ama "            /etc/ADMcgh/config.json"
- msg -bar
+ msg -bar3
 echo -e "\033[1;37m Para Salir Ctrl + C o 0 Para Regresar\033[1;33m"
 echo -e " \033[1;31m[ !!! ]\033[1;33m EDITA LAS CREDENCIALES   \033[1;31m\033[1;33m"
-msg -bar
+msg -bar3
 echo -e " \033[1;31mLuego de Editar..  Presiona Ctrl + O y Enter \033[1;33m \033[1;31m\033[1;33m"
 echo -e " \033[1;31m          Por Ultimo Ctrl + X  \033[1;33m \033[1;31m\033[1;33m"
 pausa
@@ -285,19 +285,19 @@ do
 unset port
   tittle
   msg -ama "      BINARIO OFICIAL DE Epro Dev Team 1.2"
-  msg -bar
+  msg -bar3
   [[ $(ps x | grep UDP-Custom| grep -v grep) ]] && {
     _pid="\033[1;32m[ ON ]" 
   port=$(lsof -V -i UDP -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND"|grep -E 'UDP-Custo'| cut -d ":" -f2)
   msg -ama "      PUERTO EN EJECUCION DE UDPserver : ${port}"
-  msg -bar
+  msg -bar3
   } || _pid="\033[1;31m[ OFF ]"
   msg -ama "         INSTALADOR UDPserver | @drowkid01"
-  msg -bar
+  msg -bar3
   menu_func "Instalar UDPserver $_pid" "$(msg -ama "Reiniciar UDPserver")" "$(msg -verm2 "Detener UDPserver")" "$(msg -verm2 "Remover UDPserver")" "$(msg -ama "Info de Proyecto")"
-  msg -bar
+  msg -bar3
   echo -ne "$(msg -verd "  [0]") $(msg -verm2 "=>>") " && msg -bra "\033[1;41m Volver "
-  msg -bar
+  msg -bar3
   opcion=$(selection_fun 5)  
   case $opcion in
   1)download_udpServer;;

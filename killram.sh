@@ -50,7 +50,7 @@ echo -e >> $HOME/lm.log
 echo "Limpio >" $tiempo >> /root/lm.log
 echo ${unLimit} "MB - Esta bajo el limite 100MB en " $tiempo >> /root/lm.log
 fi
-wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg
+wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg
 [[ -e /bin/ejecutar/autt ]] && { 
 name=$(cat < /bin/ejecutar/autt)
 echo "Haciendo COPIA DE USUARIOS EN $name " $tiempo >> /root/lm.log

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 
 	verif_ptrs() {
 		porta=$1
@@ -100,14 +100,14 @@ fun_openssh() {
 menu_udp () {
 _udp=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND"|grep "badvpn-ud"|awk '{print $1}')
 [[ -z $_udp ]] && v_udp="\e[31m[ OFF ]" || v_udp="\e[32m[ ON ] " 
-msg -bar 
+msg -bar3 
 echo -e " \033[0;35m [\033[0;36m1\033[0;35m]\033[0;31m ➮ ${cor[3]} PARAR TODOS LOS BADVPN $v_udp"
 echo -e " \033[0;35m [\033[0;36m2\033[0;35m]\033[0;31m ➮ ${cor[3]} ADD + BADVPN ( CUSTOM PORT )"
 #echo -e " \033[0;35m [\033[0;36m2\033[0;35m]\033[0;31m ➮ ${cor[3]} AGREGAR / REMOVER HOST-SQUID"
 #echo -e " \033[0;35m [\033[0;36m3\033[0;35m]\033[0;31m ➮ ${cor[3]} DESINSTALAR SQUID"
-msg -bar
+msg -bar3
 echo -e " \033[0;35m [\033[0;36m0\033[0;35m]\033[0;31m ➮ $(msg -bra "\033[1;41m[ REGRESAR ]\e[0m")"
-msg -bar
+msg -bar3
 selection=$(selection_fun 2)
 case ${selection} in
 0)
@@ -127,15 +127,15 @@ esac
 }
 
 badcustom () {
-msg -bar
+msg -bar3
 echo -e "BIENVENIDO AL MENU DE CUSTOM PORT "
-msg -bar 
+msg -bar3 
 read -p " DIJITA TU PUERTO CUSTOM PARA BADVPN :" -e -i "7100" port
 echo -e " VERIFICANDO BADVPN "
-msg -bar 
+msg -bar3 
 screen -dmS badvpn$port /bin/badvpn-udpgw --listen-addr 127.0.0.1:${port} --max-clients 10000 --max-connections-for-client 10000 --client-socket-sndbuf 10000 && msg -ama "               BadVPN ACTIVADA CON EXITO"  || msg -ama "                Error al Activar BadVPN" 
 echo -e "netstat -tlpn | grep -w ${port} > /dev/null || {  screen -r -S 'badvpn'$port -X quit;  screen -dmS badvpn $(which badvpn-udpgw) --listen-addr 127.0.0.1:${port} --max-clients 10000 --max-connections-for-client 10000 --client-socket-sndbuf 10000; }" >>/bin/autoboot
-msg -bar
+msg -bar3
 #echo -e ""
 
 }
@@ -194,10 +194,10 @@ sleep 1s
 
 fun_apache () {
 echo -e "FUNCION DE MENU APACHE MODO BETA"
-msg -bar
+msg -bar3
 read -p " INGRESA PUERTO APACHE NUEVO :" nwPP
 [[ -z $nwPP ]] && nwPP="81"
-msg -bar
+msg -bar3
 echo "ESPERE MIENTRAS COMPLETAMOS EL PROCESO"
 fun_bar "apt purge apache2 -y " 
 echo "REINSTALANDO Y RECONFIGURANDO"
@@ -214,13 +214,13 @@ killall filebrowser &> /dev/null
 [[ -z $(which filebrowser) ]] && curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash &> /dev/null
 read -p " INGRESA PUERTO : " webrowser
 nohup filebrowser -a $(ip -4 addr | sed -ne 's|^.* inet \([^/]*\)/.* scope global.*$|\1|p' | awk '{print $1}' | head -1) -b / -p ${webrowser} -r /root/& > /dev/null
-msg -bar2 
+msg -bar32 
 echo ""
 echo -e " SERVICIO ACTIVO EN URL : http://$(wget -qO- ifconfig.me):${webrowser}/"
 echo ""
 echo -e " ACCEDE CON LAS CREDENCIALES : admin "
 echo ""
-msg -bar2
+msg -bar32
 }
 read -p " PRESIONA ENTER PARA CONTINUAR"
 }
@@ -234,9 +234,9 @@ fi
 clear&&clear
 [[ -e /etc/wireguard/params ]] && _wir="\e[32m[ ON ] " || _wir="\e[31m[ OFF ]" 
 [[ $(ps x | grep filebrowser | grep -v grep) ]] && file="\e[32m[ ON ] " || file="\e[31m[ OFF ]" 
-msg -bar2
+msg -bar32
 echo -e " \033[7;49;35m =>►► funciones alterns chukk  ◄◄<= \033[0m\033[1;31m"
-msg -bar2
+msg -bar32
 echo -e " \033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m➮\033[0;33m PUERTO APACHE CUSTOM ${_apa}      "
 echo -e " \033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m➮\033[0;33m LIMPIAR RAM && PAQUETES ANTIGUOS  "
 echo -e " \033[0;35m[\033[0;36m3\033[0;35m] \033[0;34m➮\033[0;31m ADD / REMOVE PORTS CUSTOM BADVPN  "
@@ -245,9 +245,9 @@ echo -e " \033[0;35m[\033[0;36m5\033[0;35m] \033[0;34m➮\033[0;31m TROJAN GO - 
 echo -e " \033[0;35m[\033[0;36m6\033[0;35m] \033[0;34m➮\033[0;31m CREAR CERTIFICADO CON DOMINIO     "
 echo -e " \033[0;35m[\033[0;36m7\033[0;35m] \033[0;34m➮\033[0;31m Modulo WireGuard VPN Client ${_wir}    "
 echo -e " \033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m➮\033[0;31m FIILEMANAGER WEB ${file}    "
-msg -bar2
+msg -bar32
 echo -e " \033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m➮\033[0;33m $(msg -bra "\033[1;41m[ REGRESAR ]\e[0m")  "
-msg -bar2
+msg -bar32
   selection=$(selection_fun 8)
 case ${selection} in
 0)

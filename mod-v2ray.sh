@@ -12,7 +12,7 @@ if [[ $(cat $trojdir/conf | grep "autBackup") = "" ]]; then
 fi
 unset barra
 barra="\033[0;34m•••••••••••••••••••••••••••••••••••••••••••••••••\033[0m"
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 numero='^[0-9]+$'
 hora=$(printf '%(%H:%M:%S)T') 
 fecha=$(printf '%(%D)T')

@@ -1,6 +1,6 @@
 #!/bin/bash
 echo ""
-wget -q -O /tmp/ssr https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg 
+wget -q -O /tmp/ssr https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg 
 cat /tmp/ssr > /tmp/ssrrmu.sh
 wget -q -O /tmp/ssr https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/C-SSR.sh
 cat /tmp/ssr >> /tmp/ssrrmu.sh

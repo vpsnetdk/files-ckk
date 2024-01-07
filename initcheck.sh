@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 source /etc/adm-lite/cabecalho 
 #FUNCION DE SELECCION
 selection_fun () {
@@ -68,12 +68,12 @@ start(){
     	fi
     done
     echo " $(msg -ama "Puerto") $(msg -verd "$chekuser")"
-    msg -bar
+    msg -bar3
 
     print_center 'SELECCIONA UN FORMATO DE FECHA'
-    msg -bar
+    msg -bar3
     menu_func 'YYYY/MM/DD' 'DD/MM/YYYY'
-    msg -bar
+    msg -bar3
     date=$(selection_fun 2)
     case $date in
     	1) fecha="YYYY/MM/DD";;
@@ -272,7 +272,7 @@ mod_port(){
 mod_fdate(){
 	title 'SELECCIONA UN FORMATO DE FECHA'
 	menu_func 'YYYY/MM/DD' 'DD/MM/YYYY'
-    msg -bar
+    msg -bar3
     date=$(selection_fun 2)
     case $date in
     	1)fecha="YYYY/MM/DD";;
@@ -315,7 +315,7 @@ menu_chekuser(){
 		port_chek=$(ps x|grep -v grep|grep checkuser.py|awk '{print $7}')
 		print_center -ama "URL: http://$chk_ip:$port_chek/checkUser"
 		port_chek=$(printf '%8s' "$port_chek")
-		msg -bar
+		msg -bar3
 		echo " $(msg -verd '[1]') $(msg -verm2 '>') $(msg -verm2 'DESACTIVAR') $(msg -azu 'CHEKUSER')"
 		echo " $(msg -verd '[2]') $(msg -verm2 '>') $(msg -azu 'MODIFICAR PUERTO') $(msg -verd "$port_chek")"
 		echo " $(msg -verd '[3]') $(msg -verm2 '>') $(msg -azu 'MODIFICAR FORMATO') $(msg -verd "$fecha_data")"
@@ -323,7 +323,7 @@ menu_chekuser(){
 		num=4
 	else
         print_center -verm2 'ADVERTENCIA!!!\nCheckUser PODRIA CONSUMIR RECURSOS \n EN CONEXIONES O METODOS INESTABLES\n RECOMENDABLE ANALIZAR TU METODO PRIMERO'
-        msg -bar
+        msg -bar3
 		echo " $(msg -verd '[1]') $(msg -verm2 '>') $(msg -verd 'ACTIVAR') $(msg -azu 'CHEKUSER')"
 	fi
 	back

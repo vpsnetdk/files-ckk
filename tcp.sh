@@ -1,8 +1,8 @@
 #!/bin/bash
 #19/12/2019
-source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg2)
+source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg2)
 clear
-msg -bar 
+msg -bar3 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
@@ -48,9 +48,9 @@ installbbr(){
 	fi
 	detele_kernel
 	BBR_grub
-	msg -bar
+	msg -bar3
 	echo -e "${Tip} Después de reiniciar el VPS, vuelva a ejecutar el script para abrir\n${Red_font_prefix} BBR/BBR Versión mágica${Font_color_suffix}"
-	msg -bar
+	msg -bar3
 	stty erase '^H' && read -p "Debe reiniciar el VPS antes de poder habilitar BBR, reiniciar ahora. ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
@@ -77,9 +77,9 @@ installbbrplus(){
 	fi
 	detele_kernel
 	BBR_grub
-	msg -bar
+	msg -bar3
 	echo -e "${Tip} Después de reiniciar el VPS, vuelva a ejecutar el script para abrir\n${Red_font_prefix} BBRplus${Font_color_suffix}"
-	msg -bar
+	msg -bar3
 	stty erase '^H' && read -p "Debe reiniciar el VPS antes de poder habilitar BBRplus, reiniciar ahora ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
@@ -105,9 +105,9 @@ installlot(){
 	fi
 	detele_kernel
 	BBR_grub
-	msg -bar
+	msg -bar3
 	echo -e "${Tip} Después de reiniciar el VPS, vuelva a ejecutar el script para abrir\n${Red_font_prefix}Lotserver${Font_color_suffix}"
-	msg -bar
+	msg -bar3
 	stty erase '^H' && read -p "Necesita reiniciar el VPS antes de poder abrir Lotserver, reiniciar ahora ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
@@ -123,7 +123,7 @@ startbbr(){
 	echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 	sysctl -p
 	echo -e "${Info}¡BBR comenzó con éxito!"
-	msg -bar
+	msg -bar3
 }
 
 #Habilitar BBRplus
@@ -133,7 +133,7 @@ startbbrplus(){
 	echo "net.ipv4.tcp_congestion_control=bbrplus" >> /etc/sysctl.conf
 	sysctl -p
 	echo -e "${Info}BBRplus comenzó con éxito!！"
-	msg -bar
+	msg -bar3
 }
 
 # Compilar y habilitar el cambio mágico BBR
@@ -174,7 +174,7 @@ startbbrmod(){
 	sysctl -p
     cd .. && rm -rf bbrmod
 	echo -e "${Info}¡La versión mágica de BBR comenzó con éxito!"
-	msg -bar
+	msg -bar3
 }
 
 # Compilar y habilitar el cambio mágico BBR
@@ -213,7 +213,7 @@ startbbrmod_nanqinlang(){
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
 	echo -e "${Info}¡La versión mágica de BBR comenzó con éxito!"
-	msg -bar
+	msg -bar3
 }
 
 # Habilitar Lotserver
@@ -315,7 +315,7 @@ net.ipv4.ip_forward = 1">>/etc/sysctl.conf
 *               hard    nofile          1000000">/etc/security/limits.conf
 	echo "ulimit -SHn 1000000">>/etc/profile
 	read -p "Después de aplicar la configuracion al VPS necesita reiniciar, reiniciar ahora ? [Y/n] :" yn
-	msg -bar 
+	msg -bar3 
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
 		echo -e "${Info} Reinicio de VPS..."
@@ -346,9 +346,9 @@ Update_Shell(){
 # Menú de inicio
 start_menu(){
 clear
-msg -bar
+msg -bar3
 echo -e " TCP Aceleración (BBR/Plus) By @drowkid01 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}0.${Font_color_suffix} Script de actualización
 ————————————Gestión del Núcleo————————————
  ${Green_font_prefix}1.${Font_color_suffix} Instalación BBR/BBR Kernel Mágico
@@ -364,7 +364,7 @@ $(msg -bar)
  ${Green_font_prefix}9.${Font_color_suffix} Desintalar Todas las Aceleraciones
  ${Green_font_prefix}10.${Font_color_suffix} Optimización de la configuración del sistema.
  ${Green_font_prefix}11.${Font_color_suffix} Salir del script
-————————————————————————————————" && msg -bar
+————————————————————————————————" && msg -bar3
 
 	check_status
 	if [[ ${kernel_status} == "noinstall" ]]; then
@@ -373,7 +373,7 @@ $(msg -bar)
 		echo -e " Estado actual: ${Green_font_prefix}Instalado\n${Font_color_suffix} ${_font_prefix}${kernel_status}${Font_color_suffix} Kernel Acelerado, ${Green_font_prefix}${run_status}${Font_color_suffix}"
 		
 	fi
-msg -bar
+msg -bar3
 read -p " Por favor ingrese un número [0-11]:" num
 case "$num" in
 	0)

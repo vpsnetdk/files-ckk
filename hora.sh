@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 
 selection_fun () {
 local selection="null"
@@ -18,7 +18,7 @@ echo "America/Chihuahua"
 echo "America/Chihuahua" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/Chihuahua /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora1 () {
@@ -26,14 +26,14 @@ echo "America/Mexico_City"
 echo "America/Mexico_City" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora2 () {
 echo "Argentina"
 ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora3 () {
@@ -42,7 +42,7 @@ timedatectl > /dev/null 2>&1
 timedatectl list-timezones  | grep Chile/Continental > /dev/null 2>&1
 timedatectl set-timezone Chile/Continental > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora4 () {
@@ -50,7 +50,7 @@ echo "America/Los_Angeles"
 timedatectl > /dev/null 2>&1
 timedatectl list-timezones  | grep Los_Angeles > /dev/null 2>&1
 timedatectl set-timezone America/Los_Angeles > /dev/null 2>&1
-msg -bar
+msg -bar3
 return 0
 }
 act_hora5 () {
@@ -58,7 +58,7 @@ echo "America/La_Paz"
 echo "America/La_Paz" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/La_Paz /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora6 () {
@@ -66,7 +66,7 @@ echo "America/Guatemala"
 echo "America/Guatemala" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/Guatemala /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora7 () {
@@ -74,7 +74,7 @@ echo "America/Bogota"
 echo "America/Bogota" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/Bogota /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 act_hora8 () {
@@ -82,7 +82,7 @@ echo "America/Guayaquil"
 echo "America/Guayaquil" > /etc/timezone
 ln -fs /usr/share/zoneinfo/America/Guayaquil /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1 && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
-msg -bar
+msg -bar3
 return 0
 }
 verzm () {
@@ -98,9 +98,9 @@ clear&&clear
 _tm=$(timedatectl | grep "Time zone")
 unset selection
 echo -e " \033[1;36m ZONA HORARIO \033[1;32m[chukk]"
-msg -bar
+msg -bar3
 echo -e "${_tm}"
-msg -bar
+msg -bar3
 echo -e "${cor[4]} [1] > ${cor[2]}VER ZONA HORARIA ACTUAL    ${cor[4]} [12] > ${cor[2]} HORARIO PERÚ"
 echo -e "${cor[4]} [2] > ${cor[5]}HORARIO MEXICO             ${cor[4]} [13] > ${cor[2]} HORARIO BRAZIL"
 echo -e "${cor[4]} [3] > ${cor[5]}HORARIO Argentina"
@@ -113,7 +113,7 @@ echo -e "${cor[4]} [9] > ${cor[5]}HORARIO ECUADOR "
 echo -e "${cor[4]} [10] > ${cor[5]}HORARIO Los Angeles (USA)"
 echo -e "${cor[4]} [11] > ${cor[5]}RESTAURAR ZONA ORIGINAL"
 echo -e "${cor[4]} [0] > ${cor[0]}SALIR"
-msg -bar
+msg -bar3
 selection=$(selection_fun 13)
 case ${selection} in
 	0)

@@ -86,7 +86,7 @@ View_ALL(){
 	View_PORT
 	View_KEY_WORDS
 	echo
-	msg -bar2
+	msg -bar32
 }
 Save_iptables_v4_v6(){
 	if [[ ${release} == "centos" ]]; then
@@ -171,21 +171,21 @@ Set_ALL(){
 }
 Ban_BT(){
 	check_BT
-	[[ ! -z ${BT_KEY_WORDS} ]] && echo -e "${Error} Torrent bloqueados y Palabras Claves, no es\nnecesario volver a prohibirlas !" && msg -bar2 && exit 0
+	[[ ! -z ${BT_KEY_WORDS} ]] && echo -e "${Error} Torrent bloqueados y Palabras Claves, no es\nnecesario volver a prohibirlas !" && msg -bar32 && exit 0
 	s="A"
 	Set_BT
 	View_ALL
 	echo -e "${Info} Torrent bloqueados y Palabras Claves !"
-	msg -bar2
+	msg -bar32
 }
 Ban_SPAM(){
 	check_SPAM
-	[[ ! -z ${SPAM_PORT} ]] && echo -e "${Error} Se detectó un puerto SPAM bloqueado, no es\nnecesario volver a bloquear !" && msg -bar2 && exit 0
+	[[ ! -z ${SPAM_PORT} ]] && echo -e "${Error} Se detectó un puerto SPAM bloqueado, no es\nnecesario volver a bloquear !" && msg -bar32 && exit 0
 	s="A"
 	Set_SPAM
 	View_ALL
 	echo -e "${Info} Puertos SPAM Bloqueados !"
-	msg -bar2
+	msg -bar32
 }
 Ban_ALL(){
 	check_BT
@@ -196,7 +196,7 @@ Ban_ALL(){
 			Set_ALL
 			View_ALL
 			echo -e "${Info} Torrent bloqueados, Palabras Claves y Puertos SPAM !"
-			msg -bar2
+			msg -bar32
 		else
 			Set_BT
 			View_ALL
@@ -208,27 +208,27 @@ Ban_ALL(){
 			View_ALL
 			echo -e "${Info} Puerto SPAM (spam) prohibido !"
 		else
-			echo -e "${Error} Torrent Bloqueados, Palabras Claves y Puertos SPAM,\nno es necesario volver a prohibir !" && msg -bar2 && exit 0
+			echo -e "${Error} Torrent Bloqueados, Palabras Claves y Puertos SPAM,\nno es necesario volver a prohibir !" && msg -bar32 && exit 0
 		fi
 	fi
 }
 UnBan_BT(){
 	check_BT
-	[[ -z ${BT_KEY_WORDS} ]] && echo -e "${Error} Torrent y Palabras Claves no bloqueadas, verifique !"&& msg -bar2 && exit 0
+	[[ -z ${BT_KEY_WORDS} ]] && echo -e "${Error} Torrent y Palabras Claves no bloqueadas, verifique !"&& msg -bar32 && exit 0
 	s="D"
 	Set_BT
 	View_ALL
 	echo -e "${Info} Torrent Desbloqueados y Palabras Claves !"
-	msg -bar2
+	msg -bar32
 }
 UnBan_SPAM(){
 	check_SPAM
-	[[ -z ${SPAM_PORT} ]] && echo -e "${Error} Puerto SPAM no detectados, verifique !" && msg -bar2 && exit 0
+	[[ -z ${SPAM_PORT} ]] && echo -e "${Error} Puerto SPAM no detectados, verifique !" && msg -bar32 && exit 0
 	s="D"
 	Set_SPAM
 	View_ALL
 	echo -e "${Info} Puertos de SPAM Desbloqueados !"
-	msg -bar2
+	msg -bar32
 }
 UnBan_ALL(){
 	check_BT
@@ -239,21 +239,21 @@ UnBan_ALL(){
 			Set_ALL
 			View_ALL
 			echo -e "${Info} Torrent, Palabras Claves y Puertos SPAM Desbloqueados !"
-			msg -bar2
+			msg -bar32
 		else
 			Set_BT
 			View_ALL
 			echo -e "${Info} Torrent, Palabras Claves Desbloqueados !"
-			msg -bar2
+			msg -bar32
 		fi
 	else
 		if [[ ! -z ${SPAM_PORT} ]]; then
 			Set_SPAM
 			View_ALL
 			echo -e "${Info} Puertos SPAM Desbloqueados !"
-			msg -bar2
+			msg -bar32
 		else
-			echo -e "${Error} No se  detectan Torrent, Palabras Claves y Puertos SPAM Bloqueados, verifique !" && msg -bar2 && exit 0
+			echo -e "${Error} No se  detectan Torrent, Palabras Claves y Puertos SPAM Bloqueados, verifique !" && msg -bar32 && exit 0
 		fi
 	fi
 }
@@ -305,7 +305,7 @@ ENTER_Ban_PORT(){
 	[[ -z "${PORT}" ]] && echo "Cancelado..." && View_ALL && exit 0
 }
 ENTER_Ban_KEY_WORDS(){
-    msg -bar2
+    msg -bar32
 	echo -e "Ingrese las palabras clave que se prohibirán\n(nombre de dominio, etc., solo admite una sola palabra clave)"
 	if [[ ${Type_1} != "ban_1" ]]; then
 	echo ""
@@ -388,7 +388,7 @@ UnBan_PORT(){
 	while true
 	do
 		View_PORT
-		[[ -z ${Ban_PORT_list} ]] && echo -e "${Error} No se detecta puertos bloqueados !" && msg -bar2 && exit 0
+		[[ -z ${Ban_PORT_list} ]] && echo -e "${Error} No se detecta puertos bloqueados !" && msg -bar32 && exit 0
 		ENTER_UnBan_PORT
 		Set_PORT
 		echo -e "${Info} Puerto decapsulado [ ${PORT} ] !\n"
@@ -405,7 +405,7 @@ UnBan_KEY_WORDS(){
 	while true
 	do
 		Cat_KEY_WORDS
-		[[ -z ${Ban_KEY_WORDS_list} ]] && echo -e "${Error} No se ha detectado ningún bloqueo !" && msg -bar2 && exit 0
+		[[ -z ${Ban_KEY_WORDS_list} ]] && echo -e "${Error} No se ha detectado ningún bloqueo !" && msg -bar32 && exit 0
 		ENTER_Ban_KEY_WORDS_type "unban" "ban_1"
 		Set_KEY_WORDS
 		echo -e "${Info} Palabras clave desbloqueadas [ ${key_word} ] !\n"
@@ -414,7 +414,7 @@ UnBan_KEY_WORDS(){
 }
 UnBan_KEY_WORDS_ALL(){
 	Cat_KEY_WORDS
-	[[ -z ${Ban_KEY_WORDS_text} ]] && echo -e "${Error} No se detectó ninguna clave, verifique !" && msg -bar2 && exit 0
+	[[ -z ${Ban_KEY_WORDS_text} ]] && echo -e "${Error} No se detectó ninguna clave, verifique !" && msg -bar32 && exit 0
 	if [[ ! -z "${v6iptables}" ]]; then
 		Ban_KEY_WORDS_v6_num=$(echo -e "${Ban_KEY_WORDS_v6_list}"|wc -l)
 		for((integer = 1; integer <= ${Ban_KEY_WORDS_v6_num}; integer++))
@@ -452,7 +452,7 @@ Update_Shell(){
 	wget https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/blockT.sh -O /etc/ger-frm/blockBT.sh &> /dev/null
 	chmod +x /etc/ger-frm/blockBT.sh
 	echo -e "El script ha sido actualizado a la última versión.[ ${sh_new_ver} ]"
-	msg -bar2 
+	msg -bar32 
 	exit 0
 }
 check_sys
@@ -467,7 +467,7 @@ if [[ ! -z $action ]]; then
 	[[ $action = "unbanall" ]] && UnBan_ALL && exit 0
 fi
 echo -e "  Panel de Firewall drowkid01 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}"
-msg -bar2
+msg -bar32
 echo -e "  ${Green_font_prefix}0.${Font_color_suffix} Ver la lista actual de prohibidos
 ————————————
   ${Green_font_prefix}1.${Font_color_suffix} Bloquear Torrent, Palabras Clave
@@ -483,8 +483,8 @@ echo -e "  ${Green_font_prefix}0.${Font_color_suffix} Ver la lista actual de pro
  ${Green_font_prefix}10.${Font_color_suffix} Desbloquear Palabra Clave Personalizadas
  ${Green_font_prefix}11.${Font_color_suffix} Desbloquear Todas las palabras Clave Personalizadas
 ————————————
- ${Green_font_prefix}12.${Font_color_suffix} Actualizar script" && msg -bar2
-read -e -p " Por favor ingrese un número [0-12]:" num && msg -bar2
+ ${Green_font_prefix}12.${Font_color_suffix} Actualizar script" && msg -bar32
+read -e -p " Por favor ingrese un número [0-12]:" num && msg -bar32
 case "$num" in
 	0)
 	View_ALL

@@ -1,24 +1,24 @@
 #!/bin/bash
 #24/10/2022
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg) > /dev/null
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg) > /dev/null
 clear&&clear
 funINIT() {
 [[ $1 == 1 ]] && {
 echo 'source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/v2ray1.sh)' > /bin/menuv2ray
 chmod +x /bin/menuv2ray 
 echo -e " RECUERDA QUE PARA UN INICIO RAPIDO SOLO DIGITA"
-msg -bar
+msg -bar3
 print_center -verm2 "menuv2ray"
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 echo "v2ray" >> /etc/checkV
 				} 
 [[ $1 == 2 ]] && {
 [[ $(cat /etc/checkV | wc -l) > 4 ]] && return
 echo -e " RECUERDA QUE PARA UN INICIO RAPIDO SOLO DIJITA"
-msg -bar
+msg -bar3
 print_center -verm2 "menuv2ray"
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 echo "v2ray" >> /etc/checkV
 				}
@@ -79,20 +79,20 @@ v2rayports=$(echo $v2rayports | awk {'print $1'})
 _tconex=$(netstat -nap | grep "$v2rayports" | grep v2ray | grep ESTABLISHED| grep tcp6 | awk {'print $5'} | awk -F ":" '{print $1}' | sort | uniq | wc -l)
 	v1=$(cat /etc/adm-lite/v-local.log)
 	v2=$(cat /bin/ejecutar/v-new.log)
-	msg -bar
+	msg -bar3
 	[[ $v1 = $v2 ]] && echo -e "   \e[97m\033[1;41m V2ray by @Rufu99 Remasterizado @drowkid01 [$v1] \033[0m" || echo -e " \e[97m\033[1;41m V2ray by @Rufu99 Remasterizado @drowkid01 [$v1] >> \033[1;92m[$v2] \033[0m"
 [[ ! -z $v2rayports ]] && echo -e "       \e[97m\033[1;41mPUERTO ACTIVO :\033[0m \033[3;32m$v2rayports\033[0m   \e[97m\033[1;41m ACTIVOS:\033[0m \033[3;32m\e[97m\033[1;41m $_tconex " ||  echo -e "  \e[97m\033[1;41mERROR A INICIAR V2RAY : \033[0m \033[3;32m FAIL\033[3;32m"
 	}
 
 title(){
-	msg -bar
+	msg -bar3
 	blanco "$1"
-	msg -bar
+	msg -bar3
 }
 
 userDat(){
 	blanco "	N°    Usuarios 		  fech exp   dias"
-	msg -bar
+	msg -bar3
 }
 
 
@@ -263,7 +263,7 @@ USRdatabase="/etc/adm-lite/RegV2ray"
 [[ ! -e ${USRdatabase} ]] && touch ${USRdatabase}
 sort ${USRdatabase} | uniq > ${USRdatabase}tmp
 mv -f ${USRdatabase}tmp ${USRdatabase}
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 [[ ! -d ${SCPinst} ]] && mkdir ${SCPinst}
 [[ ! -d /etc/adm-lite/v2ray ]] && mkdir /etc/adm-lite/v2ray
@@ -272,39 +272,39 @@ chmod +x /bin/menuv2ray
 }
 protocolv2ray () {
 msg -ama "-Escojer opcion 3 y poner el dominio de nuestra IP-!"
-msg -bar
+msg -bar3
 v2ray stream
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 dirapache="/usr/local/lib/ubuntn/apache/ver" && [[ ! -d ${dirapache} ]]
 tls () {
 msg -ama "-Activar o Desactivar TLS-!"
-#msg -bar
+#msg -bar3
 #echo -e "Ingrese Correo Temporal o Fijo \n  Para Validar su Cerficicado SSL " 
 #read -p " Ejemplo email=my@example.com : " crreo
 #echo -e $barra
 #wget -O -  https://get.acme.sh | sh -s email=$crreo
-msg -bar
+msg -bar3
 v2ray tls
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 portv () {
 msg -ama "-Cambiar Puerto v2ray-!"
-msg -bar
+msg -bar3
 v2ray port
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 stats () {
 #msg -ama "-Estadisticas de Consumo-!"
-#msg -bar
+#msg -bar3
 #v2ray stats
 usrCONEC
-#msg -bar
+#msg -bar3
 #msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -313,23 +313,23 @@ source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/C
 #source <(curl -sSL https://www.dropbox.com/s/cx8xhq3s53x3a75/insta-gen.sh)
 rm -rf /etc/adm-lite/RegV2ray > /dev/null 2>&1
 echo -e "\033[1;92m                  V2RAY REMOVIDO OK "
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 infocuenta () {
 v2ray info
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 addusr () {
 clear 
 clear
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "             AGREGAR USUARIO | UUID V2RAY"
-msg -bar
+msg -bar3
 echo ""
 while true; do
 echo -ne "\e[91m >> Digita un Nombre: \033[1;92m"
@@ -382,9 +382,9 @@ numl1=4
 let suma=$lineP+$numl1
 sed -n ${suma}p /etc/adm-lite/v2ray/confuuid.log 
 echo ""
-msg -bar
+msg -bar3
 echo -e "\e[92m           UUID AGREGEGADO CON EXITO "
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -421,9 +421,9 @@ add_user(){
 		}
 		let n++
 	done
-	msg -bar
+	msg -bar3
 	col "0)" "VOLVER"
-	msg -bar
+	msg -bar3
 	blanco "NOMBRE DEL NUEVO USUARIO" 0
 	read opcion
 
@@ -448,9 +448,9 @@ add_user(){
 	chmod 777 $config
 	rm $temp
 	clear
-	msg -bar
+	msg -bar3
 	blanco "	Usuario $opcion creado Exitosamente"
-	msg -bar
+	msg -bar3
 	restart_v2r
 	sleep 0.2
     done
@@ -463,18 +463,18 @@ CGHlog='/var/log/v2ray/access.log'
 v2ray restart &> /dev/null
 v2ray clean &> /dev/null && let log0++ && clear 
 }
-msg -bar3
+msg -bar33
 echo -e ""
 echo -e " ESPERANDO A LA VERIFICACION DE IPS Y USUARIOS "
 echo -e "      ESPERE UN MOMENTO PORFAVOR $log0"
 echo -e ""
-msg -bar3
+msg -bar33
 fun_bar
-msg -bar3
+msg -bar33
 sleep 5s
 clear&&clear
 title2
-msg -bar3
+msg -bar33
 users="$(cat $config | jq -r .inbounds[].settings.clients[].email)"
 IP_tconex=$(netstat -nap | grep "$v2rayports"| grep v2ray | grep ESTABLISHED | grep tcp6 | awk {'print $5'}| awk -F ":" '{print $1}' | sort | uniq)
 n=1
@@ -485,7 +485,7 @@ do
 	Users+="$USERauth\n"
 done
 echo -e " N) -|- USER -|- CONEXIONES "|column -t -s '-'
-msg -bar3
+msg -bar33
 for U in $users
 	do
 	CConT=$(echo -e "$Users" | grep $U |wc -l)
@@ -494,7 +494,7 @@ for U in $users
 	let n++
 done
 echo -e "$UConc"|column -t -s '-'
-msg -bar3
+msg -bar33
 continuar
 read foo
 }
@@ -503,10 +503,10 @@ read foo
 renewusr () {
 clear 
 clear
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "         USUARIOS REGISTRADOS | UUID V2RAY"
-msg -bar
+msg -bar3
 # usersss=$(cat /etc/adm-lite/RegV2ray|cut -d '|' -f1)
 # cat /etc/adm-lite/RegV2ray|cut -d'|' -f3
 VPSsec=$(date +%s)
@@ -521,7 +521,7 @@ menuv2ray
 else
 i=1
 echo -e "\e[97m                 UUID                | USER | DATA \e[93m"
-msg -bar
+msg -bar3
 while read hostreturn ; do
 DateExp="$(cat /etc/adm-lite/RegV2ray.exp|grep -w "$hostreturn"|cut -d'|' -f3)"
 if [[ ! -z $DateExp ]]; then             
@@ -548,10 +548,10 @@ fi
 
 read -p "" 
 return
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "             AGREGAR USUARIO | UUID V2RAY"
-msg -bar
+msg -bar3
 ##DAIS
 valid=$(date '+%C%y-%m-%d' -d " +31 days")		  
 ##CORREO		  
@@ -590,9 +590,9 @@ numl1=4
 let suma=$lineP+$numl1
 sed -n ${suma}p /etc/adm-lite/v2ray/confuuid.log 
 echo ""
-msg -bar
+msg -bar3
 echo -e "\e[92m           UUID AGREGEGADO CON EXITO "
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -619,9 +619,9 @@ renew(){
 			}
 		done
 		[[ -z ${user[1]} ]] && blanco "		No hay expirados"
-		msg -bar
+		msg -bar3
 		col "0)" "VOLVER"
-		msg -bar
+		msg -bar3
 		blanco "NUMERO DE USUARIO A RENOVAR" 0
 		read opcion
 
@@ -649,9 +649,9 @@ renew(){
 			chmod 777 $config
 			rm $temp
 			clear
-			msg -bar
+			msg -bar3
 			blanco "	Usuario ${user[$opcion]} renovado Exitosamente"
-			msg -bar
+			msg -bar3
 			restart_v2r
 			sleep 0.2
 		  }
@@ -665,18 +665,18 @@ delusr () {
 clear 
 clear
 invaliduuid () {
-msg -bar
-echo -e "\e[91m                    UUID INVALIDO \n$(msg -bar)"
+msg -bar3
+echo -e "\e[91m                    UUID INVALIDO \n$(msg -bar3)"
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "             ELIMINAR USUARIO | UUID V2RAY"
-msg -bar
+msg -bar3
 echo -e "\e[97m               USUARIOS REGISTRADOS"
 echo -e "\e[33m$(cat /etc/adm-lite/RegV2ray|cut -d '|' -f2,1)" 
-msg -bar
+msg -bar3
 echo -ne "\e[91m >> Digita el UUID a elininar:\n \033[1;92m " && read uuidel
 [[ $(sed -n '/'${uuidel}'/=' /etc/v2ray/config.json|head -1) ]] || invaliduuid
 lineP=$(sed -n '/'${uuidel}'/=' /etc/v2ray/config.json)
@@ -690,7 +690,7 @@ sed -i "${resta}d" /etc/v2ray/config.json
 sed -i "${resta}d" /etc/v2ray/config.json
 sed -i "${resta}d" /etc/v2ray/config.json
 v2ray restart > /dev/null 2>&1
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -738,9 +738,9 @@ dell_user(){
 		}
 		let n++
 	done
-	msg -bar
+	msg -bar3
 	col "0)" "VOLVER"
-	msg -bar
+	msg -bar3
 	blanco "NUMERO DE USUARIO A ELIMINAR" 0
 	read opcion
 
@@ -765,9 +765,9 @@ dell_user(){
 			chmod 777 $config
 			rm $temp
 			clear
-			msg -bar
+			msg -bar3
 			blanco "	Usuario eliminado"
-			msg -bar
+			msg -bar3
 			v2ray restart & > /dev/null
 			}
 			sleep 0.2
@@ -778,10 +778,10 @@ dell_user(){
 
 _delUSR () {
 clear&&clear
-msg -bar
+msg -bar3
 echo -e "\033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m<\033[0;33m  BORRAR POR UUID DE USUARIO\033[1;32m "
 echo -e "\033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m<\033[0;33m  BORRAR POR NUMERO DE USUARIO \033[1;32m "
-msg -bar
+msg -bar3
 selection=$(selection_fun 2)
 case ${selection} in
 1)dell_user;;
@@ -823,10 +823,10 @@ autoDel(){
 mosusr_kk() {
 clear 
 clear
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "         USUARIOS REGISTRADOS | UUID V2RAY"
-msg -bar
+msg -bar3
 # usersss=$(cat /etc/adm-lite/RegV2ray|cut -d '|' -f1)
 # cat /etc/adm-lite/RegV2ray|cut -d'|' -f3
 VPSsec=$(date +%s)
@@ -841,7 +841,7 @@ menuv2ray
 else
 i=1
 echo -e "\e[97m                 UUID                | USER | EXPIRACION \e[93m"
-msg -bar
+msg -bar3
 while read hostreturn ; do
 DateExp="$(cat /etc/adm-lite/RegV2ray|grep -w "$hostreturn"|cut -d'|' -f3)"
 if [[ ! -z $DateExp ]]; then             
@@ -865,17 +865,17 @@ linesss=$(cat /etc/adm-lite/RegV2ray | wc -l)
 	      echo -e "$contador_secuencial \n Numero de Registrados: $linesss"
 	}
 fi
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 lim_port () {
 clear 
 clear
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "          LIMITAR MB X PORT | UUID V2RAY"
-msg -bar
+msg -bar3
 ###VER
 estarts () {
 VPSsec=$(date +%s)
@@ -907,7 +907,7 @@ linesss=$(cat /etc/adm-lite/v2ray/lisportt.log | wc -l)
 	      echo -e "$contador_secuencial \n Puertos Limitados: $linesss"
 	}
 fi
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -945,7 +945,7 @@ echo ""
 echo -e " Port Seleccionado: $portbg | Cantidad de GB: $gbuser"
 echo ""
 echo " $portbg | $gbuser | $multiplicacion " >> /etc/adm-lite/v2ray/lisportt.log 
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -980,7 +980,7 @@ linesss=$(cat /etc/adm-lite/v2ray/lisportt.log | wc -l)
 	      echo -e "$contador_secuencial \n Puertos Limitados: $linesss"
 	}
 fi
-msg -bar
+msg -bar3
 
 while true; do
      echo -ne "\e[91m >> Digite Puerto a Limpiar:\033[1;92m " && read portbg
@@ -994,8 +994,8 @@ while true; do
      break
 done
 invaliduuid () {
-msg -bar
-echo -e "\e[91m                PUERTO INVALIDO \n$(msg -bar)"
+msg -bar3
+echo -e "\e[91m                PUERTO INVALIDO \n$(msg -bar3)"
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
@@ -1006,7 +1006,7 @@ sudo iptables -D OUTPUT -p tcp --sport $portbg -m quota --quota $gblim -j ACCEPT
 iptables-save > /etc/iptables/rules.v4
 lineP=$(sed -n '/'${portbg}'/=' /etc/adm-lite/v2ray/lisportt.log)
 sed -i "${linePre}d" /etc/adm-lite/v2ray/lisportt.log
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray 
 }
@@ -1014,8 +1014,8 @@ menuv2ray
 echo -ne "\033[1;32m [1] > " && msg -azu "-LIMITAR DATA x PORT"
 echo -ne "\033[1;32m [2] > " && msg -azu "-RESETEAR DATA DE PORT- "
 echo -ne "\033[1;32m [3] > " && msg -azu "-VER DATOS CONSUMIDOS- "
-echo -ne "$(msg -bar)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
-msg -bar
+echo -ne "$(msg -bar3)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
+msg -bar3
 selection=$(selection_fun 3)
 case ${selection} in
 1)liport ;;
@@ -1042,31 +1042,31 @@ PID_GEN=$(ps x|grep -v grep|grep "limv2ray")
 statgen="$(echo $PID_GEN)"
 clear 
 clear
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "          ELIMINAR EXPIRADOS | UUID V2RAY"
-msg -bar
+msg -bar3
 echo ""
 echo -e "                    $statgen " 
 echo "" 						
-msg -bar
+msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 menuv2ray
 }
 
 	[[ ! -e $config ]] && {
 		clear
-		msg -bar
+		msg -bar3
 		blanco " No se encontro ningun archivo de configracion v2ray"
-		msg -bar
+		msg -bar3
 		blanco "	  No instalo v2ray o esta usando\n	     una vercion diferente!!!"
-		msg -bar
+		msg -bar3
 		echo -e "		\033[4;31mNOTA importante\033[0m"
 		echo -e " \033[0;31mSi esta usando una vercion v2ray diferente"
 		echo -e " y opta por cuntinuar usando este script."
 		echo -e " Este puede; no funcionar correctamente"
 		echo -e " y causar problemas en futuras instalaciones.\033[0m"
-		msg -bar
+		msg -bar3
 msg -ne "Enter Para Continuar" && read enter
 clear&&clear
 	}
@@ -1078,10 +1078,10 @@ clear
 	echo -e " \033[0;31mEsto va a restablecer los\n ajustes predeterminados de v2ray"
 	echo -e " Se perdera ajuste previos,\n incluido los Usuarios\033[0m"
 	echo -e "  LUEGO DE ESTO, DEBERAS RECONFIGURAR TU METODO\n\033[0m"
-	msg -bar
+	msg -bar3
 	blanco "quiere continuar? [S/N]" 0
 	read opcion
-	msg -bar
+	msg -bar3
 	case $opcion in
 		[Ss]|[Yy]) 
 		v2ray new 
@@ -1128,14 +1128,14 @@ echo $selection
 clear&&clear
 [[ ! -e $config ]] && {
 v2ray="\033[1;31m[OFF]"
-msg -bar
+msg -bar3
 msg -tit
 msg -ama "      PANNEL V2RAY Mod @drowkid01${vesaoSCT} "
-msg -bar
+msg -bar3
 ## INSTALADOR
 echo -e "\033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m<\033[0;33m  INSTALAR V2RAY         $v2ray"
-echo -ne "$(msg -bar)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
-msg -bar
+echo -ne "$(msg -bar3)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
+msg -bar3
 pid_inst () {
 [[ $1 = "" ]] && echo -e "\033[1;31m[OFF]" && return 0
 unset portas
@@ -1163,12 +1163,12 @@ v2rayports=`netstat -tunlp | grep v2ray | grep LISTEN | grep -vE '127.0.0.1' | a
 [[ -z $(echo "$v2rayports" | awk {'print $1'}) ]] && _v2rayports="null" || _v2rayports=$(echo "$v2rayports" | awk {'print $1'})
 _tconex=$(netstat -nap | grep "$_v2rayports" | grep v2ray | grep ESTABLISHED |grep tcp6| awk {'print $5'} | awk -F ":" '{print $1}' | sort | uniq | wc -l)
 #SPR & 
+msg -bar33
 msg -bar3
-msg -bar
 msg -tit
 msg -ama "      PANNEL V2RAY Mod @drowkid01 ${vesaoSCT} "
 [[ ! -z $_v2rayports ]] && echo -e "       \e[97m\033[1;41mPUERTO ACTIVO :\033[0m \033[3;32m$_v2rayports\033[0m   \e[97m\033[1;41m ACTIVOS:\033[0m \033[3;32m\e[97m\033[1;41m $_tconex " ||  echo -e "  \e[97m\033[1;41mERROR A INICIAR V2RAY : \033[0m \033[3;32m FAIL\033[3;32m"
-msg -bar
+msg -bar3
 bg=0
 ## INSTALADOR
 [[ $(v2ray info |grep Group | wc -l) > 0 ]] || {
@@ -1178,7 +1178,7 @@ bg=1
 [[ $bg = 0 ]] && {
 echo -e "\033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m<\033[0;33m  CAMBIAR PROTOCOLO  -> \033[1;32m [ \033[0;34m${_netW} \033[1;32m ]" 
 echo -e "\033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m<\033[0;33m  TLS ESTADO : -> ${_tlsN}"
-echo -e "\033[0;35m[\033[0;36m3\033[0;35m] \033[0;34m<\033[0;33m  CAMBIAR PUERTO V2RAY \033[1;32m [ \033[0;32m$_v2rayports \033[1;32m]\n$(msg -bar) "
+echo -e "\033[0;35m[\033[0;36m3\033[0;35m] \033[0;34m<\033[0;33m  CAMBIAR PUERTO V2RAY \033[1;32m [ \033[0;32m$_v2rayports \033[1;32m]\n$(msg -bar3) "
 ## CONTROLER \033[0;31m [\033[0;32mON\033[0;31m] 
 echo -e "\033[0;35m[\033[0;36m4\033[0;35m] \033[0;34m<\033[0;33m  AÑADIR USUARIO UUID "
 #echo -e "\033[0;35m[\033[0;36mG\033[0;35m] \033[0;34m<\033[0;33m  AÑADIR USUARIO POR GRUPOS "
@@ -1189,21 +1189,21 @@ echo -e "\033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m<\033[0;33m  INFORMACION DE
 #echo -e "\033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m  ESTADISTICAS DE CONSUMO "
 echo -e "\033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m  USUARIOS CONECTADOS "
 #echo -ne "\033[1;32m [10] > " && msg -azu " LIMITADOR POR CONSUMO \033[1;33m( #BETA )"
-echo -e "\033[0;35m[\033[0;36m10\033[0;35m] \033[0;34m<\033[0;33m  LIMPIADOR DE EXPIRADOS $statgen\n$(msg -bar)"
-echo -e "\033[0;35m[\033[0;36m13\033[0;35m] \033[0;34m<\033[0;33m  FUNCIONES BETAS \n$(msg -bar)"
+echo -e "\033[0;35m[\033[0;36m10\033[0;35m] \033[0;34m<\033[0;33m  LIMPIADOR DE EXPIRADOS $statgen\n$(msg -bar3)"
+echo -e "\033[0;35m[\033[0;36m13\033[0;35m] \033[0;34m<\033[0;33m  FUNCIONES BETAS \n$(msg -bar3)"
 } || {
 clear&&clear
 	title "   V2RAY CON UN BUG - PARA FIXEAR"
 	echo -e " \033[0;31m Selecciona, la opcion disponible"
 	echo -e " y recuerda leer las indicaciones que sugiere\n"
 	echo -e "  LUEGO DE ESTO, DEBERAS RECONFIGURAR TU METODO\n\033[0m"
-	msg -bar
+	msg -bar3
 echo -e "\033[0;35m[\033[0;36m12\033[0;35m] \033[0;34m<\033[0;33m V2RAY BUGEADO \033[1;32m [ \033[0;34mFIX INSTALL \033[1;32m ]" 
 }
 ## DESISNTALAR
 echo -ne "\033[1;32m [11] > " && msg -azu "\033[1;31mDESINSTALAR V2RAY"
-echo -ne "$(msg -bar)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
-msg -bar
+echo -ne "$(msg -bar3)\n\033[1;32m [0] > " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
+msg -bar3
 pid_inst () {
 [[ $1 = "" ]] && echo -e "\033[1;31m[OFF]" && return 0
 unset portas

@@ -40,7 +40,7 @@ SEMCOR='\e[0m'
   -azu) cor="${COLOR[6]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd) cor="${COLOR[2]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra) cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";;
-  "-bar2"|"-bar") cor="${COLOR[6]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  "-bar32"|"-bar3") cor="${COLOR[6]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
 
@@ -65,7 +65,7 @@ print_center(){
 	echo ""
 }
 
-msg -bar
+msg -bar3
 
 # MENU FLUTUANTE
 menu_func () {
@@ -185,21 +185,21 @@ meu_ip
 
 instala_ovpn(){
 	clear
-	msg -bar
+	msg -bar3
 	print_center "INSTALADOR DE OPENVPN"
-	msg -bar
+	msg -bar3
 	# OpenVPN setup and first user creation
 	msg -ama " Algunos ajustes son necesario para conf OpenVPN"
-	msg -bar
+	msg -bar3
 	# Autodetect IP address and pre-fill for the user
 	IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 	if echo "$IP" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
 		PUBLICIP=$(wget -qO- ipv4.icanhazip.com)
 	fi
 	msg -ama "    Seleccione el protocolo de conexiones OpenVPN"
-	msg -bar
+	msg -bar3
 	menu_func "UDP" "TCP"
-	msg -bar
+	msg -bar3
 	while [[ -z $PROTOCOL ]]; do
 		msg -ne " opcion: "
 		read PROTOCOL
@@ -209,9 +209,9 @@ instala_ovpn(){
 			*) tput cuu1 && tput dl1; print_center -verm2 "selecciona una opcion entre 1 y 2"; sleep 2s; tput cuu1 && tput dl1; unset PROTOCOL;;
 		esac
 	done
-	msg -bar
+	msg -bar3
 	print_center   "Ingresa un puerto OpenVPN (Default 1194)"
-	msg -bar
+	msg -bar3
 	while [[ -z $PORT ]]; do
 		msg -ne " Puerto: "
 		read PORT
@@ -235,11 +235,11 @@ instala_ovpn(){
 	done
 	del "3"
 	msg -nazu " PUERTO: "; msg -verd "$PORT"
-	msg -bar
+	msg -bar3
 	print_center   "Seleccione DNS (default VPS)"
-	msg -bar
+	msg -bar3
 	menu_func "DNS del Sistema" "Cloudflare" "Google" "OpenDNS" "Verisign" "Quad9" "UncensoredDNS"
-	msg -bar
+	msg -bar3
 	while [[ -z $DNS ]]; do
 		msg -ne " opcion: "
 		read DNS
@@ -270,11 +270,11 @@ instala_ovpn(){
 	esac
 	del "11"
 	msg -nazu " DNS: "; msg -verd "$P_DNS"
-	msg -bar
+	msg -bar3
 	print_center   " Seleccione la codificacion para el canal de datos"
-	msg -bar
+	msg -bar3
 	menu_func "AES-128-CBC" "AES-192-CBC" "AES-256-CBC" "CAMELLIA-128-CBC" "CAMELLIA-192-CBC" "CAMELLIA-256-CBC" "SEED-CBC" "NONE"
-	msg -bar
+	msg -bar3
 	while [[ -z $CIPHER ]]; do
 		msg -ne " opcion: "
 		read CIPHER
@@ -307,7 +307,7 @@ instala_ovpn(){
 	del "12"
 	codi=$(echo $CIPHER|awk -F ' ' '{print $2}')
 	msg -nazu " CODIFICACION: "; msg -verd "$codi"
-	msg -bar
+	msg -bar3
 	msg -ama " Estamos listos para configurar su servidor OpenVPN"
 	enter
 	if [[ "$OS" = 'debian' ]]; then
@@ -463,23 +463,23 @@ key-direction 1
 verb 3
 auth-user-pass" > /etc/openvpn/client-common.txt
 clear
-msg -bar
+msg -bar3
 print_center -verd "Configuracion Finalizada!"
-msg -bar
+msg -bar3
 print_center   " Crear un usuario SSH para generar el (.ovpn)!"
 enter
 }
 
 edit_ovpn_host(){
 	msg -ama " CONFIGURACION HOST DNS OPENVPN"
-	msg -bar
+	msg -bar3
 	while [[ $DDNS != @(n|N) ]]; do
 		echo -ne "\033[1;33m"
 		read -p " Agregar host [S/N]: " -e -i n DDNS
 		[[ $DDNS = @(s|S|y|Y) ]] && agrega_dns
 	done
 	[[ ! -z $NEWDNS ]] && sed -i "/127.0.0.1[[:blank:]]\+localhost/a 127.0.0.1 $NEWDNS" /etc/hosts
-	msg -bar
+	msg -bar3
 	msg -ama " Es Necesario el Reboot del Servidor Para"
 	msg -ama " Para que las configuraciones sean efectudas"
 	enter
@@ -490,15 +490,15 @@ fun_openvpn(){
 		unset OPENBAR
 		[[ $(mportas|grep -w "openvpn") ]] && OPENBAR="\033[1;32m [ONLINE]" || OPENBAR="\033[1;31m [OFFLINE]"
 		clear
-		msg -bar
+		msg -bar3
 		echo -e   "CONFIGURACION OPENVPN"
-		msg -bar
+		msg -bar3
 		echo -e " \033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m➮\033[0;33m $(msg -verd 'INICIAR O PARAR OPENVPN') $OPENBAR" 
 		echo -e " \033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m➮\033[0;33m EDITAR CONFIGURACION CLIENTE $(msg -ama "(MEDIANTE NANO)")" 
 		echo -e " \033[0;35m[\033[0;36m3\033[0;35m] \033[0;34m➮\033[0;33m EDITAR CONFIGURACION SERVIDOR $(msg -ama "(MEDIANTE NANO)")" 
 		echo -e " \033[0;35m[\033[0;36m4\033[0;35m] \033[0;34m➮\033[0;33m CAMBIAR HOST DE OPENVPN" 
 		echo -e " \033[0;35m[\033[0;36m5\033[0;35m] \033[0;34m➮\033[0;33m $(msg -verm2 "DESINSTALAR OPENVPN")"
-		msg -bar
+		msg -bar3
 		while [[ $xption != @([0-5]) ]]; do
 			echo -ne "\033[1;33m Opcion : " && read xption
 			tput cuu1 && tput dl1
@@ -506,10 +506,10 @@ fun_openvpn(){
 		case $xption in 
 			5)
 				clear
-				msg -bar
+				msg -bar3
 				echo -ne "\033[1;97m"
 				read -p "QUIERES DESINTALAR OPENVPN? [Y/N]: " -e REMOVE
-				msg -bar
+				msg -bar3
 				if [[ "$REMOVE" = 'y' || "$REMOVE" = 'Y' ]]; then
 					PORT=$(grep '^port ' /etc/openvpn/server.conf | cut -d " " -f 2)
 					PROTOCOL=$(grep '^proto ' /etc/openvpn/server.conf | cut -d " " -f 2)
@@ -546,12 +546,12 @@ fun_openvpn(){
 					rm -rf /etc/openvpn
 					rm -f /etc/sysctl.d/30-openvpn-forward.conf
 					clear
-					msg -bar
+					msg -bar3
 					print_center -verd "OpenVPN removido!"
 					enter
 				else
 					clear
-					msg -bar
+					msg -bar3
 					print_center -verm2 "Desinstalacion abortada!"
 					enter
 				fi

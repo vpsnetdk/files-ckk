@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 
 selection_fun () {
 local selection="null"
@@ -59,22 +59,22 @@ sleep 1s
 ssl_stunel () { 
 [[ $(mportas|grep stunnel4|head -1) ]] && { 
 echo -e "\033[1;33m Deteniendo Stunnel"
-msg -bar 
+msg -bar3 
 service stunnel4 stop > /dev/null 2>&1 
 rm -rf /etc/stunnel/stunnel.conf 
 apt-get purge stunnel4 -y &>/dev/null && echo -e "\e[31m DETENIENDO SERVICIO SSL" | pv -qL 10 
 apt-get purge stunnel4 &>/dev/null 
 apt-get remove stunnel4 &>/dev/null 
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m Detenido Con Exito!"
-msg -bar 
+msg -bar3 
 return 0 
 } 
 clear 
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m Seleccione una puerta de redirección interna."
 echo -e "\033[1;33m Un puerto SSH/DROPBEAR/SQUID/OPENVPN/PYTHON"
-msg -bar
+msg -bar3
          while true; do
          echo -ne "\033[1;37m"
 	    echo " Ingresa el Puerto Local de tu VPS (Default 22) "
@@ -88,10 +88,10 @@ msg -bar
 		 fi
 	 fi
          done
-msg -bar 
+msg -bar3 
 DPORT="$(mportas|grep $portserv|awk '{print $2}'|head -1)" 
 echo -e "\033[1;33m Ahora Que Puerto sera SSL"
-msg -bar     
+msg -bar3     
 while true; do
     echo -e " Ingresa el Puerto SSl/TLS "
     read -p " Listen-SSL: " SSLPORT
@@ -103,9 +103,9 @@ while true; do
 	echo -e "$barra"
 	return
     done
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m Instalando SSL"
-msg -bar 
+msg -bar3 
 fun_bar "apt-get install stunnel4 -y" 
 apt-get install stunnel4 -y > /dev/null 2>&1 
 echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = ${SSLPORT}\nconnect = 127.0.0.1:${DPORT}" > /etc/stunnel/stunnel.conf 
@@ -117,9 +117,9 @@ mv stunnel.pem /etc/stunnel/
 ######------- 
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4 
 service stunnel4 restart > /dev/null 2>&1 
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m INSTALADO CON EXITO"
-msg -bar 
+msg -bar3 
 rm -rf /etc/adm-lite/stunnel.crt > /dev/null 2>&1 
 rm -rf /etc/adm-lite/stunnel.key > /dev/null 2>&1 
 rm -rf /root/stunnel.crt > /dev/null 2>&1 
@@ -129,10 +129,10 @@ return 0
 
 ssl_stunel_2 () { 
 echo -e "\033[1;32m              AGREGAR MAS PUERTOS SSL"
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m Seleccione una puerta de redirecciÃ³n interna."
 echo -e "\033[1;33m Un puerto SSH/DROPBEAR/SQUID/OPENVPN/PYTHON"
-msg -bar
+msg -bar3
          while true; do
          echo -ne "\033[1;37m"
 	    echo " Ingresa el Puerto Local de tu VPS (Default 22) "
@@ -146,10 +146,10 @@ msg -bar
 		 fi
 	 fi
          done
-msg -bar 
+msg -bar3 
 DPORT="$(mportas|grep $portserv|awk '{print $2}'|head -1)" 
 echo -e "\033[1;33m Ahora Que Puerto sera SSL"
-msg -bar     
+msg -bar3     
 while true; do
     echo -e " Ingresa el Puerto SSl/TLS "
     read -p " Listen-SSL: " SSLPORT
@@ -161,17 +161,17 @@ while true; do
 	echo -e "$barra"
 	return
     done
-msg -bar 
+msg -bar3 
 echo -e "\033[1;33m Instalando SSL"
-msg -bar 
+msg -bar3 
 fun_bar "apt-get install stunnel4 -y" 
 echo -e "client = no\n[SSL+]\ncert = /etc/stunnel/stunnel.pem\naccept = ${SSLPORT}\nconnect = 127.0.0.1:${DPORT}" >> /etc/stunnel/stunnel.conf 
 ######------- 
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4 
 service stunnel4 restart > /dev/null 2>&1 
-msg -bar 
+msg -bar3 
 echo -e "${cor[4]}            INSTALADO CON EXITO" 
-msg -bar
+msg -bar3
 rm -rf /etc/adm-lite/stunnel.crt > /dev/null 2>&1 
 rm -rf /etc/adm-lite/stunnel.key > /dev/null 2>&1 
 rm -rf /root/stunnel.crt > /dev/null 2>&1 
@@ -179,14 +179,14 @@ rm -rf /root/stunnel.key > /dev/null 2>&1
 return 0 
 } 
 sslpython(){ 
-msg -bar 
+msg -bar3 
 echo -e "\033[1;37mSe Requiere tener el puerto 80 y el 443 libres" 
 sleep 2 
 install_python(){   
 apt-get install python -y &>/dev/null && echo -e "\033[1;97m Activando Python Direc 80\n" | pv -qL 10    
 sleep 3    
 screen -dmS pydic-80 python ${SCPinst}/python.py 80 "@drowkid01" && echo "80 @drowkid01" >> /etc/adm-lite/PySSL.log
-msg -bar
+msg -bar3
  }     
 
 install_ssl(){    
@@ -206,37 +206,37 @@ rm -rf /root/stunnel.key > /dev/null 2>&1
 
 install_python  
 install_ssl  
-msg -bar 
+msg -bar3 
 echo -e "${cor[4]}               INSTALACION COMPLETA" 
-msg -bar 
+msg -bar3 
 
 }  
 
 unistall(){ 
 clear 
-msg -bar 
+msg -bar3 
 msg -ama "DETENIENDO SERVICIOS SSL Y PYTHON" 
-msg -bar 
+msg -bar3 
 service stunnel4 stop > /dev/null 2>&1 
 apt-get purge stunnel4 -y &>/dev/null 
 apt-get purge stunnel -y &>/dev/null 
 kill -9 $(ps aux |grep -v grep |grep -w "python.py"|grep dmS|awk '{print $2}') &>/dev/null 
 rm /etc/adm-lite/PySSL.log &>/dev/null 
 clear 
-msg -bar 
+msg -bar3 
 msg -verd "LOS SERVICIOS SE HAN DETENIDO" 
-msg -bar 
+msg -bar3 
 }  
 # 
 certif(){ 
-msg -bar 
+msg -bar3 
 msg -tit 
 echo -e "\e[1;37m ACONTINUACION ES TENER LISTO EL LINK DEL CERTIFICADO.zip\n VERIFICADO EN ZEROSSL, DESCARGALO Y SUBELO\n EN TU GITHUB O DROPBOX" 
 echo -ne " Desea Continuar? [S/N]: "; read seg 
-[[ $seg = @(n|N) ]] && msg -bar && return 
+[[ $seg = @(n|N) ]] && msg -bar3 && return 
 clear 
 ####Cerrificado ssl/tls##### 
-msg -bar 
+msg -bar3 
 echo -e "\e[1;33mðŸ‘‡ LINK DEL CERTIFICADO.zip ðŸ‘‡           \n     \e[0m" 
 echo -e "\e[1;36m LINK \e[37m: \e[34m\c " 
 #extraer certificado.zip 
@@ -249,9 +249,9 @@ rm -rf certificado.zip
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4 
 service stunnel restart > /dev/null 2>&1 
 service stunnel4 restart &>/dev/null 
-msg -bar 
+msg -bar3 
 echo -e "${cor[4]} CERTIFICADO INSTALADO CON EXITO \e[0m"  
-msg -bar 
+msg -bar3 
 }
 
 certificadom(){ 
@@ -275,25 +275,25 @@ echo "Listen 80  <IfModule ssl_module>
 #) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
 		 } 
 clear 
-msg -bar 
+msg -bar3 
 insapa2 &>/dev/null && echo -e " \e[1;33mAGREGANDO RECURSOS " | pv -qL 10 
-msg -bar 
+msg -bar3 
 echo -e "\e[1;37m Verificar dominio \e[0m" 
-msg -bar 
+msg -bar3 
 read -p " LLAVE: " keyy 
-msg -bar 
+msg -bar3 
 read -p " DATOS: " dat2w 
 mkdir -p /var/www/html/.well-known/pki-validation/ 
 datfr1=$(echo "$dat2w"|awk '{print $1}') 
 datfr2=$(echo "$dat2w"|awk '{print $2}') 
 datfr3=$(echo "$dat2w"|awk '{print $3}') 
 echo -ne "${datfr1}\n${datfr2}\n${datfr3}" >/var/www/html/.well-known/pki-validation/$keyy.txt 
-msg -bar 
+msg -bar3 
 echo -e "\e[1;37m VERIFIQUE EN LA PÃGINA ZEROSSL \e[0m" 
-msg -bar 
+msg -bar3 
 read -p " ENTER PARA CONTINUAR" 
 clear
-msg -bar 
+msg -bar3 
 echo -e "\e[1;33mðŸ‘‡ LINK DEL CERTIFICADO ðŸ‘‡       \n     \e[0m" 
 echo -e "\e[1;36m LINK \e[37m: \e[34m\c" 
 read link 
@@ -309,9 +309,9 @@ service stunnel4 restart &>/dev/null
 } 
 
 incertis &>/dev/null && echo -e " \e[1;33mEXTRAYENDO CERTIFICADO " | pv -qL 10 
-msg -bar 
+msg -bar3 
 echo -e "${cor[4]} CERTIFICADO INSTALADO \e[0m"  
-msg -bar  
+msg -bar3  
 for pid in $(pgrep apache2);do 
 kill $pid 
 done 
@@ -337,9 +337,9 @@ done
 fi 
 done 
 else 
-msg -bar 
+msg -bar3 
 echo -e "${cor[3]} SSL/TLS NO INSTALADO \e[0m" 
-msg -bar
+msg -bar3
  fi
  }   
  clear 
@@ -349,29 +349,29 @@ else
 stunel="\e[31m[ OFF ]" 
 fi 
 [[ -e /root/name ]] && figlet -p -f smslant < /root/name | lolcat || echo -e "\033[7;49;35m    =====>>►► 🐲 New drowkid01💥VPS 🐲 ◄◄<<=====      \033[0m"
-msg -bar 
 msg -bar3 
+msg -bar33 
 msg -tit 
 echo -e "${cor[3]}         INSTALADOR MULTI SSL  By @drowkid01" 
-msg -bar 
+msg -bar3 
 echo -e "${cor[1]}            Escoja la opcion deseada." 
-msg -bar
+msg -bar3
 echo -e " \033[0;35m [\033[0;36m1\033[0;35m]\033[0;31m ➮ $(msg -azu "INICIAR || DETENER SSL") $stunel"
 echo -e " \033[0;35m [\033[0;36m2\033[0;35m]\033[0;31m ➮ $(msg -azu "AGREGAR + PUERTOS SSL")"
 echo -e " \033[0;35m [\033[0;36m3\033[0;35m]\033[0;31m ➮ $(msg -azu "SSL+WEBSOCKET DIRECTO")" 
 echo -e " \033[0;35m [\033[0;36m4\033[0;35m]\033[0;31m ➮ $(msg -azu "\e[1;31mDETENER SERVICIO SSL+WEBSOCKET")"
-msg -bar 
+msg -bar3 
 echo -e " \033[0;35m [\033[0;36m5\033[0;35m]\033[0;31m ➮ $(msg -azu "CERTIFICADO SSL/TLS")" 
-msg -bar
+msg -bar3
 echo -e " \033[0;35m [\033[0;36m0\033[0;35m]\033[0;31m ➮ $(msg -bra "\033[1;41m[ REGRESAR ]\e[0m")"
-msg -bar 
+msg -bar3 
 echo -e "\033[1;37mSelecione Una Opcion [0/5]: " 
-msg -bar  
+msg -bar3  
 selection=$(selection_fun 5)
 case ${selection} in
-1) msg -bar 
+1) msg -bar3 
 ssl_stunel ;; 
-2) msg -bar 
+2) msg -bar3 
 ssl_stunel_2 
 sleep 3 
 exit ;; 
@@ -379,14 +379,14 @@ exit ;;
 exit ;; 
 4) unistall ;; 
 5) clear 
-msg -bar 
+msg -bar3 
 msg -ama "?CERTIFICADO SSL/TLS" 
-msg -bar 
+msg -bar3 
 echo -e "${cor[4]} 1).-\033[1;37m CERTIFICADO ZIP DIRECTO" 
 echo -e "${cor[4]} 2).-\033[1;37m CERTIFICADO MANUAL ZEROSSL   " 
-msg -bar 
+msg -bar3 
 echo -ne "\033[1;37mSelecione Una Opcion [0/2]: " 
-msg -bar  
+msg -bar3  
 	selection=$(selection_fun 2)
 	case ${selection} in
 	0) return 0

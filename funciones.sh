@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 
 cd $HOME
 selection_fun () {
@@ -206,9 +206,9 @@ function aguarde() {
 }
 
 brook_fun () {
-msg -bar
+msg -bar3
 aguarde
-msg -bar 
+msg -bar3 
 install
 [[ -e /data/cert.key && -e /data/cert.crt ]] || {
 unset x
@@ -217,7 +217,7 @@ echo -e " CREAREMOS EL CERTIFICADO BETA EN /data"
 read -p " PRESIONA ENTER PARA CONTINUAR O Cntrol + X para salir" 
 source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/certificadossl.sh)
 }
-msg -bar
+msg -bar3
 ip4=`curl -s -4 ipip.ooo`
 ip6=`curl -s -6 ipip.ooo`
 PC='\033[0;35m'
@@ -236,7 +236,7 @@ read -p "$(echo -e "\033[1;34m INGRESA TU HOST SNI ( whatsapp.net ) :")" sni
 tput cuu1 >&2 && tput dl1 >&2
 fun_hb () {
 echo -e " -> INICIANDO CONFIGURACION " | pv -qL 40
-msg -bar
+msg -bar3
 echo -e " -> DOMINIO : $domain" 
 echo -e " -> PUERTO : $puerto" 
 echo -e " -> CONTRASEÑA : $password" 
@@ -248,7 +248,7 @@ echo -e "\033[0;35m [\033[0;36m1\033[0;35m]\033[0;31m➮ ${cor[3]} I want to run
 echo -e "\033[0;35m [\033[0;36m2\033[0;35m]\033[0;31m➮ ${cor[3]} I want to run brook wsserver "
 echo -e "\033[0;35m [\033[0;36m3\033[0;35m]\033[0;31m➮ ${cor[3]} I want to run brook wssserver"
 echo -e "\033[0;35m [\033[0;36m4\033[0;35m]\033[0;31m➮ ${cor[3]} I want to run brook socks5 "
-msg -bar #echo -e "$barra"
+msg -bar3 #echo -e "$barra"
 selection=$(selection_fun 4)
 case ${selection} in
 0)
@@ -326,11 +326,11 @@ joker log `joker last`
 
 echo;
 echo -e "$PC"">>> brook link -s wss://$domain:${puerto} -p '$password'""$NC"
-msg -bar 
+msg -bar3 
 echo
 brook link --server wss://$sni:${puerto} -p "$password" -u "@drowkid01" --address "$domain" --name "@drowkid01" --insecure
 echo
-msg -bar
+msg -bar3
 
 read -p " Enter";;
 4)
@@ -445,7 +445,7 @@ done
 PIDGEN=$(ps x | grep "teleBotGen" | grep -v grep |awk '{print $1}')
 [[ ! -z $PIDGEN ]] && {
 botG="\033[1;34m ▸ \033[1;37m BotGen Telegram 🤖 : \033[1;31m ⚡ ACTIVO ⚡"
-msg -bar
+msg -bar3
 echo -e "$botG"
 }
 }
@@ -474,7 +474,7 @@ done
 menu () {
 [[ -e /etc/bash.bashrc-bakup ]] && _autorun="\033[0;31m [\033[0;32mON\033[0;31m] " || _autorun="\033[0;31m [OFF]"
 _ports
-msg -bar2
+msg -bar32
 echo -e "\033[0;35m [\033[0;36m1\033[0;35m]\033[0;31m ➮${cor[3]} ADMINISTRAR USUARIOS                  "
 echo -e "\033[0;35m [\033[0;36m2\033[0;35m]\033[0;31m ➮${cor[3]} HERRAMIENTAS (\033[0;34mBad/VPN$_badvpn${cor[3]}) (\033[0;34mTCP-SPEED$_tcpspeed${cor[3]})    "
 echo -e "\033[0;35m [\033[0;36m3\033[0;35m]\033[0;31m ➮\033[0;33m [!]${cor[3]} OPTIMIZAR VPS                     "
@@ -483,7 +483,7 @@ echo -e "\033[0;35m [\033[0;36m6\033[0;35m]\033[0;31m ➮${cor[3]} Cont/Limit DE
 echo -e "\033[0;35m [\033[0;36m7\033[0;35m]\033[0;31m ➮ \e[3;32mHERRAMIENTAS BETA\e[0m \033[0;33m (#EXPERIMENTAL)    "
 echo -e "\033[0;35m [\033[0;36m8\033[0;35m]\033[0;31m ➮${cor[3]} AUTOINICIAR SCRIPT $_autorun             "
 echo -e "\033[0;35m [\033[0;36m9\033[0;35m]\033[0;31m ➮${cor[3]} INSTALADOR DE PROTOCOLOS              "
-msg -bar2
+msg -bar32
 echo -e "\033[0;35m [\033[0;36m10\033[0;35m]\033[0;31m ➮\033[0;33m [!] \033[1;32mACTUALIZAR${cor[3]} |\033[0;35m [\033[0;36m0\033[0;35m]\033[0;31m ➮ $(msg -bra "\033[1;41m[ Salir ]\e[0m")"
 echo -ne "\033[1;31m ╰══════╣ OPCION :" && read -p "" opt
 
@@ -493,9 +493,9 @@ echo -ne "\033[1;31m ╰══════╣ OPCION :" && read -p "" opt
 
 
 
-msg -bar
+msg -bar3
 _ports 
-msg -bar
+msg -bar3
 fun_ports
 read -p "D"
  #echo "MPORTAS1 ORIGINAL"

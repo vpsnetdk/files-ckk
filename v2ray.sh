@@ -286,14 +286,14 @@ clear&&clear
     #rm -rf /etc/v2ray/config.json
     #jq '.inbounds[].streamSettings += {"network":"ws","wsSettings":{"path": "/ADMcgh/","headers": {"Host": "ejemplo.com"}}}' < $tmp >> $config
     chmod 777 $config
-    msg -bar
+    msg -bar3
     if [[ $(v2ray restart|grep success) ]]; then
     	[[ $(which v2ray) ]] && v2ray info
-    	msg -bar
+    	msg -bar3
         echo -e "\033[1;32mINSTALACION FINALIZADA"
     else
     	[[ $(which v2ray) ]] && v2ray info
-    	msg -bar
+    	msg -bar3
         print_center -verm2 "INSTALACION FINALIZADA"
         echo -e "\033[1;31m "  'Pero fallo el reinicio del servicio v2ray'
 	echo -e " LEA DETALLADAMENTE LOS MENSAJES "

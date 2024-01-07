@@ -3,7 +3,7 @@
 clear
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && mkdir /etc/ger-frm
 SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && mkdir /etc/ger-inst
-source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 menu_org () {
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/openvpnmenu.sh)"
 }
@@ -15,7 +15,7 @@ SCPdir="/etc/VPS-MX" && [[ ! -d ${SCPdir} ]] && mkdir ${SCPdir}
 SCPfrm="${SCPdir}/herramientas" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPdir}/herramientas
 SCPinst="${SCPdir}/protocolos" && [[ ! -d ${SCPinst} ]] && mkdir ${SCPdir}/protocolos
 SCPidioma="${SCPdir}/idioma" && [[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
-source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 wget -O /tmp/openvpn.sh -q https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/menu_inst/openvpnmenu.sh && chmod +x /tmp/openvpn.sh && cd /tmp && ./openvpn.sh && cd
 
 #source <(curl -sL https://www.dropbox.com/s/omykq6x27ua54fb/openvpn-install.sh)

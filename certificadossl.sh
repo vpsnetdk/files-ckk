@@ -6,16 +6,16 @@
 #  NO SEAS RATA Y CONFIERE SOLICITUD DIRECTO CON EL DESARROLLADOR !! #
 
 source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/Recursos/module)
-source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 ADM_crt=''
 #jq
 
 fssl() {
-msg -bar
+msg -bar3
 echo ""
 echo -e "  INSTALL SERVICIOS NECESARIOS "
 echo ""
-msg -bar
+msg -bar3
 [[ $(dpkg --get-selections|grep -w "jq"|head -1) ]] || apt-get install jq -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "jq"|head -1) ]] || ESTATUS=`echo -e "\033[91mFALLO DE INSTALACION"` &>/dev/null
 [[ $(dpkg --get-selections|grep -w "jq"|head -1) ]] && ESTATUS=`echo -e "\033[92mINSTALADO"` &>/dev/null
@@ -36,7 +36,7 @@ echo "" > /etc/fixcssl
 cert_install(){
     #apt install socat netcat -y
     if [[ ! -e $HOME/.acme.sh/acme.sh ]];then
-    	msg -bar3
+    	msg -bar33
     	msg -ama " Instalando script acme.sh"
     	curl -s "https://get.acme.sh" | sh &>/dev/null
     fi
@@ -61,17 +61,17 @@ cert_install(){
 		[[ -e ${ADM_crt}/${domain}.key ]] && cp ${ADM_crt}/${domain}.key /data/cert.key
 		[[ -e ${ADM_crt}/ca.cer ]] && cp ${ADM_crt}/ca.cer /data/ca.crt
     	rm -rf $HOME/.acme.sh/${domain}_ecc
-    	msg -bar
+    	msg -bar3
     	print_center -verd "Certificado SSL se genero con éxito"
     	#echo "${ADM_crt}/${domain}.crt "
 		_mssBOT "CERTIFICADO EMTIDO EXITOSAMENTE" "$domain"
     	enter
     else
     	rm -rf "$HOME/.acme.sh/${domain}_ecc"
-    	msg -bar
+    	msg -bar3
     	print_center -verm2 "Error al generar el certificado SSL"
 		_mssBOT " ERROR AL EMITIR CERTIFICADO " "$domain"
-    	msg -bar
+    	msg -bar3
     	msg -ama " verifique los posibles error"
     	msg -ama " e intente de nuevo"
     	enter
@@ -84,7 +84,7 @@ ext_cert(){
 	title "INTALADOR DE CERTIFICADO EXTERNO"
 	print_center -azu "Requiere tener a mano su certificado ssl"
 	print_center -azu "junto a su correspondiente clave privada"
-	msg -bar
+	msg -bar3
 	msg -ne " Continuar...[S/N]: "
 	read opcion
 	[[ $opcion != @(S|s|Y|y) ]] && return 1
@@ -96,7 +96,7 @@ ext_cert(){
  guardar precionando "CTRL+x"
  luego "S o Y" segun el idioma
  y por ultimo "enter"'
- 	msg -bar
+ 	msg -bar3
  	msg -ne " Continuar...[S/N]: "
 	read opcion
 	[[ $opcion != @(S|s|Y|y) ]] && return 1
@@ -110,7 +110,7 @@ ext_cert(){
  guardar precionando "CTRL+x"
  luego "S o Y" segun el idioma
  y por ultimo "enter"'
- 	msg -bar
+ 	msg -bar3
  	msg -ne " Continuar...[S/N]: "
 	read opcion
 	[[ $opcion != @(S|s|Y|y) ]] && return 1
@@ -132,42 +132,42 @@ ext_cert(){
 		echo -e "$(msg -verm2 "Emit: ")$(msg -ama "$(openssl x509 -noout -in ${ADM_crt}/$DNS.crt -startdate|sed 's/notBefore=//g')")"
 		echo -e "$(msg -verm2 "Expi: ")$(msg -ama "$(openssl x509 -noout -in ${ADM_crt}/$DNS.crt -enddate|sed 's/notAfter=//g')")"
 		echo -e "$(msg -verm2 "Cert: ")$(msg -ama "$(openssl x509 -noout -in ${ADM_crt}/$DNS.crt -issuer|sed 's/issuer=//g'|sed 's/ = /=/g'|sed 's/, /\n      /g')")"
-		msg -bar
+		msg -bar3
 		echo "$DNS" > ${ADM_src}/dominio.txt
 		read foo
 	else
 		rm -rf ${ADM_tmp}/tmp.crt
 		rm -rf ${ADM_tmp}/tmp.key
 		clear
-		msg -bar
+		msg -bar3
 		print_center -verm2 "ERROR DE DATOS"
-		msg -bar
+		msg -bar3
 		msg -ama " Los datos ingresados no son validos.\n por favor verifique.\n e intente de nuevo!!"
-		msg -bar
+		msg -bar3
 		read foo
 	fi
 }
 
 stop_port(){
-	msg -bar3
+	msg -bar33
 	msg -ama " Comprovando puertos..."
 	ports=('80' '443')
 
 	for i in ${ports[@]}; do
 		if [[ 0 -ne $(lsof -i:$i | grep -i -c "listen") ]]; then
-			msg -bar3
+			msg -bar33
 			echo -ne "$(msg -ama " Liberando puerto: $i")"
 			lsof -i:$i | awk '{print $2}' | grep -v "PID" | xargs kill -9
 			sleep 2s
 			if [[ 0 -ne $(lsof -i:$i | grep -i -c "listen") ]];then
 				tput cuu1 && tput dl1
 				print_center -verm2 "ERROR AL LIBERAR PURTO $i"
-				msg -bar3
+				msg -bar33
 				msg -ama " Puerto $i en uso."
 				msg -ama " auto-liberacion fallida"
 				msg -ama " detenga el puerto $i manualmente"
 				msg -ama " e intentar nuevamente..."
-				msg -bar
+				msg -bar3
 				read foo			
 			fi
 		fi
@@ -183,14 +183,14 @@ ger_cert(){
 	print_center -ama "Requiere ingresar un dominio."
 	print_center -ama "el mismo solo deve resolver DNS, y apuntar"
 	print_center -ama "a la direccion ip de este servidor."
-	msg -bar3
+	msg -bar33
 	print_center -ama "Temporalmente requiere tener"
 	print_center -ama "los puertos 80 y 443 libres."
 	if [[ $1 = 2 ]]; then
-		msg -bar3
+		msg -bar33
 		print_center -ama "Requiere tener una cuenta Zerossl."
 	fi
-	msg -bar
+	msg -bar3
  	msg -ne " Continuar [S/N]: "
 	read opcion
 	[[ $opcion != @(s|S|y|Y) ]] && return 1
@@ -198,9 +198,9 @@ ger_cert(){
 	if [[ $1 = 2 ]]; then
      while [[ -z $mail ]]; do
      	clear
-		msg -bar
-		print_center -ama "ingresa tu correo usado en zerossl"
 		msg -bar3
+		print_center -ama "ingresa tu correo usado en zerossl"
+		msg -bar33
 		msg -ne " >>> "
 		read mail
 	 done
@@ -211,9 +211,9 @@ ger_cert(){
 		[[ $domain = "multi-domain" ]] && unset domain
 		if [[ ! -z $domain ]]; then
 			clear
-			msg -bar
-			print_center -azu "Dominio asociado a esta ip"
 			msg -bar3
+			print_center -azu "Dominio asociado a esta ip"
+			msg -bar33
 			echo -e "$(msg -verm2 " >>> ") $(msg -ama "$domain")"
 			msg -ne "Continuar, usando este dominio? [S/N]: "
 			read opcion
@@ -224,13 +224,13 @@ ger_cert(){
 
 	while [[ -z $domain ]]; do
 		clear
-		msg -bar
-		print_center -ama "ingresa tu dominio"
 		msg -bar3
+		print_center -ama "ingresa tu dominio"
+		msg -bar33
 		msg -ne " >>> "
 		read domain
 	done
-	msg -bar3
+	msg -bar33
 	msg -ama " Comprovando direccion IP ..."
 	local_ip=$(wget -qO- ipv4.icanhazip.com)
     domain_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
@@ -238,16 +238,16 @@ ger_cert(){
     [[ -z "${domain_ip}" ]] && domain_ip="ip no encontrada"
     if [[ $(echo "${local_ip}" | tr '.' '+' | bc) -ne $(echo "${domain_ip}" | tr '.' '+' | bc) ]]; then
     	clear
-    	msg -bar
-    	print_center -verm2 "ERROR DE DIRECCION IP"
-    	msg -bar
-    	msg -ama " La direccion ip de su dominio\n no coincide con la de su servidor."
     	msg -bar3
+    	print_center -verm2 "ERROR DE DIRECCION IP"
+    	msg -bar3
+    	msg -ama " La direccion ip de su dominio\n no coincide con la de su servidor."
+    	msg -bar33
     	echo -e " $(msg -azu "IP dominio:  ")$(msg -verm2 "${domain_ip}")"
     	echo -e " $(msg -azu "IP servidor: ")$(msg -verm2 "${local_ip}")"
-    	msg -bar3
+    	msg -bar33
     	msg -ama " Verifique su dominio, e intente de nuevo."
-    	msg -bar
+    	msg -bar3
     	read foo
     fi
     stop_port
@@ -257,12 +257,12 @@ ger_cert(){
 
 
 gen_domi(){
-msg -bar
+msg -bar3
 echo -e "ESTA FUNCION FUE REMOVIDA DEVIDO A LA VIOLACION DE TOKENS"
 echo -e " AHORA PARA GENERAR SUBDOMINIOS TIPO A Y NS"
 echo -e " DEBEN SER GENERADOS DESDE EL BOT OFICIAL "
 echo -e " DONDE ADQUIRISTE ESTE KEY U ACCESO!!! "
-msg -bar
+msg -bar3
     enter
 }
 
@@ -274,7 +274,7 @@ chandom_cert_z(){
 	echo ""
 	[[ -e ${ADM_src}/dominio.txt ]] && echo -e "TU DOMINIO ACTUAL ES : $(cat ${ADM_src}/dominio.txt)" || echo -e " NO EXISTE DOMINIO REGISTRADO"
 	echo -e ""
-	msg -bar
+	msg -bar3
 	read -p "INGRESSA NUEVO DOMINIO :" dom
 	[[ -z $dom ]] && return
 	[[ $dom = 0 ]] && return
@@ -286,12 +286,12 @@ chandom_cert_z(){
 menu_cert(){
 
 while true; do
-  msg -bar
+  msg -bar3
   tittle
   msg -ama "  SUB-DOMINIO Y CERTIFICADO SSL | @drowkid01"
-  msg -bar #
-[[ -e ${ADM_src}/dominio.txt ]]  && echo -e " DOMAIN Tipo A -> @ : $(cat < ${ADM_src}/dominio.txt)" && msg -bar
-[[ -e ${ADM_src}/dominio_NS.txt ]] && echo -e " DOMAIN Tipo NS : $(cat < ${ADM_src}/dominio_NS.txt)" && msg -bar 
+  msg -bar3 #
+[[ -e ${ADM_src}/dominio.txt ]]  && echo -e " DOMAIN Tipo A -> @ : $(cat < ${ADM_src}/dominio.txt)" && msg -bar3
+[[ -e ${ADM_src}/dominio_NS.txt ]] && echo -e " DOMAIN Tipo NS : $(cat < ${ADM_src}/dominio_NS.txt)" && msg -bar3 
 menu_func "CERT SSL (Let's Encrypt)" "CERT SSL (Zerossl)" "CARGAR CERT SSL EXTERNO" "GENERAR SUB-DOMINIO CloudFlare " "CAMBIAR DOMINIO" "VERIFICAR DOMINIOS"
 back
 in_opcion "Opcion"

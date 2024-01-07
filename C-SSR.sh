@@ -1,7 +1,7 @@
 #!/bin/bash
 #19/12/2019
 clear
-msg -bar
+msg -bar3
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
@@ -57,7 +57,7 @@ check_crontab(){
 	[[ ! -e "/usr/bin/crontab" ]] && echo -e "${Error}Falta de dependencia Crontab, Por favor, intente instalar manualmente CentOS: yum install crond -y , Debian/Ubuntu: apt-get install cron -y !" && exit 1
 }
 SSR_installation_status(){
-	[[ ! -e ${ssr_folder} ]] && echo -e "${Error}\nShadowsocksR No se encontro la carpeta, por favor verifique\n$(msg -bar)" && exit 1
+	[[ ! -e ${ssr_folder} ]] && echo -e "${Error}\nShadowsocksR No se encontro la carpeta, por favor verifique\n$(msg -bar3)" && exit 1
 }
 Server_Speeder_installation_status(){
 	[[ ! -e ${Server_Speeder_file} ]] && echo -e "${Error}No instalado (Server Speeder), Por favor compruebe!" && exit 1
@@ -137,31 +137,31 @@ Get_User_info(){
 		echo -e "${Error}La adquisicion de informacion del usuario fallo ${Green_font_prefix}[Puerto: ${ssr_port}]${Font_color_suffix} " && exit 1
 	fi
 	user_name=$(echo "${user_info_get}"|grep -w "user :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	port=$(echo "${user_info_get}"|grep -w "port :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	password=$(echo "${user_info_get}"|grep -w "passwd :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	method=$(echo "${user_info_get}"|grep -w "method :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	protocol=$(echo "${user_info_get}"|grep -w "protocol :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	protocol_param=$(echo "${user_info_get}"|grep -w "protocol_param :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	[[ -z ${protocol_param} ]] && protocol_param="0(Ilimitado)"
-msg -bar
+msg -bar3
 	obfs=$(echo "${user_info_get}"|grep -w "obfs :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	#transfer_enable=$(echo "${user_info_get}"|grep -w "transfer_enable :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}'|awk -F "ytes" '{print $1}'|sed 's/KB/ KB/;s/MB/ MB/;s/GB/ GB/;s/TB/ TB/;s/PB/ PB/')
 	#u=$(echo "${user_info_get}"|grep -w "u :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
 	#d=$(echo "${user_info_get}"|grep -w "d :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
 	forbidden_port=$(echo "${user_info_get}"|grep -w "Puerto prohibido :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
 	[[ -z ${forbidden_port} ]] && forbidden_port="Permitir todo"
-msg -bar
+msg -bar3
 	speed_limit_per_con=$(echo "${user_info_get}"|grep -w "speed_limit_per_con :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	speed_limit_per_user=$(echo "${user_info_get}"|grep -w "speed_limit_per_user :"|sed 's/[[:space:]]//g'|awk -F ":" '{print $NF}')
-msg -bar
+msg -bar3
 	Get_User_transfer "${port}"
 }
 Get_User_transfer(){
@@ -324,9 +324,9 @@ clear
 	while true
 	do
 		echo -e "Ingrese el puerto de usuario para ver la informacion\nde la cuenta completa"
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: cancelar):" View_user_port
-		[[ -z "${View_user_port}" ]] && echo -e "Cancelado ...\n$(msg -bar)" && exit 1
+		[[ -z "${View_user_port}" ]] && echo -e "Cancelado ...\n$(msg -bar3)" && exit 1
 		View_user=$(cat "${config_user_mudb_file}"|grep '"port": '"${View_user_port}"',')
 		if [[ ! -z ${View_user} ]]; then
 			Get_User_info "${View_user_port}"
@@ -344,7 +344,7 @@ View_User_info(){
 	ss_ssr_determine
 	clear 
 	echo -e " Usuario [{user_name}] Informacion de Cuenta:"
-msg -bar
+msg -bar3
     echo -e " PANEL VPS-MX By @Kalix1"
 	
 	echo -e " IP : ${Green_font_prefix}${ip}${Font_color_suffix}"
@@ -370,32 +370,32 @@ msg -bar
 	echo -e " Consumo de sus Datos:\n Carga: ${Green_font_prefix}${u}${Font_color_suffix} + Descarga: ${Green_font_prefix}${d}${Font_color_suffix} = ${Green_font_prefix}${transfer_enable_Used_2}${Font_color_suffix}"
 	
          echo -e " Trafico Restante: ${Green_font_prefix}${transfer_enable_Used} ${Font_color_suffix}"
-msg -bar
+msg -bar3
 	echo -e " Trafico Total del Usuario: ${Green_font_prefix}${transfer_enable} ${Font_color_suffix}"
-msg -bar
+msg -bar3
 	echo -e "${ss_link}"
-msg -bar
+msg -bar3
 	echo -e "${ssr_link}"
-msg -bar
+msg -bar3
 	echo -e " ${Green_font_prefix} Nota: ${Font_color_suffix}
  En el navegador, abra el enlace del codigo QR, puede\n ver la imagen del codigo QR."
-msg -bar
+msg -bar3
 }
 #Configuracion de la informacion de configuracion
 Set_config_user(){
-msg -bar
+msg -bar3
 	echo -ne "\e[92m 1) Ingrese un nombre al usuario que desea Configurar\n (No repetir, o se marcara incorrectamente!)\n"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: VPS-MX):" ssr_user
 	[[ -z "${ssr_user}" ]] && ssr_user="VPS-MX"
 	echo && echo -e "	Nombre de usuario : ${Green_font_prefix}${ssr_user}${Font_color_suffix}" && echo
 }
 Set_config_port(){
-msg -bar
+msg -bar3
 	while true
 	do
 	echo -e "\e[92m 2) Por favor ingrese un Puerto para el Usuario "
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: 2525):" ssr_port
 	[[ -z "$ssr_port" ]] && ssr_port="2525"
 	expr ${ssr_port} + 0 &>/dev/null
@@ -412,17 +412,17 @@ msg -bar
 	done
 }
 Set_config_password(){
-msg -bar
+msg -bar3
 	echo -e "\e[92m 3) Por favor ingrese una contrasena para el Usuario"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: VPS-MX):" ssr_password
 	[[ -z "${ssr_password}" ]] && ssr_password="VPS-MX"
 	echo && echo -e "	contrasena : ${Green_font_prefix}${ssr_password}${Font_color_suffix}" && echo
 }
 Set_config_method(){
-msg -bar
+msg -bar3
 	echo -e "\e[92m 4) Seleccione tipo de Encriptacion para el Usuario\e[0m
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix} 1.${Font_color_suffix} Ninguno
  ${Green_font_prefix} 2.${Font_color_suffix} rc4
  ${Green_font_prefix} 3.${Font_color_suffix} rc4-md5
@@ -442,11 +442,11 @@ $(msg -bar)
  
  ${Red_font_prefix}17.${Font_color_suffix} xsalsa20
  ${Red_font_prefix}18.${Font_color_suffix} xchacha20
-$(msg -bar)
+$(msg -bar3)
  ${Tip} Para salsa20/chacha20-*:\n Porfavor instale libsodium:\n Opcion 4 en menu principal SSRR"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: 16. chacha20-ietf):" ssr_method
-msg -bar
+msg -bar3
 	[[ -z "${ssr_method}" ]] && ssr_method="16"
 	if [[ ${ssr_method} == "1" ]]; then
 		ssr_method="Ninguno"
@@ -490,9 +490,9 @@ msg -bar
 	echo && echo -e "	Encriptacion: ${Green_font_prefix}${ssr_method}${Font_color_suffix}" && echo
 }
 Set_config_protocol(){
-msg -bar
+msg -bar3
 	echo -e "\e[92m 5) Por favor, seleccione un Protocolo
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix} origin
  ${Green_font_prefix}2.${Font_color_suffix} auth_sha1_v4
  ${Green_font_prefix}3.${Font_color_suffix} auth_aes128_md5
@@ -504,11 +504,11 @@ $(msg -bar)
  ${Red_font_prefix}8.${Font_color_suffix} auth_chain_d
  ${Red_font_prefix}9.${Font_color_suffix} auth_chain_e
  ${Red_font_prefix}10.${Font_color_suffix} auth_chain_f
-$(msg -bar)
+$(msg -bar3)
  ${Tip}\n Si selecciona el protocolo de serie auth_chain_ *:\n Se recomienda establecer el metodo de cifrado en ninguno"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predterminado: 1. origin):" ssr_protocol
-msg -bar
+msg -bar3
 	[[ -z "${ssr_protocol}" ]] && ssr_protocol="1"
 	if [[ ${ssr_protocol} == "1" ]]; then
 		ssr_protocol="origin"
@@ -544,17 +544,17 @@ msg -bar
 	fi
 }
 Set_config_obfs(){
-msg -bar
+msg -bar3
 	echo -e "\e[92m 6) Por favor, seleccione el metodo OBFS
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix} plain
  ${Green_font_prefix}2.${Font_color_suffix} http_simple
  ${Green_font_prefix}3.${Font_color_suffix} http_post
  ${Green_font_prefix}4.${Font_color_suffix} random_head
  ${Green_font_prefix}5.${Font_color_suffix} tls1.2_ticket_auth
-$(msg -bar)
+$(msg -bar3)
   Si elige tls1.2_ticket_auth, entonces el cliente puede\n  elegir tls1.2_ticket_fastauth!"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: 5. tls1.2_ticket_auth):" ssr_obfs
 	[[ -z "${ssr_obfs}" ]] && ssr_obfs="5"
 	if [[ ${ssr_obfs} == "1" ]]; then
@@ -571,7 +571,7 @@ msg -bar
 		ssr_obfs="tls1.2_ticket_auth"
 	fi
 	echo && echo -e "	obfs : ${Green_font_prefix}${ssr_obfs}${Font_color_suffix}" && echo
-	msg -bar
+	msg -bar3
 	if [[ ${ssr_obfs} != "plain" ]]; then
 			stty erase '^H' && read -p "Configurar modo Compatible (Para usar SS)? [y/n]: " ssr_obfs_yn
 			[[ -z "${ssr_obfs_yn}" ]] && ssr_obfs_yn="y"
@@ -579,13 +579,13 @@ msg -bar
 	fi
 }
 Set_config_protocol_param(){
-msg -bar
+msg -bar3
 	while true
 	do
 	echo -e "\e[92m 7) Limitar Cantidad de Dispositivos Simultaneos\n  ${Green_font_prefix} auth_*La serie no es compatible con la version original. ${Font_color_suffix}"
-msg -bar
+msg -bar3
 	echo -e "${Tip} Limite de numero de dispositivos:\n Es el numero de clientes que usaran la cuenta\n el minimo recomendado 2."
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: Ilimitado):" ssr_protocol_param
 	[[ -z "$ssr_protocol_param" ]] && ssr_protocol_param="" && echo && break
 	expr ${ssr_protocol_param} + 0 &>/dev/null
@@ -602,13 +602,13 @@ msg -bar
 	done
 }
 Set_config_speed_limit_per_con(){
-msg -bar
+msg -bar3
 	while true
 	do
 	echo -e "\e[92m 8) Introduzca un Limite de Velocidad x Hilo (en KB/S)"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predterminado: Ilimitado):" ssr_speed_limit_per_con
-msg -bar
+msg -bar3
 	[[ -z "$ssr_speed_limit_per_con" ]] && ssr_speed_limit_per_con=0 && echo && break
 	expr ${ssr_speed_limit_per_con} + 0 &>/dev/null
 	if [[ $? == 0 ]]; then
@@ -624,13 +624,13 @@ msg -bar
 	done
 }
 Set_config_speed_limit_per_user(){
-msg -bar
+msg -bar3
 	while true
 	do
 	echo -e "\e[92m 9) Introduzca un Limite de Velocidad Maxima (en KB/S)"
-msg -bar
+msg -bar3
 	echo -e "${Tip} Limite de Velocidad Maxima del Puerto :\n Es la velocidad maxima que ira el Usuario."
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: Ilimitado):" ssr_speed_limit_per_user
 	[[ -z "$ssr_speed_limit_per_user" ]] && ssr_speed_limit_per_user=0 && echo && break
 	expr ${ssr_speed_limit_per_user} + 0 &>/dev/null
@@ -647,11 +647,11 @@ msg -bar
 	done
 }
 Set_config_transfer(){
-msg -bar
+msg -bar3
 	while true
 	do
 	echo -e "\e[92m 10) Ingrese Cantidad Total de Datos para el Usuario\n   (en GB, 1-838868 GB)"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: Ilimitado):" ssr_transfer
 	[[ -z "$ssr_transfer" ]] && ssr_transfer="838868" && echo && break
 	expr ${ssr_transfer} + 0 &>/dev/null
@@ -668,11 +668,11 @@ msg -bar
 	done
 }
 Set_config_forbid(){
-msg -bar
+msg -bar3
 	echo "PROIBIR PUERTOS"
-msg -bar
+msg -bar3
 	echo -e "${Tip} Puertos prohibidos:\n Por ejemplo, si no permite el acceso al puerto 25, los\n usuarios no podran acceder al puerto de correo 25 a\n traves del proxy de SSR. Si 80,443 esta desactivado,\n los usuarios no podran acceda a los sitios\n http/https normalmente."
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: permitir todo):" ssr_forbid
 	[[ -z "${ssr_forbid}" ]] && ssr_forbid=""
 	echo && echo -e "	Puerto prohibido: ${Green_font_prefix}${ssr_forbid}${Font_color_suffix}" && echo
@@ -703,7 +703,7 @@ Set_config_enable(){
 		if [[ "${ssr_enable_yn}" == [Yy] ]]; then
 			ssr_enable="0"
 		else
-			echo -e "Cancelado...\n$(msg -bar)" && exit 0
+			echo -e "Cancelado...\n$(msg -bar3)" && exit 0
 		fi
 	elif [[ "${enable}" == "0" ]]; then
 		echo -e "Port [${ssr_port}] El estado de la cuenta:${Green_font_prefix}Habilitado ${Font_color_suffix} , Cambie a ${Red_font_prefix}Deshabilitado${Font_color_suffix} ?[Y/n]"
@@ -729,7 +729,7 @@ Set_user_api_server_pub_addr(){
 		fi
 	fi
 	echo "Introduzca la IP del servidor o el nombre de dominio que se mostrara en la configuracion del usuario (cuando el servidor tiene varias IP, puede especificar la IP o el nombre de dominio que se muestra en la configuracion del usuario)"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado:Deteccion automatica de la red externa IP):" ssr_server_pub_addr
 	if [[ -z "${ssr_server_pub_addr}" ]]; then
 		Get_IP
@@ -747,7 +747,7 @@ msg -bar
 			ssr_server_pub_addr="${ip}"
 		fi
 	fi
-	echo && msg -bar && echo -e "	IP o nombre de dominio: ${Green_font_prefix}${ssr_server_pub_addr}${Font_color_suffix}" && msg -bar && echo
+	echo && msg -bar3 && echo -e "	IP o nombre de dominio: ${Green_font_prefix}${ssr_server_pub_addr}${Font_color_suffix}" && msg -bar3 && echo
 }
 Set_config_all(){
 	lal=$1
@@ -973,10 +973,10 @@ Installation_dependency(){
 Install_SSR(){
 clear
 	check_root
-	msg -bar
-	[[ -e ${ssr_folder} ]] && echo -e "${Error}\nLa carpeta ShadowsocksR ha sido creada, por favor verifique\n(si la instalacion falla, desinstalela primero) !\n$(msg -bar)" && exit 1 
+	msg -bar3
+	[[ -e ${ssr_folder} ]] && echo -e "${Error}\nLa carpeta ShadowsocksR ha sido creada, por favor verifique\n(si la instalacion falla, desinstalela primero) !\n$(msg -bar3)" && exit 1 
 	echo -e "${Info}\nComience la configuracion de la cuenta de ShadowsocksR..."
-msg -bar
+msg -bar3
 	Set_user_api_server_pub_addr
 	Set_config_all
 	echo -e "${Info} Comience a instalar / configurar las dependencias de ShadowsocksR ..."
@@ -1010,11 +1010,11 @@ Update_SSR(){
 
 }
 Uninstall_SSR(){
-	[[ ! -e ${ssr_folder} ]] && echo -e "${Error} ShadowsocksR no esta instalado, por favor, compruebe!\n$(msg -bar)" && exit 1
+	[[ ! -e ${ssr_folder} ]] && echo -e "${Error} ShadowsocksR no esta instalado, por favor, compruebe!\n$(msg -bar3)" && exit 1
 	echo "Desinstalar ShadowsocksR [y/n]"
-msg -bar 
+msg -bar3 
 	stty erase '^H' && read -p "(Predeterminado: n):" unyn
-msg -bar
+msg -bar3
 	[[ -z ${unyn} ]] && unyn="n"
 	if [[ ${unyn} == [Yy] ]]; then
 		check_pid
@@ -1053,7 +1053,7 @@ Install_Libsodium(){
 		stty erase '^H' && read -p "(Default: n):" yn
 		[[ -z ${yn} ]] && yn="n"
 		if [[ ${yn} == [Nn] ]]; then
-			echo -e "Cancelado...\n$(msg -bar)" && exit 1
+			echo -e "Cancelado...\n$(msg -bar3)" && exit 1
 		fi
 	else
 		echo -e "${Info} libsodium no instalado, instalacion iniciada ..."
@@ -1085,7 +1085,7 @@ Install_Libsodium(){
 	cd .. && rm -rf libsodium-${Libsodiumr_ver}.tar.gz && rm -rf libsodium-${Libsodiumr_ver}
 	[[ ! -e ${Libsodiumr_file} ]] && echo -e "${Error} libsodium Instalacion fallida!" && exit 1
 	echo && echo -e "${Info} libsodium exito de instalacion!" && echo
-msg -bar
+msg -bar3
 }
 #Mostrar informaci�n de conexi�n
 debian_View_user_connection_info(){
@@ -1114,7 +1114,7 @@ debian_View_user_connection_info(){
 	done
 	echo -e "Numero total de usuarios: ${Green_background_prefix} "${user_total}" ${Font_color_suffix} Numero total de IPs vinculadas: ${Green_background_prefix} "${IP_total}" ${Font_color_suffix}\n"
 	echo -e "${user_list_all}"
-msg -bar 
+msg -bar3 
 }
 centos_View_user_connection_info(){
 	format_1=$1
@@ -1146,21 +1146,21 @@ centos_View_user_connection_info(){
 View_user_connection_info(){
 clear
 	SSR_installation_status
-	msg -bar
+	msg -bar3
 	 echo -e "Seleccione el formato para mostrar :
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix} Mostrar IP 
 
  ${Green_font_prefix}2.${Font_color_suffix} Mostrar IP + Resolver el nombre DNS"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: 1):" ssr_connection_info
-msg -bar
+msg -bar3
 	[[ -z "${ssr_connection_info}" ]] && ssr_connection_info="1"
 	if [[ ${ssr_connection_info} == "1" ]]; then
 		View_user_connection_info_1 ""
 	elif [[ ${ssr_connection_info} == "2" ]]; then
 		echo -e "${Tip} Detectar IP (ipip.net)puede llevar mas tiempo si hay muchas IPs"
-msg -bar
+msg -bar3
 		View_user_connection_info_1 "IP_address"
 	else
 		echo -e "${Error} Ingrese el numero correcto(1-2)" && exit 1
@@ -1197,14 +1197,14 @@ get_IP_address(){
 }
 #Modificar la configuraci�n del usuario
 Modify_port(){
-msg -bar
+msg -bar3
 	List_port_user
 	while true
 	do
 		echo -e "Por favor ingrese el usuario (Puerto) que tiene que ser modificado" 
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: cancelar):" ssr_port
-		[[ -z "${ssr_port}" ]] && echo -e "Cancelado ...\n$(msg -bar)" && exit 1
+		[[ -z "${ssr_port}" ]] && echo -e "Cancelado ...\n$(msg -bar3)" && exit 1
 		Modify_user=$(cat "${config_user_mudb_file}"|grep '"port": '"${ssr_port}"',')
 		if [[ ! -z ${Modify_user} ]]; then
 			break
@@ -1217,7 +1217,7 @@ Modify_Config(){
 clear
 	SSR_installation_status
 	echo && echo -e "    ###¿Que desea realizar?###Mod By @Kalix1
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix}  Agregar y Configurar Usuario
  ${Green_font_prefix}2.${Font_color_suffix}  Eliminar la Configuracion del Usuario
 ————————— Modificar la Configuracion del Usuario ————
@@ -1233,11 +1233,11 @@ $(msg -bar)
  ${Green_font_prefix}12.${Font_color_suffix} Modificar la Configuracion Completa
 ————————— Otras Configuraciones —————————
  ${Green_font_prefix}13.${Font_color_suffix} Modificar la IP o el nombre de dominio que\n se muestra en el perfil del usuario
-$(msg -bar)
+$(msg -bar3)
  ${Tip} El nombre de usuario y el puerto del usuario\n no se pueden modificar. Si necesita modificarlos, use\n el script para modificar manualmente la funcion !"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: cancelar):" ssr_modify
-	[[ -z "${ssr_modify}" ]] && echo -e "Cancelado ...\n$(msg -bar)" && exit 1
+	[[ -z "${ssr_modify}" ]] && echo -e "Cancelado ...\n$(msg -bar3)" && exit 1
 	if [[ ${ssr_modify} == "1" ]]; then
 		Add_port_user
 	elif [[ ${ssr_modify} == "2" ]]; then
@@ -1326,7 +1326,7 @@ clear
 			else
 				Add_iptables
 				Save_iptables
-				msg -bar
+				msg -bar3
 				echo -e "${Info} Usuario agregado exitosamente\n ${Green_font_prefix}[Nombre de usuario: ${ssr_user} , Puerto: ${ssr_port}]${Font_color_suffix} "
 				echo
 				stty erase '^H' && read -p "Continuar para agregar otro Usuario?[y/n]:" addyn
@@ -1347,11 +1347,11 @@ Del_port_user(){
 	List_port_user
 	while true
 	do
-		msg -bar
+		msg -bar3
 		echo -e "Por favor ingrese el puerto de usuario para ser eliminado"
 		stty erase '^H' && read -p "(Predeterminado: Cancelar):" del_user_port
-		msg -bar
-		[[ -z "${del_user_port}" ]] && echo -e "Cancelado...\n$(msg -bar)" && exit 1
+		msg -bar3
+		[[ -z "${del_user_port}" ]] && echo -e "Cancelado...\n$(msg -bar3)" && exit 1
 		del_user=$(cat "${config_user_mudb_file}"|grep '"port": '"${del_user_port}"',')
 		if [[ ! -z ${del_user} ]]; then
 			port=${del_user_port}
@@ -1368,15 +1368,15 @@ Del_port_user(){
 			echo -e "${Error} Por favor ingrese el puerto correcto !"
 		fi
 	done
-	msg -bar
+	msg -bar3
 }
 Manually_Modify_Config(){
 clear
-msg -bar
+msg -bar3
 	SSR_installation_status
 	nano ${config_user_mudb_file}
 	echo "Si reiniciar ShadowsocksR ahora?[Y/n]" && echo
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: y):" yn
 	[[ -z ${yn} ]] && yn="y"
 	if [[ ${yn} == [Yy] ]]; then
@@ -1386,24 +1386,24 @@ msg -bar
 }
 Clear_transfer(){
 clear
-msg -bar
+msg -bar3
 	SSR_installation_status
 	 echo -e "Que quieres realizar?
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix}  Borrar el trafico de un solo usuario
  ${Green_font_prefix}2.${Font_color_suffix}  Borrar todo el trafico de usuarios (irreparable)
  ${Green_font_prefix}3.${Font_color_suffix}  Todo el trafico de usuarios se borra en el inicio
  ${Green_font_prefix}4.${Font_color_suffix}  Deja de cronometrar todo el trafico de usuarios
  ${Green_font_prefix}5.${Font_color_suffix}  Modificar la sincronizacion de todo el trafico de usuarios"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado:Cancelar):" ssr_modify
 	[[ -z "${ssr_modify}" ]] && echo "Cancelado ..." && exit 1
 	if [[ ${ssr_modify} == "1" ]]; then
 		Clear_transfer_one
 	elif [[ ${ssr_modify} == "2" ]]; then
-msg -bar
+msg -bar3
 		echo "Esta seguro de que desea borrar todo el trafico de usuario[y/n]" && echo
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: n):" yn
 		[[ -z ${yn} ]] && yn="n"
 		if [[ ${yn} == [Yy] ]]; then
@@ -1430,10 +1430,10 @@ Clear_transfer_one(){
 	List_port_user
 	while true
 	do
-	    msg -bar
+	    msg -bar3
 		echo -e "Por favor ingrese el puerto de usuario para borrar el tráfico usado"
 		stty erase '^H' && read -p "(Predeterminado: Cancelar):" Clear_transfer_user_port
-		[[ -z "${Clear_transfer_user_port}" ]] && echo -e "Cancelado...\n$(msg -bar)" && exit 1
+		[[ -z "${Clear_transfer_user_port}" ]] && echo -e "Cancelado...\n$(msg -bar3)" && exit 1
 		Clear_transfer_user=$(cat "${config_user_mudb_file}"|grep '"port": '"${Clear_transfer_user_port}"',')
 		if [[ ! -z ${Clear_transfer_user} ]]; then
 			match_clear=$(python mujson_mgr.py -c -p "${Clear_transfer_user_port}"|grep -w "clear user ")
@@ -1503,15 +1503,15 @@ clear
  === Formato ===
  * * * * * Mes * * * * *
  ${Green_font_prefix} 0 2 1 * * ${Font_color_suffix} Representante 1er, 2:00, claro, trafico usado.
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix} 0 2 15 * * ${Font_color_suffix} Representativo El 1  2} representa el 15  2:00 minutos Punto de flujo usado despejado 0 minutos Borrar flujo usado�
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix} 0 2 */7 * * ${Font_color_suffix} Representante 7 dias 2: 0 minutos despeja el trafico usado.
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix} 0 2 * * 0 ${Font_color_suffix} Representa todos los domingos (7) para despejar el trafico utilizado.
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix} 0 2 * * 3 ${Font_color_suffix} Representante (3) Flujo de trafico usado despejado"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Default: 0 2 1 * * 1 de cada mes 2:00):" Crontab_time
 	[[ -z "${Crontab_time}" ]] && Crontab_time="0 2 1 * *"
 }
@@ -1549,23 +1549,23 @@ View_Log(){
 #Afilado
 Configure_Server_Speeder(){
 clear
-msg -bar
+msg -bar3
 	echo && echo -e "Que vas a hacer
 ${BARRA1}
  ${Green_font_prefix}1.${Font_color_suffix} Velocidad aguda
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}2.${Font_color_suffix} Velocidad aguda
 ————————
  ${Green_font_prefix}3.${Font_color_suffix} Velocidad aguda
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}4.${Font_color_suffix} Velocidad aguda
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}5.${Font_color_suffix} Reinicie la velocidad aguda
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}6.${Font_color_suffix} Estado agudo
- $(msg -bar)
+ $(msg -bar3)
  Nota: Sharp y LotServer no se pueden instalar / iniciar al mismo tiempo"
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: Cancelar):" server_speeder_num
 	[[ -z "${server_speeder_num}" ]] && echo "Cancelado ..." && exit 1
 	if [[ ${server_speeder_num} == "1" ]]; then
@@ -1610,9 +1610,9 @@ Install_ServerSpeeder(){
 }
 Uninstall_ServerSpeeder(){
 clear
-msg -bar
+msg -bar3
 	echo "yes para desinstalar Speed ??Speed ??(Server Speeder)[y/N]" && echo
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: n):" unyn
 	[[ -z ${unyn} ]] && echo && echo "Cancelado ..." && exit 1
 	if [[ ${unyn} == [Yy] ]]; then
@@ -1624,24 +1624,24 @@ msg -bar
 # LotServer
 Configure_LotServer(){
 clear
-msg -bar
+msg -bar3
 	echo && echo -e "Que vas a hacer?
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}1.${Font_color_suffix} Instalar LotServer
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}2.${Font_color_suffix} Desinstalar LotServer
 ————————
  ${Green_font_prefix}3.${Font_color_suffix} Iniciar LotServer
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}4.${Font_color_suffix} Detener LotServer
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}5.${Font_color_suffix} Reiniciar LotServer
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}6.${Font_color_suffix} Ver el estado de LotServer
 ${BARRA1}
  
  Nota: Sharp y LotServer no se pueden instalar / iniciar al mismo tiempo"
-msg -bar
+msg -bar3
 
 	stty erase '^H' && read -p "(Predeterminado: Cancelar):" lotserver_num
 	[[ -z "${lotserver_num}" ]] && echo "Cancelado ..." && exit 1
@@ -1684,11 +1684,11 @@ Install_LotServer(){
 }
 Uninstall_LotServer(){
 clear
-msg -bar
+msg -bar3
 	echo "Desinstalar Para desinstalar LotServer[y/N]" && echo
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: n):" unyn
-msg -bar
+msg -bar3
 	[[ -z ${unyn} ]] && echo && echo "Cancelado ..." && exit 1
 	if [[ ${unyn} == [Yy] ]]; then
 		wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" && bash /tmp/appex.sh 'uninstall'
@@ -1698,23 +1698,23 @@ msg -bar
 # BBR
 Configure_BBR(){
 clear
-msg -bar
+msg -bar3
  echo -e "  Que vas a hacer?
-$(msg -bar)	
+$(msg -bar3)	
  ${Green_font_prefix}1.${Font_color_suffix} Instalar BBR
 ————————
 ${Green_font_prefix}2.${Font_color_suffix} Iniciar BBR
 ${Green_font_prefix}3.${Font_color_suffix} Dejar de BBR
 ${Green_font_prefix}4.${Font_color_suffix} Ver el estado de BBR"
-msg -bar
+msg -bar3
 echo -e "${Green_font_prefix} [Por favor, preste atencion antes de la instalacion] ${Font_color_suffix}
-$(msg -bar)
+$(msg -bar3)
 1. Abra BBR, reemplace, hay un error de reemplazo (despues de reiniciar)
 2. Este script solo es compatible con los nucleos de reemplazo de Debian / Ubuntu. OpenVZ y Docker no admiten el reemplazo de los nucleos.
 3. Debian reemplaza el proceso del kernel [Desea finalizar el kernel de desinstalacion], seleccione ${Green_font_prefix} NO ${Font_color_suffix}"
 	stty erase '^H' && read -p "(Predeterminado: Cancelar):" bbr_num
-msg -bar
-	[[ -z "${bbr_num}" ]] && echo -e "Cancelado...\n$(msg -bar)" && exit 1
+msg -bar3
+	[[ -z "${bbr_num}" ]] && echo -e "Cancelado...\n$(msg -bar3)" && exit 1
 	if [[ ${bbr_num} == "1" ]]; then
 		Install_BBR
 	elif [[ ${bbr_num} == "2" ]]; then
@@ -1746,40 +1746,40 @@ Status_BBR(){
 }
 BackUP_ssrr(){
 clear
-msg -bar
+msg -bar3
 msg -ama "$(fun_trans "HERRAMIENTA DE BACKUP SS-SSRR -BETA")"
-msg -bar
+msg -bar3
 msg -azu "CREANDO BACKUP" "RESTAURAR BACKUP"
-msg -bar
+msg -bar3
 rm -rf /root/mudb.json > /dev/null 2>&1
 cp /usr/local/shadowsocksr/mudb.json /root/mudb.json > /dev/null 2>&1
 msg -azu "$(fun_trans "Procedimiento Hecho con Exito, Guardado en:")"
 echo -e "\033[1;31mBACKUP > [\033[1;32m/root/mudb.json\033[1;31m]"
-msg -bar
+msg -bar3
 }
 RestaurarBackUp_ssrr(){
 clear
-msg -bar
+msg -bar3
 msg -ama "$(fun_trans "HERRAMIENTA DE RESTAURACION SS-SSRR -BETA")"
-msg -bar
+msg -bar3
 msg -azu "Recuerde tener minimo una cuenta ya creada"
 msg -azu "Copie el archivo mudb.json en la carpeta /root"
 read -p "     ►► Presione enter para continuar ◄◄"
-msg -bar
+msg -bar3
 msg -azu "$(fun_trans "Procedimiento Hecho con Exito")"
 read -p "  ►► Presione enter para Reiniciar Panel SSRR ◄◄"
-msg -bar
+msg -bar3
 mv /root/mudb.json /usr/local/shadowsocksr/mudb.json
 Restart_SSR
-msg -bar
+msg -bar3
 }
 
 # Otros
 Other_functions(){
 clear
-msg -bar
+msg -bar3
 	echo && echo -e "  Que vas a realizar?
-$(msg -bar)
+$(msg -bar3)
   ${Green_font_prefix}1.${Font_color_suffix} Configurar BBR
   ${Green_font_prefix}2.${Font_color_suffix} Velocidad de configuracion (ServerSpeeder)
   ${Green_font_prefix}3.${Font_color_suffix} Configurar LotServer (Rising Parent)
@@ -1796,9 +1796,9 @@ $(msg -bar)
 ———————————— 
  ${Green_font_prefix}8.${Font_color_suffix} Backup SSRR
  ${Green_font_prefix}9.${Font_color_suffix} Restaurar Backup" && echo
-msg -bar
+msg -bar3
 	stty erase '^H' && read -p "(Predeterminado: cancelar):" other_num
-	[[ -z "${other_num}" ]] && echo -e "Cancelado...\n$(msg -bar)" && exit 1
+	[[ -z "${other_num}" ]] && echo -e "Cancelado...\n$(msg -bar3)" && exit 1
 	if [[ ${other_num} == "1" ]]; then
 		Configure_BBR
 	elif [[ ${other_num} == "2" ]]; then
@@ -1834,15 +1834,15 @@ UnBanBTPTSPAM(){
 }
 Set_config_connect_verbose_info(){
 clear
-msg -bar
+msg -bar3
 	SSR_installation_status
 	[[ ! -e ${jq_file} ]] && echo -e "${Error} JQ parser No, por favor, compruebe!" && exit 1
 	connect_verbose_info=`${jq_file} '.connect_verbose_info' ${config_user_file}`
 	if [[ ${connect_verbose_info} = "0" ]]; then
 		echo && echo -e "Modo de registro actual: ${Green_font_prefix}Registro de errores en modo simple${Font_color_suffix}"
-msg -bar
+msg -bar3
 		echo -e "yes para cambiar a ${Green_font_prefix}Modo detallado (registro de conexi�n + registro de errores)${Font_color_suffix}？[y/N]"
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: n):" connect_verbose_info_ny
 		[[ -z "${connect_verbose_info_ny}" ]] && connect_verbose_info_ny="n"
 		if [[ ${connect_verbose_info_ny} == [Yy] ]]; then
@@ -1854,7 +1854,7 @@ msg -bar
 		fi
 	else
 		echo && echo -e "Modo de registro actual: ${Green_font_prefix}Modo detallado (conexion de conexion + registro de errores)${Font_color_suffix}"
-msg -bar
+msg -bar3
 		echo -e "yes para cambiar a ${Green_font_prefix}Modo simple ${Font_color_suffix}?[y/N]"
 		stty erase '^H' && read -p "(Predeterminado: n):" connect_verbose_info_ny
 		[[ -z "${connect_verbose_info_ny}" ]] && connect_verbose_info_ny="n"
@@ -1869,14 +1869,14 @@ msg -bar
 }
 Set_crontab_monitor_ssr(){
 clear
-msg -bar
+msg -bar3
 	SSR_installation_status
 	crontab_monitor_ssr_status=$(crontab -l|grep "ssrmu.sh monitor")
 	if [[ -z "${crontab_monitor_ssr_status}" ]]; then
 		echo && echo -e "Modo de monitoreo actual: ${Green_font_prefix}No monitoreado${Font_color_suffix}"
-msg -bar
+msg -bar3
 		echo -e "Ok para abrir ${Green_font_prefix}Servidor ShadowsocksR ejecutando monitoreo de estado${Font_color_suffix} Funcion? (Cuando el proceso R lado SSR R)[Y/n]"
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: y):" crontab_monitor_ssr_status_ny
 		[[ -z "${crontab_monitor_ssr_status_ny}" ]] && crontab_monitor_ssr_status_ny="y"
 		if [[ ${crontab_monitor_ssr_status_ny} == [Yy] ]]; then
@@ -1886,9 +1886,9 @@ msg -bar
 		fi
 	else
 		echo && echo -e "Modo de monitoreo actual: ${Green_font_prefix}Abierto${Font_color_suffix}"
-msg -bar
+msg -bar3
 		echo -e "Ok para apagar ${Green_font_prefix}Servidor ShadowsocksR ejecutando monitoreo de estado${Font_color_suffix} Funcion? (procesar servidor SSR)[y/N]"
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: n):" crontab_monitor_ssr_status_ny
 		[[ -z "${crontab_monitor_ssr_status_ny}" ]] && crontab_monitor_ssr_status_ny="n"
 		if [[ ${crontab_monitor_ssr_status_ny} == [Yy] ]]; then
@@ -1942,14 +1942,14 @@ crontab_monitor_ssr_cron_stop(){
 }
 Update_Shell(){
 clear
-msg -bar
+msg -bar3
 	echo -e "La version actual es [ ${sh_ver} ], Comienza a detectar la ultima version ..."
 	sh_new_ver=$(wget --no-check-certificate -qO- "https://raw.githubusercontent.com/hybtoy/ssrrmu/master/ssrrmu.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1) && sh_new_type="github"
 	[[ -z ${sh_new_ver} ]] && sh_new_ver=$(wget --no-check-certificate -qO- "https://raw.githubusercontent.com/hybtoy/ssrrmu/master/ssrrmu.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1) && sh_new_type="github"
 	[[ -z ${sh_new_ver} ]] && echo -e "${Error} Ultima version de deteccion !" && exit 0
 	if [[ ${sh_new_ver} != ${sh_ver} ]]; then
 		echo -e "Descubrir nueva version[ ${sh_new_ver} ], Esta actualizado?[Y/n]"
-msg -bar
+msg -bar3
 		stty erase '^H' && read -p "(Predeterminado: y):" yn
 		[[ -z "${yn}" ]] && yn="y"
 		if [[ ${yn} == [Yy] ]]; then
@@ -1969,7 +1969,7 @@ msg -bar
 }
 # Mostrar el estado del menu
 menu_status(){
-msg -bar
+msg -bar3
 	if [[ -e ${ssr_folder} ]]; then
 		check_pid
 		if [[ ! -z "${PID}" ]]; then
@@ -1991,9 +1991,9 @@ elif [[ "${action}" == "monitor" ]]; then
 	crontab_monitor_ssr
 else
 echo -e "\033[1;37m       =====>>►► 🐲 PANEL VPS•MX 🐲 ◄◄<<=====       \033[1;37m"
-msg -bar
+msg -bar3
 echo -e "        Controlador de ShadowSock-R  ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
-$(msg -bar)
+$(msg -bar3)
   ${Green_font_prefix}1.${Font_color_suffix} Instalar ShadowsocksR 
   ${Green_font_prefix}2.${Font_color_suffix} Actualizar ShadowsocksR
   ${Green_font_prefix}3.${Font_color_suffix} Desinstalar ShadowsocksR
@@ -2012,13 +2012,13 @@ $(msg -bar)
 —————————————
  ${Green_font_prefix}14.${Font_color_suffix} Otras Funciones
  ${Green_font_prefix}15.${Font_color_suffix} Actualizar Script 
-$(msg -bar)
+$(msg -bar3)
  ${Green_font_prefix}16.${Font_color_suffix}${Red_font_prefix} SALIR"
 	
 	menu_status
-	msg -bar
+	msg -bar3
     stty erase '^H' && read -p "Porfavor seleccione una opcion [1-16]:" num
-	msg -bar
+	msg -bar3
 case "$num" in
 	1)
 	Install_SSR
@@ -2070,7 +2070,7 @@ case "$num" in
       ;;
 	*)
 	echo -e "${Error} Porfavor use numeros del [1-16]"
-	msg -bar
+	msg -bar3
 	;;
 esac
 fi

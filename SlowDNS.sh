@@ -5,7 +5,7 @@ clear
 #ADM_inst="/ADMcgh/slow/dnsi" && [[ ! -d ${ADM_inst} ]] && mkdir ${ADM_inst}
 [[ ! -d /etc/adm-lite/slow/ ]] && mkdir /etc/adm-lite/slow
 ADM_slow="/etc/adm-lite/slow/dnsi" && [[ ! -d ${ADM_slow} ]] && mkdir ${ADM_slow}
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg) > /dev/null 
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg > /dev/null || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg) > /dev/null 
 #${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ##
 #${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ##
 
@@ -30,7 +30,7 @@ echo $selection
 info(){
   clear
   nodata(){
-  msg -bar
+  msg -bar3
   msg -ama "        !SIN INFORMACION SLOWDNS!"
   read -p "ENTER PARA CONTINUAR"
   exit 0
@@ -53,12 +53,12 @@ info(){
   nodata
   fi  
   
-  msg -bar
+  msg -bar3
   msg -ama "         DATOS DE SU CONECCION SLOWDNS"
-  msg -bar
+  msg -bar3
   msg -ama "Su NameServer: $(cat ${ADM_slow}/domain_ns)"
-  msg -bar
-  msg -ama "Su Llave: $(cat ${ADM_slow}/server.pub)"   msg -bar  
+  msg -bar3
+  msg -ama "Su Llave: $(cat ${ADM_slow}/server.pub)"   msg -bar3  
   read -p "ENTER PARA CONTINUAR"
   }    
   
@@ -94,33 +94,33 @@ info(){
   num_opc="$n"          
   let n++       
   done      
-  msg -bar      
+  msg -bar3      
   opc=$(selection_fun $num_opc)      
   echo "${drop[$opc]}" > ${ADM_slow}/puerto      
   echo "${dPROT[$opc]}" > ${ADM_slow}/protc      
   PORT=$(cat ${ADM_slow}/puerto)      
   PRT=$(cat ${ADM_slow}/protc)      
   msg -bra " INSTALADOR SLOWDNS "    
-  msg -bar  
+  msg -bar3  
   echo -e " $(msg -ama "Redireccion SlowDns:") $(msg -verd "$(echo -e "${PRT}" | tr [:lower:] [:upper:])") : $(msg -verd "$PORT") $(msg -ama " -> ") $(msg -verd "5300")" 
-  msg -bar 
+  msg -bar3 
   [[ -e /dominio_NS.txt && ! -e ${ADM_slow}/domain_ns ]] && cp /dominio_NS.txt ${ADM_slow}/domain_ns
   [[ -e ${ADM_slow}/domain_ns ]] && NS1=$(cat < ${ADM_slow}/domain_ns) || unset NS1 NS
   unset NS   
   [[ -z $NS1 ]] && {
   while [[ -z $NS ]]; do 
-  msg -bar 
+  msg -bar3 
   echo -ne "\e[1;31m TU DOMINIO NS \e[1;37m: "    
   read NS 
   tput cuu1 && tput dl1      
   done    
     } || {
-  msg -bar 
+  msg -bar3 
   echo -e "\e[1;31m      TIENES UN DOMINIO NS YA REGISTRADO \e[1;37m "    
   echo -e "\e[1;32m   TU NS ES : ${NS1} \e[1;37m "    
   echo -e "  SI QUIERES UTILIZARLO, SOLO PRESIONA ENTER "
   echo -e "       CASO CONTRARIO DIJITA TU NUEVO NS "
-  msg -bar 
+  msg -bar3 
   echo -ne "\e[1;31m TU DOMINIO NS \e[1;37m: "    
   read NS
   [[ -z $NS ]] && NS="${NS1}"  
@@ -129,7 +129,7 @@ info(){
 	}
   echo "$NS" > ${ADM_slow}/domain_ns 
   echo -e " $(msg -ama "NAME SERVER:") $(msg -verd "$NS")"      
-  msg -bar        
+  msg -bar3        
   if [[ ! -e ${ADM_inst}/dns-server ]]; then    
   msg -ama " Descargando binario...." 
   [[ $(uname -m 2> /dev/null) != x86_64 ]] && {
@@ -138,7 +138,7 @@ info(){
   msg -verd "[OK]"    
   else    
   msg -verm "[fail]"    
-  msg -bar    
+  msg -bar3    
   msg -ama "No se pudo descargar el binario"    
   msg -verm "Instalacion cancelada"    
   read -p "ENTER PARA CONTINUAR"
@@ -150,14 +150,14 @@ info(){
   msg -verd "[OK]"    
   else    
   msg -verm "[fail]"    
-  msg -bar    
+  msg -bar3    
   msg -ama "No se pudo descargar el binario"    
   msg -verm "Instalacion canselada"    
   read -p "ENTER PARA CONTINUAR"
   exit 0    
   fi
   }
-  msg -bar      
+  msg -bar3      
   fi        
   [[ -e "${ADM_slow}/server.pub" ]] && pub=$(cat ${ADM_slow}/server.pub)        
   if [[ ! -z "$pub" ]]; then    
@@ -179,7 +179,7 @@ info(){
   ${ADM_inst}/dns-server -gen-key -privkey-file ${ADM_slow}/server.key -pubkey-file ${ADM_slow}/server.pub &>/dev/null
   echo -e " $(msg -ama "KEY.PUB:") $(msg -verd "$(cat ${ADM_slow}/server.pub)")"
   fi      
-  msg -bar      
+  msg -bar3      
   msg -azu "..._SLOWDNS ACTIVADO_..."        
   iptables -I INPUT -p udp --dport 5300 -j ACCEPT
   iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
@@ -197,34 +197,34 @@ info(){
 	service cron restart
   #-------------------------
   msg -verd "    Con Exito!!!"       
-  msg -bar      
+  msg -bar3      
   else    
   msg -verm "    Con Fallo!!!"       
-  msg -bar      
+  msg -bar3      
   fi      
   read -p "ENTER PARA CONTINUAR"
   }    
   
   reset_slow(){
   clear
-  msg -bar
+  msg -bar3
   msg -ama "        Reiniciando SlowDNS...."
   screen -ls | grep slowdns | cut -d. -f1 | awk '{print $1}' | xargs kill
   NS=$(cat ${ADM_slow}/domain_ns)
   PORT=$(cat ${ADM_slow}/puerto)
   if screen -dmS slowdns ${ADM_inst}/dns-server -udp :5300 -privkey-file /root/server.key $NS 127.0.0.1:$PORT ;then
   msg -verd "        Con exito!!!"    
-  msg -bar
+  msg -bar3
   else    
   msg -verm "        Con fallo!!!"    
-  msg -bar
+  msg -bar3
   fi
   read -p "ENTER PARA CONTINUAR"
   }  
   
   stop_slow(){
   clear
-  msg -bar
+  msg -bar3
   msg -ama "        Deteniendo SlowDNS...."
   if screen -ls | grep slowdns | cut -d. -f1 | awk '{print $1}' | xargs kill ; then
     	for pidslow in $(screen -ls | grep ".slowdns" | awk {'print $1'}); do
@@ -234,9 +234,9 @@ info(){
 						sed -i '/slowdns/d' /bin/autoboot
 			}
   screen -wipe >/dev/null
-  msg -verd "         Con exito!!!"   msg -bar
+  msg -verd "         Con exito!!!"   msg -bar3
   else
-  msg -verm "        Con fallo!!!"    msg -bar
+  msg -verm "        Con fallo!!!"    msg -bar3
   fi
   read -p "ENTER PARA CONTINUAR"
   }    
@@ -250,28 +250,28 @@ while true; do
 [[ -e ${ADM_slow}/protc ]] && PRT=$(cat ${ADM_slow}/protc | tr [:lower:] [:upper:]) || PRT='NULL' 
 [[ -e ${ADM_slow}/puerto ]] && PT=$(cat ${ADM_slow}/puerto) || PT='NULL' 
 [[ $(ps x | grep dns-server | grep -v grep) ]] && MT=$(msg -verd "ACTIVO!!!" ) || MT=$(msg -verm "INACTIVO!!!")
-  msg -bar
+  msg -bar3
   tittle
   msg -ama "         INSTALADOR SLOWDNS | @drowkid01${p1t0}Plus"
-  msg -bar #
+  msg -bar3 #
   echo -e " SlowDNS +" "${PRT} ""->" "${PT}"  "| ESTADO -> ${MT}"
-  msg -bar
+  msg -bar3
   #${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ## #${mbar2} ## #${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ###${mbar2} ##
   #[[ $(uname -m 2> /dev/null) != x86_64 ]] && {
 #echo -e "\033[1;32mÎ” SlowDNS no compatible en procesadores ARM " 
 #echo -e "\033[1;32mÎ”  Motor no disponible en ARM by @drowkid01 " 
-#msg -bar
+#msg -bar3
 #echo -e "\033[1;32mÎ”  Visita https://t.me/drowkid01_ADM , para detalles " 
-#msg -bar
+#msg -bar3
 #read -p "ENTER PARA CONTINUAR"
 #exit
 #}
-msg -bar
+msg -bar3
   
   menu_func "Instalar SlowDns" "$(msg -verd "Ver Informacion")" "$(msg -ama "Reiniciar SlowDns")" "$(msg -verm2 "Detener SlowDns")" "$(msg -verm2 "Remover SlowDns")"
-  msg -bar
+  msg -bar3
   echo -ne "$(msg -verd "  [0]") $(msg -verm2 "=>>") " && msg -bra "\033[1;41m Volver "
-  msg -bar
+  msg -bar3
   opcion=$(selection_fun 5)  
   case $opcion in
   1)ini_slow;;

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 
 failtwoban=$(dpkg -l | grep fail2ban | grep ii)
 apache=$(dpkg -l | grep apache2 | grep ii)
@@ -13,7 +13,7 @@ openssh=$(dpkg -l | grep openssh | grep ii)
 [[ -z $dropbear ]] || s3="DROPBEAR"
 [[ -z $apache ]] || s4="APACHE2"
 
-msg -bar
+msg -bar3
 
 #FUN_BAR
 fun_bar () {
@@ -43,16 +43,16 @@ if [ "$failtwoban" != "" ]; then
 echo -e "${cor[4]} ${txt[143]}"
 echo -e "${cor[2]} |1| >${cor[3]} DESINSTALAR SERVICIO"
 echo -e "${cor[2]} |2| >${cor[3]} VER REGISTRO DE EVENTOS"
-msg -bar
+msg -bar3
 read -p " [1|2]: " lo_og
 if [ "$lo_og" = "2" ]; then
 cat /var/log/fail2ban.log
 fi
 if [ "$lo_og" = "1" ]; then
-msg -bar
+msg -bar3
 fun_bar "apt-get remove fail2ban -y"
 fi
-msg -bar
+msg -bar3
 return
 fi
 
@@ -64,10 +64,10 @@ echo -e "${cor[5]} acción sospechosa CONTRA EL SERVIDOR"
 echo -e "${cor[5]} aumentando en un 90% de su seguridad."
 echo -e "${cor[5]} ¿Desea instalar Fail2Ban?"
 
-msg -bar
+msg -bar3
 read -p " [S/N]: " fail2ban
 if [[ "$fail2ban" = "s" || "$fail2ban" = "S" ]]; then
-msg -bar
+msg -bar3
 fun_bar "apt-get install fail2ban -y"
 cd $HOME
 wget -O fail2ban https://github.com/emirjorge/Script-Z/raw/master/CHUMO/Recursos/ferramentas/fail2ban-0.9.4.tar.gz -o /dev/null
@@ -110,7 +110,7 @@ action_blocklist_de  = blocklist_de[email="%(sender)s", service=%(filter)s, apik
 action_badips = badips.py[category="%(__name__)s", banaction="%(banaction)s", agent="%(fail2ban_agent)s"]
 action_badips_report = badips[category="%(__name__)s", agent="%(fail2ban_agent)s"]
 action = %(action_)s' > /etc/fail2ban/jail.local
-msg -bar
+msg -bar3
 echo -e "${cor[5]} Fail2ban Sera Instalado"
 echo -e "${cor[5]} Siguientes Servicios"
 [[ -z $s1 ]] || echo -ne " $s1"
@@ -118,7 +118,7 @@ echo -e "${cor[5]} Siguientes Servicios"
 [[ -z $s3 ]] || echo -ne " $s3"
 [[ -z $s4 ]] || echo -ne " $s4"
 echo -e ""
-msg -bar
+msg -bar3
 echo -e "${cor[5]} ¿Confirma la elección?"
 read -p " [S/N]: " sim_nao
 if [[ "$sim_nao" = "s" || "$sim_nao" = "S" ]]; then
@@ -454,7 +454,7 @@ service fail2ban restart > /dev/null 2>&1
 echo -e "${cor[5]} INSTALACION TERMINADA CON EXITO"
  fi
 fi
-msg -bar
+msg -bar3
 return
 }
 

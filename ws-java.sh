@@ -1,5 +1,5 @@
 #!/bin/bash
-source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar/msg)
+source <(curl -sL https://raw.githubusercontent.com/emirjorge/Script-Z/master/CHUMO/msg-bar3/msg)
 barra="\033[0;31m=====================================================\033[0m"
 
 install_ini () {
@@ -171,7 +171,7 @@ Banner /etc/bannerssh" > /etc/ssh/sshd_config
 
 car_cert () {
 [[ -e /etc/stunnel/stunnel.pem ]] && echo -e "Ya Existe un certificado SSL Cargado \n  Recuerde Cargar SU Certificado y Key del SSL " | pv -qL 25
-msg -bar
+msg -bar3
 echo -e "Descarga el fichero URL del Certificado SSL " 
 echo -e $barra
 		echo -e "		\033[4;31mNOTA importante\033[0m"
@@ -180,14 +180,14 @@ echo -e $barra
 		echo -e "               Evitar Errores Futuros"
 		echo -e "   y causar problemas en futuras instalaciones.\033[0m"
 		echo -e $barra
-msg -bar
+msg -bar3
 echo -e "Ingrese Link del Fichero URL de tu ZIP con los Certificados "
-msg -bar
+msg -bar3
 read -p " Pega tu Link : " urlm
 wget -O certificados.zip $urlm && echo -e "Descargando Fichero ZIP " || echo "Link de descarga Invalido"
-msg -bar
+msg -bar3
 echo -ne "\033[1;42m ZIPS Existentes : " && ls | grep zip && echo -e "\033[1;42m"
-msg -bar 
+msg -bar3 
 unzip certificados.zip 1> /dev/null 2> /dev/null && echo -e "Descomprimiendo Ficheros descargados" || echo -e "Error al Descomprimir "
 [[ -e private.key ]] && cat private.key > /etc/stunnel/stunnel.pem && echo -e " \033[1;42m Key del Certificado cargada Exitodamente\033[0m" || echo -e " \033[1;41mClaves Invalidas\033[0m"
 [[ -e certificate.crt && -e ca_bundle.crt ]] && cat certificate.crt ca_bundle.crt >> /etc/stunnel/stunnel.pem && echo -e "\033[1;42m  CRT del Certificado cargada Exitodamente\033[0m" || echo -e "\033[1;41mClaves Invalidas\033[0m"

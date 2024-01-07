@@ -45,28 +45,28 @@ make_service(){
  
   reset_slow(){
   clear
-  msg -bar
+  msg -bar3
   msg -ama "        Reiniciando UDPserver...."
   screen -ls | grep UDPserver | cut -d. -f1 | awk '{print $1}' | xargs kill
   if screen -dmS UDPserver /usr/bin/udpServer -ip=$ip_publica -net=$interfas -mode=system ;then
   msg -verd "        Con exito!!!"    
   _mssBOT "REINICIADO!!"
-  msg -bar
+  msg -bar3
   else    
   msg -verm "        Con fallo!!!"    
-  msg -bar
+  msg -bar3
   fi
   read -p "ENTER PARA CONTINUAR"
   }  
   
   stop_slow(){
   clear
-  msg -bar
+  msg -bar3
   msg -ama "        Deteniendo UDPserver...."
   if screen -ls | grep UDPserver | cut -d. -f1 | awk '{print $1}' | xargs kill ; then
-  msg -verd "         Con exito!!!"   msg -bar
+  msg -verd "         Con exito!!!"   msg -bar3
   else
-  msg -verm "        Con fallo!!!"    msg -bar
+  msg -verm "        Con fallo!!!"    msg -bar3
   fi
   read -p "ENTER PARA CONTINUAR"
   }    
@@ -78,19 +78,19 @@ make_service(){
   }
   
   info() {
-  msg -bar
+  msg -bar3
   echo
   msg -ama "         INSTALADOR UDPserver | ChuKK-Script"
   echo 
-  msg -bar
+  msg -bar3
   msg -ama "         SOURCE OFICIAL DE NewToolWorks"
   echo -e "      https://bitbucket.org/iopmx/udprequestserver/src/master/"
-  msg -bar
+  msg -bar3
   msg -ama "         URL DE APP OFICIAL "
   echo -e "https://play.google.com/store/apps/details?id=com.newtoolsworks.sockstunnel"
-  msg -bar
+  msg -bar3
   msg -ama "         CODIGO REFACTORIZADO POR @drowkid01"
-  msg -bar
+  msg -bar3
   read -p " PRESIONA ENTER PARA CONTINUAR"
   clear
   }
@@ -103,7 +103,7 @@ do
   msg -ama "         BINARIO OFICIAL DE NewToolWorks"
 
 [[ $(echo -e "${vercion}") < 20  ]] && {
-msg -bar
+msg -bar3
 echo -e "\e[1;31m  SISTEMA:  \e[33m$distro $vercion \e[1;31m	CPU:  \e[33m$(lscpu | grep "Vendor ID" | awk '{print $3}')" 
 echo -e " "
 echo -e "  UTILIZA LAS VARIANTES MENCIONADAS DENTRO DEL MENU "
@@ -114,27 +114,27 @@ msg -ama "                  O SUPERIOR"
 echo ""
 echo -e "         [ ! ]  Power by @drowkid01  [ ! ]"
 echo ""
-msg -bar
+msg -bar3
 read -p " PRESIONA ENTER PARA CONTINUAR"
 return
 }
-  msg -bar
+  msg -bar3
   msg -ama "         INSTALADOR UDPserver | ChuKK-Script"
-  msg -bar
+  msg -bar3
 [[ $(uname -m 2> /dev/null) != x86_64 ]] && {
 
 msg -ama "    BINARIO NO COMPATIBLE CON PLATAFORMAS ARM "
 echo ""
 echo -e "		[ ! ]  Power by @drowkid01  [ ! ]"
 echo ""
-msg -bar
+msg -bar3
 read -p " PRESIONA ENTER PARA CONTINUAR"
 return
 }
   menu_func "Instalar UDPserver $_pid" "$(msg -ama "Reiniciar UDPserver")" "$(msg -verm2 "Detener UDPserver")" "$(msg -verm2 "Remover UDPserver")" "$(msg -ama "Info de Proyecto")"
-  msg -bar
+  msg -bar3
   echo -ne "$(msg -verd "  [0]") $(msg -verm2 "=>>") " && msg -bra "\033[1;41m Volver "
-  msg -bar
+  msg -bar3
   opcion=$(selection_fun 6)  
   case $opcion in
   1)download_udpServer;;
